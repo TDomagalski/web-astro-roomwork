@@ -9,6 +9,23 @@
 
 ---
 
+## Sesja 2 — 2026-05-06
+
+### Wykonane
+
+- [x] Zainstalowany Context7 MCP (`@upstash/context7-mcp`) — status ✓ Connected
+- [x] Reguła Context7 dodana do `CLAUDE.md` (sekcja 0) — AI używa go automatycznie
+- [x] Usunięte wewnętrzne `.git` z `web-astro-roomwork/` — folder trackowany w zewnętrznym repo
+- [x] Dodany `.gitattributes` — LF w repo, brak CRLF warningów na Windows
+- [x] Commit całego projektu do repozytorium
+
+### Do zrobienia
+
+- [ ] Brave Search MCP — wymaga API key z api.search.brave.com (darmowy plan: 2000 zapytań/miesiąc)
+- [ ] GitHub MCP — niezainstalowany
+
+---
+
 ## Sesja 1 — 2026-05-06
 
 ### Wykonane
