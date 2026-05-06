@@ -4,6 +4,18 @@
 
 ---
 
+## 0. Narzędzia MCP — obowiązkowe zasady
+
+**Context7 jest zainstalowany i aktywny.** Przy każdym zadaniu dotyczącym kodu używaj `use context7`, aby pobrać aktualną dokumentację bibliotek. Dotyczy to w szczególności:
+- Astro (jakiekolwiek API, komponenty, konfiguracja)
+- Tailwind CSS v4 (składnia `@theme`, utility classes)
+- React (hooks, Server/Client Components)
+- Dowolnej innej biblioteki użytej w projekcie
+
+Nigdy nie polegaj wyłącznie na danych treningowych przy generowaniu kodu dla tych frameworków.
+
+---
+
 ## 1. Stack technologiczny
 
 | Obszar    | Technologia                                               |

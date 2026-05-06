@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(notebooklm ask *)",
+      "Bash(notebooklm artifact *)",
+      "WebFetch(domain:github.com)"
+    ]
+  }
+}
