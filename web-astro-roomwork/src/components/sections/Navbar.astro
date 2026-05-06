@@ -61,7 +61,7 @@ const isActive = (href: string): boolean =>
           stroke-width="1.8"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="hidden h-5 w-5 [[data-theme-pref=light]_&]:block"
+          class="hidden h-5 w-5 in-data-[theme-pref=light]:block"
           aria-hidden="true"
         >
           <circle cx="12" cy="12" r="4"></circle>
@@ -75,7 +75,7 @@ const isActive = (href: string): boolean =>
           stroke-width="1.8"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="hidden h-5 w-5 [[data-theme-pref=dark]_&]:block"
+          class="hidden h-5 w-5 in-data-[theme-pref=dark]:block"
           aria-hidden="true"
         >
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -87,7 +87,7 @@ const isActive = (href: string): boolean =>
           stroke-width="1.8"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="hidden h-5 w-5 [[data-theme-pref=auto]_&]:block"
+          class="hidden h-5 w-5 in-data-[theme-pref=auto]:block"
           aria-hidden="true"
         >
           <rect x="2" y="4" width="20" height="13" rx="2"></rect>
@@ -149,13 +149,13 @@ const isActive = (href: string): boolean =>
         <span class="sr-only">Menu</span>
         <span aria-hidden="true" class="relative block h-3 w-5">
           <span
-            class="absolute inset-x-0 top-0 block h-0.5 rounded-full bg-text transition-all duration-300 group-aria-[expanded=true]:top-1.5 group-aria-[expanded=true]:rotate-45"
+            class="absolute inset-x-0 top-0 block h-0.5 rounded-full bg-text transition-all duration-300 group-aria-expanded:top-1.5 group-aria-expanded:rotate-45"
           ></span>
           <span
-            class="absolute inset-x-0 top-1.5 block h-0.5 rounded-full bg-text transition-opacity duration-200 group-aria-[expanded=true]:opacity-0"
+            class="absolute inset-x-0 top-1.5 block h-0.5 rounded-full bg-text transition-opacity duration-200 group-aria-expanded:opacity-0"
           ></span>
           <span
-            class="absolute inset-x-0 bottom-0 block h-0.5 rounded-full bg-text transition-all duration-300 group-aria-[expanded=true]:bottom-1.5 group-aria-[expanded=true]:-rotate-45"
+            class="absolute inset-x-0 bottom-0 block h-0.5 rounded-full bg-text transition-all duration-300 group-aria-expanded:bottom-1.5 group-aria-expanded:-rotate-45"
           ></span>
         </span>
       </button>
@@ -237,7 +237,9 @@ const isActive = (href: string): boolean =>
       const next = cycle[(cycle.indexOf(current) + 1) % cycle.length];
       try {
         localStorage.setItem('theme-pref', next);
-      } catch {}
+      } catch (error) {
+        void error;
+      }
       applyTheme(next);
     };
 
