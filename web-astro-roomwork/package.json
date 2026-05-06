@@ -25,13 +25,13 @@
     "tailwindcss": "^4.2.4"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.59.2",
-    "@typescript-eslint/parser": "^8.59.2",
+    "@eslint/js": "^10.0.1",
     "eslint": "^10.3.0",
     "eslint-plugin-astro": "^1.7.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
-    "ttf2woff2": "^8.0.1"
+    "ttf2woff2": "^8.0.1",
+    "typescript-eslint": "^8.59.2"
   }
 }

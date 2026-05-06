@@ -1,5 +1,6 @@
 ---
 import { SEO } from 'astro-seo';
+import { ClientRouter } from 'astro:transitions';
 import { siteConfig } from '../data/siteConfig';
 import '../styles/global.css';
 import robotoFont from '../fonts/Roboto-VariableFont_wdth,wght.woff2';
@@ -16,9 +17,13 @@ const { title, description, canonical, ogImage } = Astro.props;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': `${siteConfig.url}/#business`,
   name: siteConfig.name,
   url: siteConfig.url,
   telephone: siteConfig.phone,
+  email: siteConfig.email,
+  image: `${siteConfig.url}${siteConfig.defaultOgImage}`,
+  priceRange: siteConfig.priceRange,
   address: {
     '@type': 'PostalAddress',
     streetAddress: siteConfig.address.street,
@@ -31,6 +36,12 @@ const jsonLd = {
     latitude: siteConfig.geo.lat,
     longitude: siteConfig.geo.lng,
   },
+  openingHoursSpecification: siteConfig.openingHours.map((spec) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: spec.days,
+    opens: spec.opens,
+    closes: spec.closes,
+  })),
 };
 ---
 
@@ -39,8 +50,11 @@ const jsonLd = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content={siteConfig.themeColor} />
+    <meta name="format-detection" content="telephone=no" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preload" href={robotoFont} as="font" type="font/woff2" crossorigin />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href={robotoFont} as="font" type="font/woff2" crossorigin="anonymous" />
     <SEO
       title={title}
       description={description}
@@ -49,12 +63,19 @@ const jsonLd = {
         basic: {
           title,
           type: 'website',
-          image: ogImage ?? '/og-default.jpg',
+          image: ogImage ?? `${siteConfig.url}${siteConfig.defaultOgImage}`,
+          url: canonical ?? Astro.url.href,
+        },
+        optional: {
+          description,
+          siteName: siteConfig.name,
+          locale: 'pl_PL',
         },
       }}
       twitter={{ card: 'summary_large_image' }}
     />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <ClientRouter />
   </head>
   <body>
     <a

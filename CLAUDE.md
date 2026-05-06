@@ -20,7 +20,7 @@ Nigdy nie polegaj wyłącznie na danych treningowych przy generowaniu kodu dla t
 
 | Obszar    | Technologia                                               |
 | --------- | --------------------------------------------------------- |
-| Framework | Astro 5.x (tryb static, hybrid gdy SSR wymagany)          |
+| Framework | Astro 6.x (tryb static, hybrid gdy SSR wymagany)          |
 | Styling   | Tailwind CSS v4                                           |
 | UI        | React (wyłącznie jako Client/Server Islands)              |
 | Język     | TypeScript — `strict` lub `strictest`                     |
@@ -104,6 +104,10 @@ const typography = {
 
 Używaj domyślnej skali Tailwind (4px grid). Breakpointy: `sm: 640px`, `md: 768px`, `lg: 1024px`, `xl: 1280px`.
 
+### Mobile-first — obowiązkowe
+
+Wszystkie komponenty i sekcje piszesz **mobile-first**: najpierw styl bazowy dla małych ekranów, a breakpointy `sm:`, `md:`, `lg:` służą do stopniowego rozszerzania layoutu. Nigdy odwrotnie.
+
 ---
 
 ## 4. Reguły TypeScript
@@ -139,6 +143,31 @@ const post: any = Astro.props.post;
    - Zamiast `framer-motion` → CSS transitions + `@starting-style`.
    - Zamiast `lodash` → natywne metody TS.
    - Zamiast `moment.js` → `Intl.DateTimeFormat` lub `date-fns` (tree-shakeable).
+
+---
+
+## 5a. View Transitions (Client Router)
+
+Strona używa **`<ClientRouter />`** w `BaseLayout.astro` — daje płynne przejścia między podstronami zamiast pełnego przeładowania.
+
+**Reguły dla komponentów:**
+- Elementy które mają **przetrwać** między stronami (logo, nav, audio player) → `transition:persist` lub `transition:name="unique-name"` na obu stronach.
+- Skrypty inline → opakuj w `<script>document.addEventListener("astro:page-load", () => { ... })</script>` zamiast `DOMContentLoaded`.
+- Animacje wejścia/wyjścia → `transition:animate="fade"` lub custom (CSS).
+
+```astro
+---
+import { ClientRouter } from "astro:transitions";
+---
+<head>
+  <ClientRouter />
+</head>
+```
+
+**Zdarzenia cyklu życia:**
+- `astro:before-preparation` — przed pobraniem nowej strony
+- `astro:page-load` — po załadowaniu nowej strony (zamiennik DOMContentLoaded)
+- `astro:after-swap` — po podmianie DOM
 
 ---
 
@@ -229,16 +258,17 @@ Dla stron wizytówkowych generuj JSON-LD w `BaseLayout.astro`:
 
 ---
 
-## 8. Content Collections — schematy Zod
+## 8. Content Collections — Content Layer API + Zod
 
-Każda kolekcja **musi** mieć schemat. Przykład dla strony wizytówkowej:
+**Astro 5+ wymaga loadera** (`type: 'content'` jest deprecated). Zawsze używaj `loader: glob()` z `astro/loaders`.
 
 ```ts
 // src/content.config.ts
 import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
 const services = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/services" }),
   schema: ({ image }) =>
     z.object({
       title: z.string().max(60),
@@ -252,6 +282,11 @@ const services = defineCollection({
 
 export const collections = { services };
 ```
+
+**Zalety Content Layer API:**
+- Możliwość ładowania danych z dowolnego źródła (API, JSON, MD/MDX, CMS)
+- Lepsza wydajność builda (cache, inkrementalne aktualizacje)
+- Patterns z prefiksem `_` (np. `_draft.md`) automatycznie pomijane przez `[^_]*`
 
 ---
 
@@ -268,19 +303,37 @@ export const collections = { services };
 
 ---
 
-## 10. Zmienne środowiskowe
+## 10. Zmienne środowiskowe — `astro:env`
 
-- Sekrety po stronie serwera: bez prefixu `PUBLIC_` — **nigdy nie trafiają do klienta**.
-- Dane publiczne (klucze API map, analytics): `PUBLIC_` prefix.
-- Zawsze definiuj typy przez `astro:env` lub własny `src/env.d.ts`.
+**Astro 5+ ma typowany schemat env w `astro.config.mjs`** — nie używaj starego `ImportMetaEnv`. Walidacja przy buildzie, brak ryzyka leak'a sekretu do klienta.
 
-```ts
-// src/env.d.ts
-interface ImportMetaEnv {
-  readonly PUBLIC_GOOGLE_MAPS_KEY: string;
-  readonly RESEND_API_KEY: string;
-}
+```js
+// astro.config.mjs
+import { defineConfig, envField } from "astro/config";
+
+export default defineConfig({
+  env: {
+    schema: {
+      PUBLIC_GOOGLE_MAPS_KEY: envField.string({ context: "client", access: "public", optional: true }),
+      RESEND_API_KEY: envField.string({ context: "server", access: "secret" }),
+    },
+  },
+});
 ```
+
+**Użycie w komponencie:**
+```astro
+---
+import { RESEND_API_KEY } from "astro:env/server";
+import { PUBLIC_GOOGLE_MAPS_KEY } from "astro:env/client";
+---
+```
+
+**Zasady:**
+- `context: "client"` — zmienna trafia do bundla klienta (musi mieć prefix `PUBLIC_`)
+- `context: "server"` — tylko na serwerze
+- `access: "secret"` — nigdy nie trafia do klienta (sekrety: API keys, hasła DB)
+- `access: "public"` — może być widoczna w bundle (klucze frontendowe map, analytics)
 
 ---
 
@@ -298,11 +351,22 @@ interface ImportMetaEnv {
 
 ## 12. Workflow przy nowym komponencie
 
+**Skill `frontend-design` jest domyślny dla wszystkich zadań UI.** Używaj go automatycznie — bez czekania na polecenie — gdy zadanie dotyczy:
+- tworzenia nowego komponentu (`.astro`, `.tsx`)
+- budowania strony lub layoutu
+- projektowania sekcji (Hero, Features, CTA, FAQ, Footer…)
+- znaczącej modyfikacji istniejącego komponentu wizualnego
+
+**Nie używaj skilla** dla zadań bez warstwy wizualnej: schematy Zod, pliki konfiguracyjne, typy TypeScript, dane statyczne, utilities.
+
+### Kroki
+
 1. Sprawdź czy istnieje podobny komponent w `src/components/`.
 2. Jeśli tak — rozbuduj, nie duplikuj.
-3. Pisz komponent w Astro (`.astro`) o ile nie wymaga stanu po stronie klienta.
-4. Jeśli wymaga stanu → React Island z minimalnym scope `client:visible`.
-5. Każdy nowy komponent eksportuje pełny interface Props z JSDoc.
+3. Uruchom skill `frontend-design` (automatycznie, bez pytania) dla każdego nowego lub przepisywanego komponentu UI.
+4. Pisz komponent w Astro (`.astro`) o ile nie wymaga stanu po stronie klienta.
+5. Jeśli wymaga stanu → React Island z minimalnym scope `client:visible`.
+6. Każdy nowy komponent eksportuje pełny interface Props z JSDoc.
 
 ---
 
