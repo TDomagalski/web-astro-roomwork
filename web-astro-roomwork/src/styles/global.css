@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 @font-face {
   font-family: 'Roboto';
   src: url('../fonts/Roboto-VariableFont_wdth,wght.woff2') format('woff2-variations');
@@ -25,8 +27,24 @@
   --color-text-muted: #6B7589;
   --color-border: #E2E6EE;
   --color-error: #D95F5F;
+  --color-elevated: #1E2533;
+  --color-on-elevated: #FFFFFF;
+  --color-on-primary: #FFFFFF;
 
   --font-sans: 'Roboto', system-ui, sans-serif;
+}
+
+[data-theme="dark"] {
+  --color-primary: #6B89FF;
+  --color-secondary: #8FAEFF;
+  --color-background: #0F1419;
+  --color-surface: #1A2230;
+  --color-text: #F2F4F8;
+  --color-text-muted: #9BA4B8;
+  --color-border: #2A3447;
+  --color-error: #FF7A7A;
+  --color-elevated: #131A24;
+  --color-on-elevated: #F2F4F8;
 }
 
 *, *::before, *::after {
@@ -35,6 +53,11 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 body {

@@ -2,6 +2,8 @@
 import { SEO } from 'astro-seo';
 import { ClientRouter } from 'astro:transitions';
 import { siteConfig } from '../data/siteConfig';
+import Navbar from '../components/sections/Navbar.astro';
+import Footer from '../components/sections/Footer.astro';
 import '../styles/global.css';
 import robotoFont from '../fonts/Roboto-VariableFont_wdth,wght.woff2';
 
@@ -50,8 +52,30 @@ const jsonLd = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content={siteConfig.themeColor} />
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0F1419" media="(prefers-color-scheme: dark)" />
     <meta name="format-detection" content="telephone=no" />
+    <script is:inline>
+      (function () {
+        function applyTheme() {
+          try {
+            var pref = localStorage.getItem('theme-pref') || 'auto';
+            var resolved =
+              pref === 'dark' ||
+              (pref === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+                ? 'dark'
+                : 'light';
+            document.documentElement.dataset.theme = resolved;
+            document.documentElement.dataset.themePref = pref;
+          } catch (e) {
+            document.documentElement.dataset.theme = 'light';
+            document.documentElement.dataset.themePref = 'auto';
+          }
+        }
+        applyTheme();
+        document.addEventListener('astro:after-swap', applyTheme);
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" href={robotoFont} as="font" type="font/woff2" crossorigin="anonymous" />
@@ -80,14 +104,14 @@ const jsonLd = {
   <body>
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-primary"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-surface focus:text-primary"
     >
       Przejdź do treści
     </a>
-    <slot name="header" />
+    <slot name="header"><Navbar /></slot>
     <main id="main-content">
       <slot />
     </main>
-    <slot name="footer" />
+    <slot name="footer"><Footer /></slot>
   </body>
 </html>

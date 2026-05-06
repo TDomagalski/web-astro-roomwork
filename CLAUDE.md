@@ -108,6 +108,32 @@ Używaj domyślnej skali Tailwind (4px grid). Breakpointy: `sm: 640px`, `md: 768
 
 Wszystkie komponenty i sekcje piszesz **mobile-first**: najpierw styl bazowy dla małych ekranów, a breakpointy `sm:`, `md:`, `lg:` służą do stopniowego rozszerzania layoutu. Nigdy odwrotnie.
 
+### Motywy: light / dark / auto
+
+Projekt obsługuje **3 motywy** (toggle w Navbarze, default `auto` z systemu). Mechanika: `data-theme="light|dark"` (resolved) + `data-theme-pref="light|dark|auto"` (user preference) na `<html>`. Inline script w `BaseLayout` aplikuje motyw przed renderem (zero FOUC) i ponownie na `astro:after-swap` (View Transitions resetują atrybuty html).
+
+**Tokeny semantyczne** (używaj zawsze, nigdy hardcoded hexów):
+
+| Token | Kiedy użyć |
+|---|---|
+| `bg-background` | tło sekcji domyślne |
+| `bg-surface` | karty, navbar, eyebrow tagi |
+| `text-text` | główny tekst |
+| `text-text-muted` | drugorzędny tekst, opisy |
+| `border-border` | obramowania, separatory |
+| `bg-primary` / `bg-secondary` | CTA, akcenty |
+| `text-on-primary` | tekst NA bg-primary (zawsze biały) |
+| `bg-elevated` | ciemne sekcje-anchor (Footer w light, subtle elevation w dark) |
+| `text-on-elevated` | tekst NA bg-elevated |
+
+**Pułapki do uniknięcia:**
+
+- ❌ `text-surface` na CTA `bg-primary` → w dark mode `surface` jest ciemny → tekst znika. ✅ Zawsze `text-on-primary`.
+- ❌ `bg-text` jako tło sekcji → w dark mode `text` jest jasny → sekcja staje się jasna. ✅ `bg-elevated` dla stałego ciemnego anchoru.
+- ❌ Hardcoded `bg-white` / `text-black` → ✅ `bg-surface` / `text-text`.
+
+**Definicje tokenów:** `src/styles/global.css` — `@theme { ... }` (light defaults) + `[data-theme="dark"] { ... }` (overrides).
+
 ---
 
 ## 4. Reguły TypeScript

@@ -1,0 +1,331 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+import { navLinks } from '../../data/nav';
+
+const phoneFormatted = '690 328 659';
+const phoneRaw = siteConfig.phone;
+const currentPath = Astro.url.pathname;
+const isActive = (href: string): boolean =>
+  currentPath === href || currentPath.startsWith(href + '/');
+---
+
+<nav
+  id="site-navbar"
+  aria-label="Główna nawigacja"
+  class="sticky top-0 z-40 border-b border-transparent bg-surface/95 backdrop-blur-md transition-[border-color,box-shadow] duration-300 ease-out [&.is-scrolled]:border-border [&.is-scrolled]:shadow-[0_8px_24px_-12px_rgb(74_108_247/0.18)]"
+>
+  <div
+    class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 md:py-4 lg:px-8"
+  >
+    <a
+      href="/"
+      class="inline-flex items-baseline text-xl font-semibold tracking-tight text-text transition-colors hover:text-primary md:text-2xl"
+      aria-label="Roomwork — strona główna"
+    >
+      <span>Roomwork</span>
+      <span aria-hidden="true" class="text-primary">.</span>
+    </a>
+
+    <ul class="hidden md:flex md:items-center md:gap-7 lg:gap-9">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              aria-current={isActive(link.href) ? 'page' : undefined}
+              class="group relative inline-flex py-1 text-sm font-medium text-text-muted transition-colors hover:text-text aria-[current=page]:text-text"
+            >
+              {link.label}
+              <span
+                aria-hidden="true"
+                class="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100 group-aria-[current=page]:scale-x-100"
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <button
+        id="theme-toggle"
+        type="button"
+        class="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-text transition-colors hover:border-primary hover:text-primary"
+        aria-label="Zmień motyw"
+        title="Zmień motyw"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="hidden h-5 w-5 [[data-theme-pref=light]_&]:block"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+          ></path>
+        </svg>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="hidden h-5 w-5 [[data-theme-pref=dark]_&]:block"
+          aria-hidden="true"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="hidden h-5 w-5 [[data-theme-pref=auto]_&]:block"
+          aria-hidden="true"
+        >
+          <rect x="2" y="4" width="20" height="13" rx="2"></rect>
+          <path d="M8 21h8M12 17v4"></path>
+        </svg>
+      </button>
+
+      <a
+        href={`tel:${phoneRaw}`}
+        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-text transition-colors hover:border-primary hover:bg-primary hover:text-on-primary md:hidden"
+        aria-label={`Zadzwoń pod numer ${phoneFormatted}`}
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-5 w-5"
+          aria-hidden="true"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+          ></path>
+        </svg>
+      </a>
+
+      <a
+        href={`tel:${phoneRaw}`}
+        class="hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary transition-all duration-200 ease-out hover:-translate-y-px hover:bg-secondary hover:shadow-[0_10px_20px_-8px_rgb(74_108_247/0.45)] md:inline-flex"
+        aria-label={`Zadzwoń pod numer ${phoneFormatted}`}
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-4 w-4"
+          aria-hidden="true"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+          ></path>
+        </svg>
+        <span>{phoneFormatted}</span>
+      </a>
+
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        aria-label="Otwórz menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="group relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-border transition-colors hover:border-primary md:hidden"
+      >
+        <span class="sr-only">Menu</span>
+        <span aria-hidden="true" class="relative block h-3 w-5">
+          <span
+            class="absolute inset-x-0 top-0 block h-0.5 rounded-full bg-text transition-all duration-300 group-aria-[expanded=true]:top-1.5 group-aria-[expanded=true]:rotate-45"
+          ></span>
+          <span
+            class="absolute inset-x-0 top-1.5 block h-0.5 rounded-full bg-text transition-opacity duration-200 group-aria-[expanded=true]:opacity-0"
+          ></span>
+          <span
+            class="absolute inset-x-0 bottom-0 block h-0.5 rounded-full bg-text transition-all duration-300 group-aria-[expanded=true]:bottom-1.5 group-aria-[expanded=true]:-rotate-45"
+          ></span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    data-open="false"
+    inert
+    class="grid grid-rows-[0fr] overflow-hidden border-t border-transparent bg-surface transition-[grid-template-rows,border-color] duration-300 ease-out data-[open=true]:grid-rows-[1fr] data-[open=true]:border-border md:hidden"
+  >
+    <div class="min-h-0 overflow-hidden">
+      <ul class="flex flex-col gap-1 px-4 py-3">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                aria-current={isActive(link.href) ? 'page' : undefined}
+                class="block rounded-lg px-3 py-3 text-base font-medium text-text-muted transition-colors hover:bg-background hover:text-text aria-[current=page]:bg-background aria-[current=page]:text-text"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="border-t border-border px-4 py-4">
+        <a
+          href={`tel:${phoneRaw}`}
+          class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-on-primary transition-colors hover:bg-secondary"
+          aria-label={`Zadzwoń pod numer ${phoneFormatted}`}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-4 w-4"
+            aria-hidden="true"
+          >
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+            ></path>
+          </svg>
+          <span>Zadzwoń {phoneFormatted}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  type Cleanup = () => void;
+
+  type ThemePref = 'light' | 'dark' | 'auto';
+
+  function applyTheme(pref: ThemePref): void {
+    const resolved: 'light' | 'dark' =
+      pref === 'dark' ||
+      (pref === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ? 'dark'
+        : 'light';
+    document.documentElement.dataset.theme = resolved;
+    document.documentElement.dataset.themePref = pref;
+  }
+
+  function initThemeToggle(): Cleanup | undefined {
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (!toggleBtn) return;
+
+    const cycle: ThemePref[] = ['light', 'dark', 'auto'];
+
+    const onClick = (): void => {
+      const current = (document.documentElement.dataset.themePref as ThemePref) ?? 'auto';
+      const next = cycle[(cycle.indexOf(current) + 1) % cycle.length];
+      try {
+        localStorage.setItem('theme-pref', next);
+      } catch {}
+      applyTheme(next);
+    };
+
+    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    const onSystemChange = (): void => {
+      const pref = (document.documentElement.dataset.themePref as ThemePref) ?? 'auto';
+      if (pref === 'auto') applyTheme('auto');
+    };
+
+    toggleBtn.addEventListener('click', onClick);
+    mql.addEventListener('change', onSystemChange);
+
+    return () => {
+      toggleBtn.removeEventListener('click', onClick);
+      mql.removeEventListener('change', onSystemChange);
+    };
+  }
+
+  function initNavbar(): Cleanup | undefined {
+    const navbar = document.getElementById('site-navbar');
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!navbar || !toggle || !menu) return;
+
+    const sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText =
+      'position:absolute;top:0;left:0;width:1px;height:1px;pointer-events:none;';
+    document.body.prepend(sentinel);
+
+    const io = new IntersectionObserver(
+      ([entry]) => navbar.classList.toggle('is-scrolled', !entry.isIntersecting),
+      { rootMargin: '0px' },
+    );
+    io.observe(sentinel);
+
+    const setOpen = (open: boolean): void => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+      menu.dataset.open = String(open);
+      if (open) {
+        menu.removeAttribute('inert');
+      } else {
+        menu.setAttribute('inert', '');
+      }
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+
+    const onToggle = (): void => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    };
+
+    const onKeydown = (e: KeyboardEvent): void => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    };
+
+    const links = menu.querySelectorAll<HTMLAnchorElement>('a');
+    const onLinkClick = (): void => setOpen(false);
+
+    toggle.addEventListener('click', onToggle);
+    document.addEventListener('keydown', onKeydown);
+    links.forEach((a) => a.addEventListener('click', onLinkClick));
+
+    return () => {
+      io.disconnect();
+      sentinel.remove();
+      toggle.removeEventListener('click', onToggle);
+      document.removeEventListener('keydown', onKeydown);
+      links.forEach((a) => a.removeEventListener('click', onLinkClick));
+      document.body.style.overflow = '';
+    };
+  }
+
+  let cleanupNav: Cleanup | undefined = initNavbar();
+  let cleanupTheme: Cleanup | undefined = initThemeToggle();
+
+  document.addEventListener('astro:before-swap', () => {
+    cleanupNav?.();
+    cleanupTheme?.();
+    cleanupNav = undefined;
+    cleanupTheme = undefined;
+  });
+
+  document.addEventListener('astro:page-load', () => {
+    if (!cleanupNav) cleanupNav = initNavbar();
+    if (!cleanupTheme) cleanupTheme = initThemeToggle();
+  });
+</script>
