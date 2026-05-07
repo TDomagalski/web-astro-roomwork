@@ -28,34 +28,34 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComp
 const year = new Date().getFullYear();
 ---
 
-<footer class="relative bg-elevated text-on-elevated border-t-4 border-t-primary">
+<footer class="bg-elevated text-on-elevated border-t-primary relative border-t-4">
   <div
     aria-hidden="true"
     class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,var(--glow-primary-soft),transparent_55%)]"
   >
   </div>
 
-  <div class="relative mx-auto max-w-7xl px-4 pb-8 pt-14 sm:px-6 lg:px-8 lg:pt-20">
+  <div class="relative mx-auto max-w-7xl px-4 pt-14 pb-8 sm:px-6 lg:px-8 lg:pt-20">
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
       <div class="min-w-0 lg:col-span-4">
         <a
           href="/"
-          class="font-heading inline-flex items-baseline text-2xl font-semibold tracking-tight text-on-elevated transition-colors hover:text-primary"
+          class="font-heading text-on-elevated hover:text-primary inline-flex items-baseline text-2xl font-semibold tracking-tight transition-colors"
           aria-label="Roomwork — strona główna"
         >
           <span>Roomwork</span>
           <span aria-hidden="true" class="text-primary">.</span>
         </a>
-        <p class="mt-4 max-w-sm text-sm leading-relaxed text-on-elevated/70">
-          Komfortowe kwatery pracownicze w Słomnikach. Profesjonalne zakwaterowanie
-          dla zespołów: pełne wyposażenie, transparentne warunki, faktura VAT.
+        <p class="text-on-elevated/70 mt-4 max-w-sm text-sm leading-relaxed">
+          Komfortowe kwatery pracownicze w Słomnikach. Profesjonalne zakwaterowanie dla zespołów:
+          pełne wyposażenie, transparentne warunki, faktura VAT.
         </p>
       </div>
 
       <nav aria-labelledby="footer-nav-heading" class="min-w-0 lg:col-span-2">
         <h2
           id="footer-nav-heading"
-          class="text-label tracking-label uppercase font-medium text-on-elevated"
+          class="text-label tracking-label text-on-elevated font-medium uppercase"
         >
           Nawigacja
         </h2>
@@ -65,7 +65,7 @@ const year = new Date().getFullYear();
               <li>
                 <a
                   href={link.href}
-                  class="inline-flex text-on-elevated/70 transition-colors hover:text-primary"
+                  class="text-on-elevated/70 hover:text-primary inline-flex transition-colors"
                 >
                   {link.label}
                 </a>
@@ -76,16 +76,14 @@ const year = new Date().getFullYear();
       </nav>
 
       <div class="min-w-0 lg:col-span-3">
-        <h2 class="text-label tracking-label uppercase font-medium text-on-elevated">
-          Kontakt
-        </h2>
+        <h2 class="text-label tracking-label text-on-elevated font-medium uppercase">Kontakt</h2>
         <ul class="mt-4 flex flex-col gap-3 text-sm">
           <li>
             <a
               href={mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="group inline-flex items-start gap-3 text-on-elevated/70 transition-colors hover:text-primary"
+              class="group text-on-elevated/70 hover:text-primary inline-flex items-start gap-3 transition-colors"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -94,7 +92,7 @@ const year = new Date().getFullYear();
                 stroke-width="1.8"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                class="text-primary mt-0.5 h-4 w-4 shrink-0"
                 aria-hidden="true"
               >
                 <path d="M20 10c0 7-8 13-8 13s-8-6-8-13a8 8 0 0 1 16 0z"></path>
@@ -102,14 +100,15 @@ const year = new Date().getFullYear();
               </svg>
               <span>
                 {siteConfig.address.street}<br />
-                {siteConfig.address.zip} {siteConfig.address.city}
+                {siteConfig.address.zip}
+                {siteConfig.address.city}
               </span>
             </a>
           </li>
           <li>
             <a
               href={`tel:${phoneRaw}`}
-              class="inline-flex items-center gap-3 text-on-elevated/70 transition-colors hover:text-primary"
+              class="text-on-elevated/70 hover:text-primary inline-flex items-center gap-3 transition-colors"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -118,12 +117,12 @@ const year = new Date().getFullYear();
                 stroke-width="1.8"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="h-4 w-4 shrink-0 text-primary"
+                class="text-primary h-4 w-4 shrink-0"
                 aria-hidden="true"
               >
                 <path
                   d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-                />
+                ></path>
               </svg>
               <span>{phoneFormatted}</span>
             </a>
@@ -131,7 +130,7 @@ const year = new Date().getFullYear();
           <li>
             <a
               href={`mailto:${siteConfig.email}`}
-              class="inline-flex items-center gap-3 text-on-elevated/70 transition-colors hover:text-primary"
+              class="text-on-elevated/70 hover:text-primary inline-flex items-center gap-3 transition-colors"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -140,7 +139,7 @@ const year = new Date().getFullYear();
                 stroke-width="1.8"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="h-4 w-4 shrink-0 text-primary"
+                class="text-primary h-4 w-4 shrink-0"
                 aria-hidden="true"
               >
                 <rect x="2" y="4" width="20" height="16" rx="2"></rect>
@@ -149,7 +148,7 @@ const year = new Date().getFullYear();
               <span class="break-all">{siteConfig.email}</span>
             </a>
           </li>
-          <li class="flex items-start gap-3 text-on-elevated/70">
+          <li class="text-on-elevated/70 flex items-start gap-3">
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -157,7 +156,7 @@ const year = new Date().getFullYear();
               stroke-width="1.8"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="mt-0.5 h-4 w-4 shrink-0 text-primary"
+              class="text-primary mt-0.5 h-4 w-4 shrink-0"
               aria-hidden="true"
             >
               <circle cx="12" cy="12" r="10"></circle>
@@ -177,16 +176,16 @@ const year = new Date().getFullYear();
       </div>
 
       <div class="min-w-0 lg:col-span-3">
-        <h2 class="text-label tracking-label uppercase font-medium text-on-elevated">
+        <h2 class="text-label tracking-label text-on-elevated font-medium uppercase">
           Lokalizacja
         </h2>
-        <div id="map-shell" class="mt-4 overflow-hidden rounded-2xl ring-1 ring-on-elevated/15">
+        <div id="map-shell" class="ring-on-elevated/15 mt-4 overflow-hidden rounded-2xl ring-1">
           <button
             id="map-facade"
             type="button"
             data-src={siteConfig.mapsEmbed}
             aria-label={`Załaduj mapę Google: ${fullAddress}`}
-            class="group block w-full cursor-pointer text-left transition-[box-shadow] duration-200 hover:shadow-[0_20px_40px_-20px_var(--glow-action)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary"
+            class="group focus-visible:ring-primary block w-full cursor-pointer text-left transition-shadow duration-200 hover:shadow-[0_20px_40px_-20px_var(--glow-action)] focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-inset"
           >
             <div
               class="relative aspect-4/3 bg-[linear-gradient(135deg,var(--glow-nav),var(--glow-primary-soft))]"
@@ -198,21 +197,16 @@ const year = new Date().getFullYear();
               </div>
               <div
                 aria-hidden="true"
-                class="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-2xl"
+                class="bg-primary/20 absolute top-1/2 left-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
               >
               </div>
               <div
-                class="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2 transition-transform duration-300 ease-out group-hover:-translate-y-[60%]"
+                class="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2 transition-transform duration-300 ease-out group-hover:translate-y-[-60%]"
               >
                 <span
-                  class="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-on-primary shadow-[0_10px_30px_-10px_var(--glow-pin)]"
+                  class="bg-primary text-on-primary flex h-12 w-12 items-center justify-center rounded-full shadow-[0_10px_30px_-10px_var(--glow-pin)]"
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    class="h-6 w-6"
-                    aria-hidden="true"
-                  >
+                  <svg viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6" aria-hidden="true">
                     <path
                       d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
                     ></path>
@@ -220,7 +214,7 @@ const year = new Date().getFullYear();
                 </span>
                 <span
                   aria-hidden="true"
-                  class="rounded-full bg-elevated/80 px-2.5 py-0.5 text-xs text-on-elevated/60 opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100"
+                  class="bg-elevated/80 text-on-elevated/60 rounded-full px-2.5 py-0.5 text-xs opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100"
                 >
                   kliknij, aby załadować
                 </span>
@@ -232,22 +226,17 @@ const year = new Date().getFullYear();
     </div>
 
     <div
-      class="mt-12 flex flex-col gap-4 border-t border-on-elevated/10 pt-6 text-xs text-on-elevated/60 sm:flex-row sm:items-center sm:justify-between"
+      class="border-on-elevated/10 text-on-elevated/60 mt-12 flex flex-col gap-4 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between"
     >
       <p>© {year} {siteConfig.name}. Wszystkie prawa zastrzeżone.</p>
       <ul class="flex flex-wrap items-center gap-x-5 gap-y-2">
         <li>
-          <a
-            href="/polityka-prywatnosci"
-            class="transition-colors hover:text-primary"
-          >
+          <a href="/polityka-prywatnosci" class="hover:text-primary transition-colors">
             Polityka prywatności
           </a>
         </li>
         <li>
-          <a href="/regulamin" class="transition-colors hover:text-primary">
-            Regulamin
-          </a>
+          <a href="/regulamin" class="hover:text-primary transition-colors"> Regulamin </a>
         </li>
       </ul>
     </div>
@@ -276,7 +265,7 @@ const year = new Date().getFullYear();
         shell.innerHTML = '';
         shell.appendChild(iframe);
       },
-      { once: true },
+      { once: true }
     );
   }
 
