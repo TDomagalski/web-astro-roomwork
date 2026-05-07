@@ -12,14 +12,14 @@ const isActive = (href: string): boolean =>
 <nav
   id="site-navbar"
   aria-label="Główna nawigacja"
-  class="sticky top-0 z-40 border-b-[3px] border-b-primary bg-surface/95 backdrop-blur-md transition-[box-shadow] duration-300 ease-out [&.is-scrolled]:shadow-[0_8px_24px_-12px_var(--glow-nav)]"
+  class="border-b-primary bg-surface/95 sticky top-0 z-40 border-b-[3px] backdrop-blur-md transition-shadow duration-300 ease-out [&.is-scrolled]:shadow-[0_8px_24px_-12px_var(--glow-nav)]"
 >
   <div
     class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 md:py-4 lg:px-8"
   >
     <a
       href="/"
-      class="inline-flex items-baseline text-xl font-semibold tracking-tight text-text transition-colors hover:text-primary md:text-2xl"
+      class="text-text hover:text-primary inline-flex items-baseline text-xl font-semibold tracking-tight transition-colors md:text-2xl"
       aria-label="Roomwork — strona główna"
     >
       <span>Roomwork</span>
@@ -33,12 +33,12 @@ const isActive = (href: string): boolean =>
             <a
               href={link.href}
               aria-current={isActive(link.href) ? 'page' : undefined}
-              class="group relative inline-flex py-1 text-sm font-medium text-text-muted transition-colors hover:text-text aria-[current=page]:text-text"
+              class="group text-text-muted hover:text-text aria-[current=page]:text-text relative inline-flex py-1 text-sm font-medium transition-colors"
             >
               {link.label}
               <span
                 aria-hidden="true"
-                class="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100 group-aria-[current=page]:scale-x-100"
+                class="bg-primary absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100 group-aria-[current=page]:scale-x-100"
               />
             </a>
           </li>
@@ -50,7 +50,7 @@ const isActive = (href: string): boolean =>
       <button
         id="theme-toggle"
         type="button"
-        class="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-text transition-colors hover:border-primary hover:text-primary"
+        class="group border-border text-text hover:border-primary hover:text-primary inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors"
         aria-label="Zmień motyw"
         title="Zmień motyw"
       >
@@ -65,7 +65,8 @@ const isActive = (href: string): boolean =>
           aria-hidden="true"
         >
           <circle cx="12" cy="12" r="4"></circle>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+          <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
           ></path>
         </svg>
         <svg
@@ -97,7 +98,7 @@ const isActive = (href: string): boolean =>
 
       <a
         href={`tel:${phoneRaw}`}
-        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-text transition-colors hover:border-primary hover:bg-primary hover:text-on-primary md:hidden"
+        class="border-border text-text hover:border-primary hover:bg-primary hover:text-on-primary inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors md:hidden"
         aria-label={`Zadzwoń pod numer ${phoneFormatted}`}
       >
         <svg
@@ -118,7 +119,7 @@ const isActive = (href: string): boolean =>
 
       <a
         href={`tel:${phoneRaw}`}
-        class="hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary transition-[background-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-px hover:bg-secondary hover:shadow-[0_10px_20px_-8px_var(--glow-action)] md:inline-flex"
+        class="bg-primary text-on-primary hover:bg-secondary hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-[background-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-px hover:shadow-[0_10px_20px_-8px_var(--glow-action)] md:inline-flex"
         aria-label={`Zadzwoń pod numer ${phoneFormatted}`}
       >
         <svg
@@ -144,18 +145,18 @@ const isActive = (href: string): boolean =>
         aria-label="Otwórz menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
-        class="group relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-border transition-colors hover:border-primary md:hidden"
+        class="group border-border hover:border-primary relative inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors md:hidden"
       >
         <span class="sr-only">Menu</span>
         <span aria-hidden="true" class="relative block h-3 w-5">
           <span
-            class="absolute inset-x-0 top-0 block h-0.5 rounded-full bg-text transition-all duration-300 group-aria-expanded:top-1.5 group-aria-expanded:rotate-45"
+            class="bg-text absolute inset-x-0 top-0 block h-0.5 rounded-full transition-all duration-300 group-aria-expanded:top-1.5 group-aria-expanded:rotate-45"
           ></span>
           <span
-            class="absolute inset-x-0 top-1.5 block h-0.5 rounded-full bg-text transition-opacity duration-200 group-aria-expanded:opacity-0"
+            class="bg-text absolute inset-x-0 top-1.5 block h-0.5 rounded-full transition-opacity duration-200 group-aria-expanded:opacity-0"
           ></span>
           <span
-            class="absolute inset-x-0 bottom-0 block h-0.5 rounded-full bg-text transition-all duration-300 group-aria-expanded:bottom-1.5 group-aria-expanded:-rotate-45"
+            class="bg-text absolute inset-x-0 bottom-0 block h-0.5 rounded-full transition-all duration-300 group-aria-expanded:bottom-1.5 group-aria-expanded:-rotate-45"
           ></span>
         </span>
       </button>
@@ -166,7 +167,7 @@ const isActive = (href: string): boolean =>
     id="mobile-menu"
     data-open="false"
     inert
-    class="grid grid-rows-[0fr] overflow-hidden border-t border-transparent bg-surface transition-[grid-template-rows,border-color] duration-300 ease-out data-[open=true]:grid-rows-[1fr] data-[open=true]:border-border md:hidden"
+    class="bg-surface data-[open=true]:border-border grid grid-rows-[0fr] overflow-hidden border-t border-transparent transition-[grid-template-rows,border-color] duration-300 ease-out data-[open=true]:grid-rows-[1fr] md:hidden"
   >
     <div class="min-h-0 overflow-hidden">
       <ul class="flex flex-col gap-1 px-4 py-3">
@@ -176,7 +177,7 @@ const isActive = (href: string): boolean =>
               <a
                 href={link.href}
                 aria-current={isActive(link.href) ? 'page' : undefined}
-                class="block rounded-lg px-3 py-3 text-base font-medium text-text-muted transition-colors hover:bg-background hover:text-text aria-[current=page]:bg-background aria-[current=page]:text-text"
+                class="text-text-muted hover:bg-background hover:text-text aria-[current=page]:bg-background aria-[current=page]:text-text block rounded-lg px-3 py-3 text-base font-medium transition-colors"
               >
                 {link.label}
               </a>
@@ -184,10 +185,10 @@ const isActive = (href: string): boolean =>
           ))
         }
       </ul>
-      <div class="border-t border-border px-4 py-4">
+      <div class="border-border border-t px-4 py-4">
         <a
           href={`tel:${phoneRaw}`}
-          class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-on-primary transition-colors hover:bg-secondary"
+          class="bg-primary text-on-primary hover:bg-secondary inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors"
           aria-label={`Zadzwoń pod numer ${phoneFormatted}`}
         >
           <svg
@@ -272,7 +273,7 @@ const isActive = (href: string): boolean =>
 
     const io = new IntersectionObserver(
       ([entry]) => navbar.classList.toggle('is-scrolled', !entry.isIntersecting),
-      { rootMargin: '0px' },
+      { rootMargin: '0px' }
     );
     io.observe(sentinel);
 

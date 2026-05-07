@@ -7,10 +7,7 @@ const phoneFormatted = '690 328 659';
 const phoneRaw = siteConfig.phone;
 ---
 
-<section
-  aria-labelledby="hero-heading"
-  class="relative overflow-hidden bg-background"
->
+<section aria-labelledby="hero-heading" class="bg-background relative overflow-hidden">
   <div
     aria-hidden="true"
     class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--glow-primary),transparent_55%),radial-gradient(ellipse_at_bottom_left,var(--glow-primary-soft),transparent_50%)]"
@@ -22,37 +19,33 @@ const phoneRaw = siteConfig.phone;
   >
     <div class="flex min-w-0 flex-col justify-center lg:col-span-7">
       <span
-        class="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium uppercase tracking-wider text-primary"
+        class="border-border bg-surface text-primary inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wider uppercase"
       >
-        <span aria-hidden="true" class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+        <span aria-hidden="true" class="bg-primary h-1.5 w-1.5 rounded-full"></span>
         Kwatery dla firm · Słomniki
       </span>
 
       <h1
         id="hero-heading"
-        class="mt-5 break-words font-heading text-4xl font-bold leading-[1.15] tracking-tight text-text sm:text-5xl lg:mt-7 lg:text-[3.75rem] lg:leading-[1.1]"
+        class="font-heading text-text mt-5 text-4xl leading-[1.15] font-bold tracking-tight wrap-break-word sm:text-5xl lg:mt-7 lg:text-[3.75rem] lg:leading-[1.1]"
       >
         Komfortowe <span class="relative inline-block">
           <span class="relative z-10">kwatery pracownicze</span>
           <span
             aria-hidden="true"
-            class="absolute inset-x-0 bottom-1 z-0 h-3 bg-primary/25 sm:bottom-2 sm:h-4"
-          ></span>
+            class="bg-primary/25 absolute inset-x-0 bottom-1 z-0 h-3 sm:bottom-2 sm:h-4"></span>
         </span> w Słomnikach
       </h1>
 
-      <p
-        class="mt-5 max-w-xl text-base leading-relaxed text-text-muted sm:text-lg lg:mt-7"
-      >
-        Profesjonalne zakwaterowanie dla zespołów. Spokojna lokalizacja przy ulicy
-        Krakowskiej, w pełni wyposażone pokoje, transparentne warunki i faktura VAT
-        dla każdej firmy.
+      <p class="text-text-muted mt-5 max-w-xl text-base leading-relaxed sm:text-lg lg:mt-7">
+        Profesjonalne zakwaterowanie dla zespołów. Spokojna lokalizacja przy ulicy Krakowskiej, w
+        pełni wyposażone pokoje, transparentne warunki i faktura VAT dla każdej firmy.
       </p>
 
       <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center lg:mt-9">
         <a
           href="/kwatery"
-          class="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-on-primary transition-[background-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-px hover:bg-secondary hover:shadow-[0_14px_28px_-12px_var(--glow-action)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          class="group bg-primary text-on-primary hover:bg-secondary focus-visible:ring-primary focus-visible:ring-offset-background inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-[background-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-px hover:shadow-[0_14px_28px_-12px_var(--glow-action)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
         >
           <span>Sprawdź kwatery</span>
           <svg
@@ -72,7 +65,7 @@ const phoneRaw = siteConfig.phone;
 
         <a
           href={`tel:${phoneRaw}`}
-          class="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface px-6 py-3.5 text-sm font-semibold text-text transition-colors duration-200 ease-out hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          class="border-border bg-surface text-text hover:border-primary hover:text-primary focus-visible:ring-primary focus-visible:ring-offset-background inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3.5 text-sm font-semibold transition-colors duration-200 ease-out focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
           aria-label={`Zadzwoń pod numer ${phoneFormatted}`}
         >
           <svg
@@ -97,7 +90,7 @@ const phoneRaw = siteConfig.phone;
         class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 lg:mt-10"
         aria-label="Cechy oferty"
       >
-        <li class="inline-flex items-center gap-2 text-sm font-medium text-text">
+        <li class="text-text inline-flex items-center gap-2 text-sm font-medium">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -105,15 +98,15 @@ const phoneRaw = siteConfig.phone;
             stroke-width="1.8"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="h-[18px] w-[18px] shrink-0 text-primary"
+            class="text-primary h-4.5 w-4.5 shrink-0"
             aria-hidden="true"
           >
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            <path d="m9 12 2 2 4-4" />
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="m9 12 2 2 4-4"></path>
           </svg>
           <span>Pełne wyposażenie</span>
         </li>
-        <li class="inline-flex items-center gap-2 text-sm font-medium text-text">
+        <li class="text-text inline-flex items-center gap-2 text-sm font-medium">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -121,18 +114,18 @@ const phoneRaw = siteConfig.phone;
             stroke-width="1.8"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="h-[18px] w-[18px] shrink-0 text-primary"
+            class="text-primary h-4.5 w-4.5 shrink-0"
             aria-hidden="true"
           >
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" />
-            <path d="M14 2v5h5" />
-            <path d="M16 13H8" />
-            <path d="M16 17H8" />
-            <path d="M10 9H8" />
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"></path>
+            <path d="M14 2v5h5"></path>
+            <path d="M16 13H8"></path>
+            <path d="M16 17H8"></path>
+            <path d="M10 9H8"></path>
           </svg>
           <span>Faktura VAT</span>
         </li>
-        <li class="inline-flex items-center gap-2 text-sm font-medium text-text">
+        <li class="text-text inline-flex items-center gap-2 text-sm font-medium">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -140,11 +133,11 @@ const phoneRaw = siteConfig.phone;
             stroke-width="1.8"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="h-[18px] w-[18px] shrink-0 text-primary"
+            class="text-primary h-4.5 w-4.5 shrink-0"
             aria-hidden="true"
           >
-            <path d="M20 10c0 7-8 13-8 13S4 17 4 10a8 8 0 0 1 16 0Z" />
-            <circle cx="12" cy="10" r="3" />
+            <path d="M20 10c0 7-8 13-8 13S4 17 4 10a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
           </svg>
           <span>Parking na miejscu</span>
         </li>
@@ -154,17 +147,17 @@ const phoneRaw = siteConfig.phone;
     <div class="relative min-w-0 lg:col-span-5">
       <div
         aria-hidden="true"
-        class="absolute -bottom-3 -left-3 hidden h-2/3 w-2/3 rounded-3xl border border-primary/30 bg-primary/5 sm:block lg:-bottom-4 lg:-left-4"
+        class="border-primary/30 bg-primary/5 absolute -bottom-3 -left-3 hidden h-2/3 w-2/3 rounded-3xl border sm:block lg:-bottom-4 lg:-left-4"
       >
       </div>
       <div
         aria-hidden="true"
-        class="absolute -right-2 -top-3 hidden h-24 w-24 rounded-full bg-secondary/15 blur-2xl sm:block lg:-right-4 lg:-top-4 lg:h-32 lg:w-32"
+        class="bg-secondary/15 absolute -top-3 -right-2 hidden h-24 w-24 rounded-full blur-2xl sm:block lg:-top-4 lg:-right-4 lg:h-32 lg:w-32"
       >
       </div>
 
       <div
-        class="relative overflow-hidden rounded-3xl ring-1 ring-border shadow-[0_30px_60px_-30px_var(--glow-card)]"
+        class="ring-border relative overflow-hidden rounded-3xl shadow-[0_30px_60px_-30px_var(--glow-card)] ring-1"
       >
         <Image
           src={heroImage}
