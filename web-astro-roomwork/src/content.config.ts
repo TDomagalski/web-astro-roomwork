@@ -37,7 +37,7 @@ const posts = defineCollection({
       updatedDate: z.coerce.date().optional(),
       cover: image().optional(),
       coverAlt: z.string().optional(),
-      author: z.string().default('Roomwork'),
+      author: z.string().default('RoomWork'),
       tags: z.array(z.string()).default([]),
       draft: z.boolean().default(false),
       featured: z.boolean().default(false),

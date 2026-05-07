@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import heroImage from '../assets/hero_section-sample.jpg';
+---
+
+<BaseLayout
+  title="Blog — RoomWork Słomniki"
+  description="Porady dla firm szukających kwater pracowniczych, informacje o okolicy i aktualności z RoomWork w Słomnikach."
+>
+  <HeroSection
+    image={heroImage}
+    alt="Blog RoomWork — porady dotyczące kwater pracowniczych w Słomnikach"
+    eyebrow="Blog · RoomWork"
+    eyebrow2="Porady i aktualności"
+    title="Artykuły o zakwaterowaniu pracowniczym"
+    titleHighlight="zakwaterowaniu pracowniczym"
+    subtitle="Porady dla firm szukających kwater, informacje o okolicy Słomnik i aktualności z RoomWork. Wszystko, co warto wiedzieć przed rezerwacją dla swojej ekipy."
+    ctaPrimary={{ label: 'Sprawdź kwatery', href: '/kwatery' }}
+    features={[
+      { icon: 'document', label: 'Porady dla firm' },
+      { icon: 'location', label: 'Lokalizacja i dojazd' },
+      { icon: 'clock', label: 'Regularne wpisy' },
+    ]}
+  />
+</BaseLayout>

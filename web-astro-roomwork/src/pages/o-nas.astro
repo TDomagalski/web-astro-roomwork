@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import heroImage from '../assets/hero_section-sample.jpg';
+---
+
+<BaseLayout
+  title="O nas — RoomWork Słomniki"
+  description="Poznaj RoomWork — rodzinny obiekt z kwaterami pracowniczymi w Słomnikach. Rzetelna obsługa, elastyczne warunki i bezpośredni kontakt z właścicielem."
+>
+  <HeroSection
+    image={heroImage}
+    alt="Właściciele RoomWork — kwatery pracownicze w Słomnikach przy ul. Krakowskiej 62d"
+    eyebrow="O nas · RoomWork"
+    eyebrow2="Słomniki, ul. Krakowska 62d"
+    title="Kwatery z myślą o każdej ekipie"
+    titleHighlight="każdej ekipie"
+    subtitle="RoomWork to rodzinny obiekt w Słomnikach, tworzony z myślą o firmach i pracownikach szukających solidnego zakwaterowania. Stawiamy na czystość, spokój i bezpośredni kontakt z właścicielem."
+    features={[
+      { icon: 'shield', label: 'Rzetelna obsługa' },
+      { icon: 'document', label: 'Faktura VAT' },
+      { icon: 'clock', label: 'Elastyczne warunki' },
+    ]}
+  />
+</BaseLayout>

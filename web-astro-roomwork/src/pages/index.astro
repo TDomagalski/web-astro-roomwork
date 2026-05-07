@@ -1,11 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/sections/HeroSection.astro';
+import heroImage from '../assets/hero_section-roomwork.webp';
 ---
 
 <BaseLayout
-  title="Roomwork — kwatery pracownicze w Słomnikach"
+  title="RoomWork — kwatery pracownicze w Słomnikach"
   description="Komfortowe kwatery pracownicze dla firm. Spokojna lokalizacja w Słomnikach, pełne wyposażenie, faktura VAT."
 >
-  <HeroSection />
+  <HeroSection
+    image={heroImage}
+    alt="Budynek RoomWork — kwatery pracownicze w Słomnikach przy ulicy Krakowskiej"
+    eyebrow="Kwatery dla firm · Słomniki"
+    eyebrow2="Pokoje gościnne · Słomniki"
+    title="Komfortowe kwatery pracownicze w Słomnikach"
+    titleHighlight="kwatery pracownicze"
+    subtitle="Profesjonalne zakwaterowanie dla zespołów. Spokojna lokalizacja przy ulicy Krakowskiej, w pełni wyposażone pokoje, transparentne warunki i faktura VAT dla każdej firmy."
+  />
 </BaseLayout>

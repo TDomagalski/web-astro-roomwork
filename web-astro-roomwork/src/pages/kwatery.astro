@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import { siteConfig } from '../data/siteConfig';
+import heroImage from '../assets/hero_section-kwatery.webp';
+---
+
+<BaseLayout
+  title="Kwatery pracownicze — 10 pokoi w Słomnikach | RoomWork"
+  description="Kwatery pracownicze w Słomnikach k. Krakowa — 10 pokoi, do 40 osób, własne łazienki, parking, Wi-Fi, faktura VAT. Przy trasie S7. Dzwoń i rezerwuj."
+>
+  <HeroSection
+    image={heroImage}
+    alt="Kwatery pracownicze RoomWork — budynek przy ul. Krakowskiej 62d w Słomnikach"
+    eyebrow="Kwatery pracownicze · Słomniki"
+    eyebrow2="10 pokoi · do 40 osób"
+    title="Kwatery pracownicze — 10 pokoi w Słomnikach"
+    titleHighlight="Kwatery pracownicze"
+    subtitle="Własne łazienki, w pełni wyposażona kuchnia, bezpłatny parking i szybkie Wi-Fi. Obiekt przy trasie S7 — dojazd do Krakowa, Miechowa i Proszowic. Faktura VAT dla każdej firmy."
+    ctaPrimary={{ label: 'Zadzwoń i zarezerwuj', href: `tel:${siteConfig.phone}` }}
+    features={[
+      { icon: 'shield', label: 'Pełne wyposażenie' },
+      { icon: 'document', label: 'Faktura VAT' },
+      { icon: 'location', label: 'Parking na miejscu' },
+    ]}
+  />
+</BaseLayout>

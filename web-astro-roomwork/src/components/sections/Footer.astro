@@ -28,7 +28,7 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComp
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-elevated text-on-elevated border-t-primary relative border-t-4">
+<footer class="bg-elevated text-on-elevated border-t-primary relative border-t-[1.75px]">
   <div
     aria-hidden="true"
     class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,var(--glow-primary-soft),transparent_55%)]"
@@ -41,9 +41,9 @@ const year = new Date().getFullYear();
         <a
           href="/"
           class="font-heading text-on-elevated hover:text-primary inline-flex items-baseline text-2xl font-semibold tracking-tight transition-colors"
-          aria-label="Roomwork — strona główna"
+          aria-label="RoomWork — strona główna"
         >
-          <span>Roomwork</span>
+          <span>RoomWork</span>
           <span aria-hidden="true" class="text-primary">.</span>
         </a>
         <p class="text-on-elevated/70 mt-4 max-w-sm text-sm leading-relaxed">
@@ -257,7 +257,7 @@ const year = new Date().getFullYear();
 
         const iframe = document.createElement('iframe');
         iframe.src = src;
-        iframe.title = 'Mapa Google Maps — Roomwork, ul. Krakowska 62d, Słomniki';
+        iframe.title = 'Mapa Google Maps — RoomWork, ul. Krakowska 62d, Słomniki';
         iframe.setAttribute('allowfullscreen', '');
         iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
         iframe.style.cssText = 'border:0;display:block;width:100%;aspect-ratio:4/3;';
