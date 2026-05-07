@@ -2,49 +2,43 @@
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-@font-face {
-  font-family: 'Roboto';
-  src: url('../fonts/Roboto-VariableFont_wdth,wght.woff2') format('woff2-variations');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Roboto';
-  src: url('../fonts/Roboto-Italic-VariableFont_wdth,wght.woff2') format('woff2-variations');
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-}
-
 @theme {
-  --color-primary: #4A6CF7;
-  --color-secondary: #7B9CF4;
-  --color-background: #F6F7F9;
-  --color-surface: #FFFFFF;
-  --color-text: #1E2533;
-  --color-text-muted: #6B7589;
-  --color-border: #E2E6EE;
-  --color-error: #D95F5F;
-  --color-elevated: #1E2533;
-  --color-on-elevated: #FFFFFF;
-  --color-on-primary: #FFFFFF;
+  --color-primary: oklch(45% 0.15 157);
+  --color-secondary: oklch(55% 0.13 157);
+  --color-background: oklch(97.5% 0.008 157);
+  --color-surface: oklch(99.5% 0.003 157);
+  --color-text: oklch(18% 0.018 157);
+  --color-text-muted: oklch(50% 0.022 157);
+  --color-border: oklch(91.5% 0.015 157);
+  --color-error: oklch(55% 0.16 25);
+  --color-elevated: oklch(14% 0.016 157);
+  --color-on-elevated: oklch(97% 0.005 157);
+  --color-on-primary: oklch(99% 0.003 157);
 
-  --font-sans: 'Roboto', system-ui, sans-serif;
+  --font-sans: var(--font-franklin), system-ui, sans-serif;
+  --font-heading: var(--font-zilla), Georgia, serif;
 }
 
 [data-theme="dark"] {
-  --color-primary: #6B89FF;
-  --color-secondary: #8FAEFF;
-  --color-background: #0F1419;
-  --color-surface: #1A2230;
-  --color-text: #F2F4F8;
-  --color-text-muted: #9BA4B8;
-  --color-border: #2A3447;
-  --color-error: #FF7A7A;
-  --color-elevated: #131A24;
-  --color-on-elevated: #F2F4F8;
+  --color-primary: oklch(62% 0.17 157);
+  --color-secondary: oklch(70% 0.14 157);
+  --color-background: oklch(10% 0.01 157);
+  --color-surface: oklch(17% 0.02 157);
+  --color-text: oklch(95% 0.005 157);
+  --color-text-muted: oklch(70% 0.018 157);
+  --color-border: oklch(28% 0.025 157);
+  --color-error: oklch(65% 0.17 25);
+  --color-elevated: oklch(12% 0.013 157);
+  --color-on-elevated: oklch(94% 0.005 157);
+}
+
+:root {
+  --glow-primary: color-mix(in oklch, var(--color-primary) 10%, transparent);
+  --glow-primary-soft: color-mix(in oklch, var(--color-secondary) 8%, transparent);
+  --glow-card: color-mix(in oklch, var(--color-elevated) 25%, transparent);
+  --glow-nav: color-mix(in oklch, var(--color-primary) 18%, transparent);
+  --glow-action: color-mix(in oklch, var(--color-primary) 50%, transparent);
+  --glow-pin: color-mix(in oklch, var(--color-primary) 80%, transparent);
 }
 
 *, *::before, *::after {

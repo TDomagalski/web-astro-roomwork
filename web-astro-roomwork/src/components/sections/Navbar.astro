@@ -12,7 +12,7 @@ const isActive = (href: string): boolean =>
 <nav
   id="site-navbar"
   aria-label="Główna nawigacja"
-  class="sticky top-0 z-40 border-b border-transparent bg-surface/95 backdrop-blur-md transition-[border-color,box-shadow] duration-300 ease-out [&.is-scrolled]:border-border [&.is-scrolled]:shadow-[0_8px_24px_-12px_rgb(74_108_247/0.18)]"
+  class="sticky top-0 z-40 border-b-[3px] border-b-primary bg-surface/95 backdrop-blur-md transition-[box-shadow] duration-300 ease-out [&.is-scrolled]:shadow-[0_8px_24px_-12px_var(--glow-nav)]"
 >
   <div
     class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 md:py-4 lg:px-8"
@@ -118,14 +118,14 @@ const isActive = (href: string): boolean =>
 
       <a
         href={`tel:${phoneRaw}`}
-        class="hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary transition-all duration-200 ease-out hover:-translate-y-px hover:bg-secondary hover:shadow-[0_10px_20px_-8px_rgb(74_108_247/0.45)] md:inline-flex"
+        class="hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary transition-[background-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-px hover:bg-secondary hover:shadow-[0_10px_20px_-8px_var(--glow-action)] md:inline-flex"
         aria-label={`Zadzwoń pod numer ${phoneFormatted}`}
       >
         <svg
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
+          stroke-width="1.8"
           stroke-linecap="round"
           stroke-linejoin="round"
           class="h-4 w-4"
@@ -194,7 +194,7 @@ const isActive = (href: string): boolean =>
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
+            stroke-width="1.8"
             stroke-linecap="round"
             stroke-linejoin="round"
             class="h-4 w-4"

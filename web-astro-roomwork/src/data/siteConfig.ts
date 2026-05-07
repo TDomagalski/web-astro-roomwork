@@ -2,7 +2,7 @@ export const siteConfig = {
   name: 'Roomwork',
   url: 'https://roomwork.pl',
   description: 'Roomwork — opis strony (uzupełnij)',
-  themeColor: '#4A6CF7',
+  themeColor: '#267A55',
   defaultOgImage: '/og-default.jpg',
   phone: '690328659',
   email: 'kwatery@roomwork.pl',

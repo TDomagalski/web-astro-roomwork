@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-07T00:00:00.000Z",
+  "title": "Design System: Roomwork",
+  "extensions": {
+    "colorMeta": {
+      "action-blue": {
+        "role": "primary",
+        "displayName": "Action Blue",
+        "canonical": "oklch(58% 0.22 264)",
+        "tonalRamp": ["#060c2b", "#1a2660", "#2b3f9b", "#3a52c5", "#4A6CF7", "#7B9CF4", "#a8c1ff", "#dde6ff"]
+      },
+      "action-blue-light": {
+        "role": "secondary",
+        "displayName": "Action Blue Light",
+        "canonical": "oklch(68% 0.15 264)",
+        "tonalRamp": ["#0f1a4a", "#243178", "#3a52c5", "#4A6CF7", "#7B9CF4", "#a8c1ff", "#ccdaff", "#edf2ff"]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "canonical": "oklch(97% 0.007 260)",
+        "tonalRamp": ["#12141a", "#343843", "#636a79", "#8d94a5", "#b5bac7", "#d0d4de", "#e8ebf0", "#F6F7F9"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": ["#141414", "#333333", "#666666", "#999999", "#cccccc", "#e0e0e0", "#f0f0f0", "#FFFFFF"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(16% 0.02 260)",
+        "tonalRamp": ["#060709", "#111620", "#1E2533", "#2d3648", "#4a5568", "#718096", "#a0aec0", "#e8ebf0"]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "oklch(50% 0.03 260)",
+        "tonalRamp": ["#0d1018", "#1e2533", "#374151", "#4a5568", "#6B7589", "#9baabb", "#bec8d5", "#dde5ee"]
+      },
+      "divider": {
+        "role": "neutral",
+        "displayName": "Divider",
+        "canonical": "oklch(91% 0.012 260)",
+        "tonalRamp": ["#1e2533", "#3a4455", "#5a6678", "#7d8fa3", "#a8b8c8", "#c8d3de", "#dde6ee", "#E2E6EE"]
+      },
+      "error": {
+        "role": "error",
+        "displayName": "Error",
+        "canonical": "oklch(58% 0.16 22)",
+        "tonalRamp": ["#2a0a0a", "#5a1a1a", "#8a2a2a", "#b03a3a", "#D95F5F", "#e88888", "#f3b8b8", "#fce8e8"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Jedyny H1 na stronie. Pierwsze dwa słowa zawierają główne słowo kluczowe." },
+      "headline": { "displayName": "Headline", "purpose": "H2 sekcji strony." },
+      "title": { "displayName": "Title", "purpose": "H3, podtytuły kart i podsekcji." },
+      "body": { "displayName": "Body", "purpose": "Treść opisowa. Zawsze max 65ch." },
+      "label": { "displayName": "Label", "purpose": "Eyebrow badges, nagłówki sekcji footera. Uppercase. Nie do zwykłego tekstu." }
+    },
+    "shadows": [
+      { "name": "ambient-card", "value": "0 30px 60px -30px rgba(30, 37, 51, 0.25)", "purpose": "Hero image. Ambient shadow z Ink, nie z akcji. Jedyny cień w spoczynku." },
+      { "name": "action-glow", "value": "0 14px 28px -12px rgba(74, 108, 247, 0.5)", "purpose": "CTA button hover. Niebieski glow sygnalizuje klikalność." },
+      { "name": "nav-lift", "value": "0 8px 24px -12px rgba(74, 108, 247, 0.18)", "purpose": "Navbar po scrollu. Subtelny, sygnalizuje przyklejenie." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "ease-out", "purpose": "Domyślne easing dla przejść stanów. duration-200." },
+      { "name": "ease-nav", "value": "ease-out", "purpose": "Animacja underline nawigacji. duration-300." },
+      { "name": "ease-expand", "value": "ease-out", "purpose": "Rozwijanie mobile menu (grid-template-rows). duration-300." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Główna akcja strony. Pill shape, action-blue fill, arrow icon.",
+      "html": "<button class=\"ds-btn-primary\"><span>Sprawdź kwatery</span><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ds-btn-primary__icon\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: var(--color-primary, #4A6CF7); color: var(--color-on-primary, #FFFFFF); border: none; border-radius: 9999px; padding: 14px 24px; font-size: 0.875rem; font-weight: 600; line-height: 1; cursor: pointer; transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out, transform 0.2s ease-out; } .ds-btn-primary:hover { background-color: var(--color-secondary, #7B9CF4); box-shadow: 0 14px 28px -12px rgba(74, 108, 247, 0.5); transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-primary, #4A6CF7); outline-offset: 2px; border-radius: 9999px; } .ds-btn-primary__icon { width: 16px; height: 16px; transition: transform 0.2s ease-out; } .ds-btn-primary:hover .ds-btn-primary__icon { transform: translateX(2px); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Drugorzędna akcja. Pill, border, tekst zmienia się na action-blue przy hover.",
+      "html": "<button class=\"ds-btn-ghost\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"width:16px;height:16px\" aria-hidden=\"true\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/></svg><span>690 328 659</span></button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: var(--color-surface, #FFFFFF); color: var(--color-text, #1E2533); border: 1px solid var(--color-border, #E2E6EE); border-radius: 9999px; padding: 14px 24px; font-size: 0.875rem; font-weight: 600; line-height: 1; cursor: pointer; transition: border-color 0.2s ease-out, color 0.2s ease-out; } .ds-btn-ghost:hover { border-color: var(--color-primary, #4A6CF7); color: var(--color-primary, #4A6CF7); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--color-primary, #4A6CF7); outline-offset: 2px; border-radius: 9999px; }"
+    },
+    {
+      "name": "Eyebrow Badge",
+      "kind": "chip",
+      "refersTo": "eyebrow-badge",
+      "description": "Kontekst nad H1. Nieinteraktywny. Jeden na sekcję hero.",
+      "html": "<span class=\"ds-eyebrow\"><span class=\"ds-eyebrow__dot\" aria-hidden=\"true\"></span>Kwatery dla firm — Słomniki</span>",
+      "css": ".ds-eyebrow { display: inline-flex; align-items: center; gap: 8px; background-color: var(--color-surface, #FFFFFF); color: var(--color-primary, #4A6CF7); border: 1px solid var(--color-border, #E2E6EE); border-radius: 9999px; padding: 4px 12px; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; } .ds-eyebrow__dot { width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-primary, #4A6CF7); flex-shrink: 0; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Link nawigacji z animowanym podkreśleniem scaleX. Aktywny i hover — identyczny wygląd.",
+      "html": "<a href=\"/kwatery\" class=\"ds-nav-link\" aria-current=\"page\">Kwatery</a>",
+      "css": ".ds-nav-link { position: relative; display: inline-flex; padding: 4px 0; font-size: 0.875rem; font-weight: 500; color: var(--color-text-muted, #6B7589); text-decoration: none; transition: color 0.2s ease-out; } .ds-nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background-color: var(--color-primary, #4A6CF7); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease-out; } .ds-nav-link:hover, .ds-nav-link[aria-current=\"page\"] { color: var(--color-text, #1E2533); } .ds-nav-link:hover::after, .ds-nav-link[aria-current=\"page\"]::after { transform: scaleX(1); }"
+    },
+    {
+      "name": "Footer Map Card",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Interaktywna wizytówka lokalizacji z animowanym pinem. Tylko w footerze.",
+      "html": "<a href=\"#\" class=\"ds-map-card\" aria-label=\"Otwórz trasę w Google Maps\"><div class=\"ds-map-card__visual\"><div class=\"ds-map-card__grid\" aria-hidden=\"true\"></div><div class=\"ds-map-card__glow\" aria-hidden=\"true\"></div><div class=\"ds-map-card__pin\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\" width=\"24\" height=\"24\" aria-hidden=\"true\"><path d=\"M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z\"/></svg></div></div><div class=\"ds-map-card__footer\"><span>Zobacz trasę <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" width=\"14\" height=\"14\" aria-hidden=\"true\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></span></div></a>",
+      "css": ".ds-map-card { display: block; border-radius: 16px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,0.15); transition: box-shadow 0.2s ease-out; text-decoration: none; } .ds-map-card:hover { box-shadow: 0 0 0 1px rgba(74,108,247,0.6), 0 20px 40px -20px rgba(74,108,247,0.5); } .ds-map-card__visual { position: relative; aspect-ratio: 4/3; background: linear-gradient(135deg, rgba(74,108,247,0.18), rgba(123,156,244,0.08)); } .ds-map-card__grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 24px 24px; } .ds-map-card__glow { position: absolute; left: 50%; top: 50%; width: 96px; height: 96px; transform: translate(-50%,-50%); border-radius: 50%; background: rgba(74,108,247,0.2); filter: blur(24px); } .ds-map-card__pin { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: var(--color-primary, #4A6CF7); color: #fff; border-radius: 50%; box-shadow: 0 10px 30px -10px rgba(74,108,247,0.8); transition: transform 0.3s ease-out; } .ds-map-card:hover .ds-map-card__pin { transform: translate(-50%, -55%); } .ds-map-card__footer { display: flex; align-items: center; gap: 6px; padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.1); background: #1E2533; font-size: 0.875rem; font-weight: 500; color: #FFFFFF; transition: color 0.2s ease-out; } .ds-map-card:hover .ds-map-card__footer { color: var(--color-primary, #4A6CF7); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Spokój przy Krakowskiej",
+    "overview": "Roomwork nie jest platformą ani produktem SaaS. To lokalna firma wynajmująca pokoje ekipom roboczym i strona ma to czuć. Estetyka czerpie z konkretności i ciszy: nieduże miejscowości, dobre hostele rodzinne, czyste tablice ogłoszeń.\n\nSystem projektowy jest restrained: jeden kolor akcentowy, chłodne neutralne tła, wyraźna hierarchia przez skalę i wagę. Paleta akcentowa jest tymczasowa i oznaczona do przeprojektowania.",
+    "keyCharacteristics": [
+      "Jeden kolor akcentowy, używany na nie więcej niż 10% ekranu",
+      "Hierarchia przez ciężar i skalę, nie przez kolor",
+      "Cienie tylko jako odpowiedź na stan (hover, scroll), nigdy dekoracja",
+      "Zaokrąglenia: pill (full) dla akcji, 3xl/2xl dla kontenerów",
+      "Język: bezpośredni, lokalny, bez korporacyjnego żargonu"
+    ],
+    "rules": [
+      { "name": "The Pre-Colorize Rule", "body": "Paleta akcentowa jest tymczasowa. Przed wdrożeniem produkcji uruchom /impeccable colorize.", "section": "colors" },
+      { "name": "The One Voice Rule", "body": "Action-blue na maksymalnie 10% ekranu. Rzadkość to punkt.", "section": "colors" },
+      { "name": "The Elevated Anchor Rule", "body": "Footer i sekcje ciemne używają Ink jako tła. Nigdy action-blue jako tło sekcji.", "section": "colors" },
+      { "name": "The Weight Jump Rule", "body": "Różnica wagi między sąsiednimi poziomami hierarchii: minimum 100 jednostek.", "section": "typography" },
+      { "name": "The 65ch Rule", "body": "Żaden blok tekstu opisowego nie przekracza 65 znaków szerokości.", "section": "typography" },
+      { "name": "The State-Response Rule", "body": "Cień istnieje tylko wtedy, gdy element zmienił stan.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do stosuj action-blue wyłącznie dla akcji i aktywnych stanów",
+      "Do ogranicz tekst opisowy do max 65ch",
+      "Do buduj hierarchię przez wagę fontu i skalę, nie przez kolor",
+      "Do stosuj text-on-primary na tle bg-primary",
+      "Do używaj CSS custom properties zamiast hardcoded rgb() w arbitrary values",
+      "Do uruchom /impeccable colorize przed wdrożeniem produkcji",
+      "Do uruchom /impeccable typeset przed wdrożeniem produkcji"
+    ],
+    "donts": [
+      "Don't twórz layoutów jak Booking.com — bez widgetów rezerwacyjnych, filtrów, gwiazdek",
+      "Don't projektuj korporacyjnej szarej nudy — zero stock photos z uściskami dłoni",
+      "Don't używaj action-blue jako tła sekcji",
+      "Don't stosuj gradient-text (background-clip: text)",
+      "Don't hardcoduj rgb(74_108_247/...) w arbitrary values Tailwind",
+      "Don't stosuj glassmorphism na kartach treści",
+      "Don't używaj border-left > 1px jako kolorowego akcentu na kartach"
+    ]
+  }
+}

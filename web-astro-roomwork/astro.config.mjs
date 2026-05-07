@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig, envField } from 'astro/config';
+import { defineConfig, envField, fontProviders } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import vercel from '@astrojs/vercel';
@@ -7,6 +7,24 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://roomwork.pl',
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: 'Zilla Slab',
+      cssVariable: '--font-zilla',
+      weights: [400, 600, 700],
+      styles: ['normal', 'italic'],
+      subsets: ['latin', 'latin-ext'],
+    },
+    {
+      provider: fontProviders.google(),
+      name: 'Libre Franklin',
+      cssVariable: '--font-franklin',
+      weights: [400, 500, 600, 700],
+      styles: ['normal', 'italic'],
+      subsets: ['latin', 'latin-ext'],
+    },
+  ],
   output: 'static',
   prefetch: {
     prefetchAll: true,

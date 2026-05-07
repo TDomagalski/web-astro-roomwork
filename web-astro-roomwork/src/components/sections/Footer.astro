@@ -1,16 +1,9 @@
 ---
 import { siteConfig } from '../../data/siteConfig';
+import { navLinks } from '../../data/nav';
 
 const phoneFormatted = '690 328 659';
 const phoneRaw = siteConfig.phone;
-
-const navLinks = [
-  { label: 'Strona główna', href: '/' },
-  { label: 'O nas', href: '/o-nas' },
-  { label: 'Kwatery', href: '/kwatery' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Kontakt', href: '/kontakt' },
-] as const;
 
 const dayMap: Record<string, string> = {
   Mo: 'Pn',
@@ -36,16 +29,16 @@ const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${enco
 const year = new Date().getFullYear();
 ---
 
-<footer class="relative bg-elevated text-on-elevated">
+<footer class="relative bg-elevated text-on-elevated border-t-4 border-t-primary">
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgb(74_108_247/0.08),transparent_55%)]"
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,var(--glow-primary-soft),transparent_55%)]"
   >
   </div>
 
   <div class="relative mx-auto max-w-7xl px-4 pb-8 pt-14 sm:px-6 lg:px-8 lg:pt-20">
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-      <div class="lg:col-span-4">
+      <div class="min-w-0 lg:col-span-4">
         <a
           href="/"
           class="inline-flex items-baseline text-2xl font-semibold tracking-tight text-on-elevated transition-colors hover:text-primary"
@@ -56,11 +49,11 @@ const year = new Date().getFullYear();
         </a>
         <p class="mt-4 max-w-sm text-sm leading-relaxed text-on-elevated/70">
           Komfortowe kwatery pracownicze w Słomnikach. Profesjonalne zakwaterowanie
-          dla zespołów — pełne wyposażenie, transparentne warunki, faktura VAT.
+          dla zespołów: pełne wyposażenie, transparentne warunki, faktura VAT.
         </p>
       </div>
 
-      <nav aria-labelledby="footer-nav-heading" class="lg:col-span-2">
+      <nav aria-labelledby="footer-nav-heading" class="min-w-0 lg:col-span-2">
         <h2
           id="footer-nav-heading"
           class="text-xs font-semibold uppercase tracking-wider text-on-elevated"
@@ -83,7 +76,7 @@ const year = new Date().getFullYear();
         </ul>
       </nav>
 
-      <div class="lg:col-span-3">
+      <div class="min-w-0 lg:col-span-3">
         <h2 class="text-xs font-semibold uppercase tracking-wider text-on-elevated">
           Kontakt
         </h2>
@@ -184,7 +177,7 @@ const year = new Date().getFullYear();
         </ul>
       </div>
 
-      <div class="lg:col-span-3">
+      <div class="min-w-0 lg:col-span-3">
         <h2 class="text-xs font-semibold uppercase tracking-wider text-on-elevated">
           Lokalizacja
         </h2>
@@ -192,11 +185,11 @@ const year = new Date().getFullYear();
           href={directionsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="group mt-4 block overflow-hidden rounded-2xl ring-1 ring-on-elevated/15 transition-all duration-200 hover:ring-primary/60 hover:shadow-[0_20px_40px_-20px_rgb(74_108_247/0.5)]"
+          class="group mt-4 block overflow-hidden rounded-2xl ring-1 ring-on-elevated/15 transition-[box-shadow] duration-200 hover:ring-primary/60 hover:shadow-[0_20px_40px_-20px_var(--glow-action)]"
           aria-label={`Otwórz trasę do ${fullAddress} w Google Maps`}
         >
           <div
-            class="relative aspect-4/3 bg-[linear-gradient(135deg,rgb(74_108_247/0.18),rgb(123_156_244/0.08))]"
+            class="relative aspect-4/3 bg-[linear-gradient(135deg,var(--glow-nav),var(--glow-primary-soft))]"
           >
             <div
               aria-hidden="true"
@@ -212,7 +205,7 @@ const year = new Date().getFullYear();
               class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out group-hover:translate-y-[-55%]"
             >
               <span
-                class="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-on-primary shadow-[0_10px_30px_-10px_rgb(74_108_247/0.8)]"
+                class="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-on-primary shadow-[0_10px_30px_-10px_var(--glow-pin)]"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -236,7 +229,7 @@ const year = new Date().getFullYear();
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
+                stroke-width="1.8"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
