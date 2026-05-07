@@ -24,7 +24,6 @@ const formatDays = (days: readonly string[]): string => {
 
 const fullAddress = `${siteConfig.address.street}, ${siteConfig.address.zip} ${siteConfig.address.city}`;
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
-const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress)}`;
 
 const year = new Date().getFullYear();
 ---
@@ -41,7 +40,7 @@ const year = new Date().getFullYear();
       <div class="min-w-0 lg:col-span-4">
         <a
           href="/"
-          class="inline-flex items-baseline text-2xl font-semibold tracking-tight text-on-elevated transition-colors hover:text-primary"
+          class="font-heading inline-flex items-baseline text-2xl font-semibold tracking-tight text-on-elevated transition-colors hover:text-primary"
           aria-label="Roomwork — strona główna"
         >
           <span>Roomwork</span>
@@ -56,7 +55,7 @@ const year = new Date().getFullYear();
       <nav aria-labelledby="footer-nav-heading" class="min-w-0 lg:col-span-2">
         <h2
           id="footer-nav-heading"
-          class="text-xs font-semibold uppercase tracking-wider text-on-elevated"
+          class="text-label tracking-label uppercase font-medium text-on-elevated"
         >
           Nawigacja
         </h2>
@@ -77,7 +76,7 @@ const year = new Date().getFullYear();
       </nav>
 
       <div class="min-w-0 lg:col-span-3">
-        <h2 class="text-xs font-semibold uppercase tracking-wider text-on-elevated">
+        <h2 class="text-label tracking-label uppercase font-medium text-on-elevated">
           Kontakt
         </h2>
         <ul class="mt-4 flex flex-col gap-3 text-sm">
@@ -178,69 +177,57 @@ const year = new Date().getFullYear();
       </div>
 
       <div class="min-w-0 lg:col-span-3">
-        <h2 class="text-xs font-semibold uppercase tracking-wider text-on-elevated">
+        <h2 class="text-label tracking-label uppercase font-medium text-on-elevated">
           Lokalizacja
         </h2>
-        <a
-          href={directionsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group mt-4 block overflow-hidden rounded-2xl ring-1 ring-on-elevated/15 transition-[box-shadow] duration-200 hover:ring-primary/60 hover:shadow-[0_20px_40px_-20px_var(--glow-action)]"
-          aria-label={`Otwórz trasę do ${fullAddress} w Google Maps`}
-        >
-          <div
-            class="relative aspect-4/3 bg-[linear-gradient(135deg,var(--glow-nav),var(--glow-primary-soft))]"
+        <div id="map-shell" class="mt-4 overflow-hidden rounded-2xl ring-1 ring-on-elevated/15">
+          <button
+            id="map-facade"
+            type="button"
+            data-src={siteConfig.mapsEmbed}
+            aria-label={`Załaduj mapę Google: ${fullAddress}`}
+            class="group block w-full cursor-pointer text-left transition-[box-shadow] duration-200 hover:shadow-[0_20px_40px_-20px_var(--glow-action)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary"
           >
             <div
-              aria-hidden="true"
-              class="absolute inset-0 bg-[linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] bg-size-[24px_24px]"
+              class="relative aspect-4/3 bg-[linear-gradient(135deg,var(--glow-nav),var(--glow-primary-soft))]"
             >
-            </div>
-            <div
-              aria-hidden="true"
-              class="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-2xl"
-            >
-            </div>
-            <div
-              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 ease-out group-hover:translate-y-[-55%]"
-            >
-              <span
-                class="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-on-primary shadow-[0_10px_30px_-10px_var(--glow-pin)]"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  class="h-6 w-6"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
-                  ></path>
-                </svg>
-              </span>
-            </div>
-          </div>
-          <div class="border-t border-on-elevated/10 bg-elevated px-4 py-3">
-            <span
-              class="inline-flex items-center gap-1.5 text-sm font-medium text-on-elevated group-hover:text-primary"
-            >
-              Zobacz trasę
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+              <div
                 aria-hidden="true"
+                class="absolute inset-0 bg-[linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] bg-size-[24px_24px]"
               >
-                <path d="M7 17 17 7"></path>
-                <path d="M7 7h10v10"></path>
-              </svg>
-            </span>
-          </div>
-        </a>
+              </div>
+              <div
+                aria-hidden="true"
+                class="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-2xl"
+              >
+              </div>
+              <div
+                class="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2 transition-transform duration-300 ease-out group-hover:-translate-y-[60%]"
+              >
+                <span
+                  class="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-on-primary shadow-[0_10px_30px_-10px_var(--glow-pin)]"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="h-6 w-6"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
+                    ></path>
+                  </svg>
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="rounded-full bg-elevated/80 px-2.5 py-0.5 text-xs text-on-elevated/60 opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100"
+                >
+                  kliknij, aby załadować
+                </span>
+              </div>
+            </div>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -266,3 +253,32 @@ const year = new Date().getFullYear();
     </div>
   </div>
 </footer>
+
+<script>
+  function initMapFacade(): void {
+    const shell = document.getElementById('map-shell');
+    const facade = document.getElementById('map-facade') as HTMLButtonElement | null;
+    if (!shell || !facade) return;
+
+    facade.addEventListener(
+      'click',
+      () => {
+        const src = facade.dataset.src;
+        if (!src) return;
+
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.title = 'Mapa Google Maps — Roomwork, ul. Krakowska 62d, Słomniki';
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+        iframe.style.cssText = 'border:0;display:block;width:100%;aspect-ratio:4/3;';
+
+        shell.innerHTML = '';
+        shell.appendChild(iframe);
+      },
+      { once: true },
+    );
+  }
+
+  document.addEventListener('astro:page-load', initMapFacade);
+</script>

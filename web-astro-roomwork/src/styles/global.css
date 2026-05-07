@@ -17,6 +17,11 @@
 
   --font-sans: var(--font-franklin), system-ui, sans-serif;
   --font-heading: var(--font-zilla), Georgia, serif;
+
+  --text-display: clamp(2.25rem, 5vw, 3.75rem);
+  --text-headline: clamp(1.75rem, 3.5vw, 2.5rem);
+  --text-title: 1.25rem;
+  --text-label: 0.75rem;
 }
 
 [data-theme="dark"] {
@@ -64,6 +69,46 @@ body {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+@utility text-display {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+}
+
+@utility text-headline {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+@utility text-title {
+  font-size: 1.25rem;
+}
+
+@utility text-label {
+  font-size: 0.75rem;
+}
+
+@utility leading-display {
+  line-height: 1.1;
+}
+
+@utility leading-headline {
+  line-height: 1.15;
+}
+
+@utility leading-title {
+  line-height: 1.3;
+}
+
+@utility leading-body {
+  line-height: 1.625;
+}
+
+@utility tracking-display {
+  letter-spacing: -0.02em;
+}
+
+@utility tracking-label {
+  letter-spacing: 0.08em;
 }
 
 @media (prefers-reduced-motion: reduce) {
