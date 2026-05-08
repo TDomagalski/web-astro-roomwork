@@ -2,7 +2,7 @@ export const siteConfig = {
   name: 'RoomWork',
   url: 'https://roomwork.pl',
   description:
-    'Kwatery pracownicze w Słomnikach k. Krakowa. 10 pokoi, 40 miejsc, własne łazienki, parking, WiFi, faktura VAT. Noclegi dla firm i ekip budowlanych.',
+    'Kwatery pracownicze w Słomnikach k. Krakowa. 11 pokoi, 40 miejsc, własne łazienki, parking, WiFi, faktura VAT. Noclegi dla firm i ekip budowlanych.',
   longDescription: `RoomWork to kwatery pracownicze w Słomnikach (ul. Krakowska 62d, 32-090), stworzone z myślą o firmach, ekipach budowlanych i grupach pracowników szukających solidnego zakwaterowania w okolicach Krakowa. Dysponujemy 10 w pełni wyposażonymi pokojami z własnymi łazienkami, które pomieszczą łącznie do 40 gości.
 
 Każdy pokój ma prywatną łazienkę, co zapewnia wygodę niezależnie od wielkości ekipy. Do dyspozycji wszystkich gości: ogólnodostępna kuchnia z pełnym wyposażeniem, pralnia, bezpłatny parking na terenie obiektu, szybkie WiFi oraz telewizja w pokojach. Wystawiamy faktury VAT — niezbędne dla firm i działów HR rozliczających noclegi pracownicze.
@@ -40,3 +40,5 @@ Szukasz noclegów pracowniczych w Słomnikach, kwater dla ekipy budowlanej pod K
     instagram: '',
   },
 } as const;
+
+export const yearsOfExperience = new Date().getFullYear() - 2018;

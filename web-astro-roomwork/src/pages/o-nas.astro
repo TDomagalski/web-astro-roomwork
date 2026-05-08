@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/sections/HeroSection.astro';
-import { siteConfig } from '../data/siteConfig';
+import { siteConfig, yearsOfExperience } from '../data/siteConfig';
 import heroImage from '../assets/hero_section-roomwork.webp';
 
 const phoneFormatted = '690 328 659';
@@ -9,19 +9,19 @@ const phoneRaw = siteConfig.phone;
 
 const timeline = [
   {
-    year: '2015',
-    title: 'Założenie firmy',
-    description: 'Family Party Sp. z o.o. rozpoczyna działalność jako organizator imprez okolicznościowych i eventów firmowych w regionie Małopolski.',
+    year: '2018',
+    title: 'Rejestracja spółki',
+    description: 'Rejestrujemy Family Party Sp. z o.o. — rodzinną firmę z Małopolski, której fundamentem jest wieloletnia pasja do gościnności i obsługi ludzi.',
   },
   {
-    year: '2018',
-    title: 'Rozwój działalności eventowej',
-    description: 'Obsługa kilkudziesięciu eventów rocznie — przyjęcia firmowe, uroczystości, eventy integracyjne. Budowanie sieci kontaktów z firmami regionu.',
+    year: '2019',
+    title: 'Restauracja i przyjęcia okolicznościowe',
+    description: 'Otwieramy restaurację w Słomnikach i specjalizujemy się w organizacji przyjęć rodzinnych, chrzcin, komunii i imprez firmowych w okolicach Krakowa.',
   },
   {
     year: '2022',
     title: 'Otwarcie RoomWork',
-    description: 'Dostrzegając rosnące zapotrzebowanie na solidne kwatery pracownicze w okolicach Krakowa, spółka otwiera obiekt RoomWork przy ul. Krakowskiej 62d w Słomnikach.',
+    description: 'Łącząc doświadczenie w gościnności z potrzebami rynku, otwieramy kwatery pracownicze RoomWork przy ul. Krakowskiej 62d w Słomnikach.',
   },
 ] as const;
 
@@ -55,11 +55,12 @@ const values = [
     eyebrow2="Słomniki · Małopolska"
     title="Poznaj nas — ludzi stojących za RoomWork"
     titleHighlight="ludzi stojących za RoomWork"
-    subtitle="Jesteśmy lokalną firmą z wieloletnim doświadczeniem w obsłudze grup i organizacji zakwaterowania. Poznaj naszą historię i wartości."
+    subtitle="Rodzinna firma ze Słomnik, która zaczynała od restauracji i przyjęć okolicznościowych — a dziś zapewnia solidne kwatery pracownicze dla firm z całej Małopolski."
     features={[
-      { icon: 'shield', label: 'Lokalna firma' },
+      { icon: 'shield', label: 'Rodzinna firma' },
       { icon: 'document', label: 'Spółka z o.o.' },
       { icon: 'location', label: 'Słomniki k. Krakowa' },
+      { icon: 'clock', label: `Ponad ${yearsOfExperience} lat doświadczenia` },
     ]}
     ctaPrimary={{ label: 'Skontaktuj się z nami', href: '/kontakt' }}
   />
@@ -67,7 +68,7 @@ const values = [
   <!-- Sekcja 1: Historia -->
   <section aria-labelledby="history-heading" class="bg-surface py-16 lg:py-24">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
 
         <div>
           <span class="border-border bg-background text-primary inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wider uppercase">
@@ -75,37 +76,46 @@ const values = [
             Nasza historia
           </span>
           <h2 id="history-heading" class="font-heading text-text mt-5 text-headline leading-headline font-bold">
-            Od organizacji eventów do kwater pracowniczych
+            Od restauracji i przyjęć rodzinnych do kwater pracowniczych
           </h2>
           <div class="mt-6 flex flex-col gap-4">
             <p class="text-text-muted text-base leading-body">
-              Family Party Sp. z o.o. powstała z pasji do organizacji — przyjęć, eventów firmowych i uroczystości okolicznościowych. Przez lata budowaliśmy relacje z firmami i przedsiębiorcami z regionu Małopolski, rozumiejąc ich potrzeby i rytm pracy. [PLACEHOLDER — uzupełnij historią firmy]
+              Family Party Sp. z o.o. to rodzinna firma z Małopolski z wieloletnią tradycją w branży gościnności. Wszystko zaczęło się od restauracji w Słomnikach — miejsca, gdzie lokalna społeczność spotykała się przy dobrym jedzeniu i wspólnych chwilach. Z pasji do przyjmowania gości i obsługi ludzi wyrosła firma, która dziś zapewnia nocleg setkom pracowników rocznie.
             </p>
             <p class="text-text-muted text-base leading-body">
-              Z biegiem czasu dostrzegliśmy rosnącą potrzebę rynku — firmy budowlane i remontowe, pracownicy delegowani, ekipy sezonowe potrzebowały solidnego, sprawdzonego miejsca noclegowego w okolicach Krakowa. Tak narodził się pomysł na RoomWork. [PLACEHOLDER — uzupełnij]
+              Z biegiem lat specjalizowaliśmy się w organizacji przyjęć okolicznościowych — chrzcin, komunii, wesel i imprez firmowych w okolicach Krakowa. To doświadczenie nauczyło nas, czego ludzie naprawdę oczekują: czystości, spokoju, dobrej obsługi i elastyczności. Kiedy zapotrzebowanie na solidne kwatery pracownicze w regionie zaczęło rosnąć, wiedzieliśmy, że mamy wszystko, czego potrzeba, żeby robić to dobrze.
             </p>
             <p class="text-text-muted text-base leading-body">
-              Dziś przy ul. Krakowskiej 62d w Słomnikach prowadzimy nowoczesny obiekt z 10 pokojami i 40 miejscami noclegowymi. Każdy pokój z własną łazienką, parking, WiFi, kuchnia i pralnia — wszystko, czego potrzebuje pracująca ekipa. [PLACEHOLDER — uzupełnij]
+              Dziś przy ul. Krakowskiej 62d w Słomnikach k. Krakowa prowadzimy RoomWork — obiekt z 11 pokojami i 40 miejscami noclegowymi dla firm i ekip pracujących w Małopolsce. Rodzinne podejście, bezpośredni kontakt z właścicielem, bez pośredników — tak samo jak od początku.
             </p>
           </div>
         </div>
 
         <!-- Timeline -->
-        <div class="flex flex-col pt-2 lg:pt-14">
+        <div class="flex flex-col pt-2 lg:pt-10">
           {timeline.map((item, i) => (
-            <div class="relative flex gap-6 pb-8 last:pb-0">
-              <div class="flex flex-col items-center">
-                <div class="bg-primary text-on-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xs font-bold tabular-nums">
-                  {item.year}
+            <div class="relative flex items-center gap-6 pb-10 last:pb-0">
+
+              <!-- Marker + linia -->
+              <div class="relative flex w-16 shrink-0 self-stretch items-center justify-center">
+                <div class="border-primary bg-surface relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border-2 shadow-[0_4px_16px_-4px_var(--glow-action)]">
+                  <span class="font-heading text-primary text-lg font-bold tabular-nums leading-none tracking-tight">
+                    {item.year}
+                  </span>
                 </div>
                 {i < timeline.length - 1 && (
-                  <div class="bg-border mt-2 w-px flex-1"></div>
+                  <div class="bg-border/60 absolute top-[calc(50%+2rem)] left-1/2 -bottom-10 w-0.5 -translate-x-1/2 rounded-full"></div>
                 )}
               </div>
-              <div class="pb-2 pt-1.5">
-                <p class="text-text text-sm font-semibold">{item.title}</p>
-                <p class="text-text-muted mt-1 text-sm leading-body">{item.description}</p>
+
+              <!-- Treść -->
+              <div class="flex-1">
+                <div class="border-border bg-background rounded-2xl border p-5 shadow-[0_2px_12px_-4px_var(--glow-card)]">
+                  <p class="font-heading text-text text-base font-semibold">{item.title}</p>
+                  <p class="text-text-muted mt-2 text-sm leading-body">{item.description}</p>
+                </div>
               </div>
+
             </div>
           ))}
         </div>
@@ -130,7 +140,7 @@ const values = [
       <div class="grid gap-6 sm:grid-cols-3">
         {[
           {
-            label: '10 pokoi, 40 miejsc',
+            label: '11 pokoi, 40 miejsc',
             desc: 'Przyjmujemy zarówno małe zespoły, jak i duże ekipy do 40 osób jednocześnie.',
             icon: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>',
           },
@@ -157,8 +167,8 @@ const values = [
         ))}
       </div>
 
-      <p class="text-text-muted mt-10 max-w-3xl text-base leading-body">
-        RoomWork to kwatery pracownicze w Słomnikach (ul. Krakowska 62d), położone przy trasie E7 łączącej Kraków z Kielcami. Obsługujemy ekipy budowlane, pracowników delegowanych i sezonowych oraz grupy korporacyjne z całej Małopolski — w tym z Krakowa, Miechowa, Proszowic i okolicznych miejscowości. [PLACEHOLDER — uzupełnij o szczegóły oferty]
+      <p class="text-text-muted mx-auto mt-10 max-w-3xl text-center text-base leading-body">
+        RoomWork to kwatery pracownicze w Słomnikach (ul. Krakowska 62d), położone przy trasie E7 łączącej Kraków z Kielcami. Obsługujemy ekipy budowlane, pracowników delegowanych i sezonowych oraz grupy korporacyjne z całej Małopolski — w tym z Krakowa, Miechowa, Proszowic i okolicznych miejscowości.
       </p>
     </div>
   </section>
@@ -195,7 +205,7 @@ const values = [
   <!-- Sekcja 4: Dane spółki -->
   <section aria-labelledby="company-heading" class="bg-background py-16 lg:py-24">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+      <div class="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
 
         <div>
           <span class="border-border bg-surface text-primary inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wider uppercase">
@@ -207,15 +217,31 @@ const values = [
           </h2>
           <dl class="mt-6 flex flex-col gap-3">
             {[
-              { label: 'Pełna nazwa', value: 'Family Party Spółka z ograniczoną odpowiedzialnością' },
-              { label: 'Adres', value: 'ul. Krakowska 62d, 32-090 Słomniki' },
-              { label: 'NIP', value: '6821777738' },
-              { label: 'REGON', value: '381101585' },
-              { label: 'KRS', value: '[PLACEHOLDER]' },
+              { label: 'Pełna nazwa', value: 'Family Party Spółka z ograniczoną odpowiedzialnością', copyable: false },
+              { label: 'Adres', value: 'ul. Krakowska 62d, 32-090 Słomniki', copyable: false },
+              { label: 'NIP', value: '6821777738', copyable: true },
+              { label: 'REGON', value: '381101585', copyable: true },
+              { label: 'KRS', value: '0000746071', copyable: true },
             ].map((row) => (
               <div class="border-border flex flex-col gap-0.5 border-b pb-3 last:border-0">
                 <dt class="text-label tracking-label text-text-muted font-medium uppercase">{row.label}</dt>
-                <dd class="text-text text-sm font-medium">{row.value}</dd>
+                <dd class="flex items-center gap-2">
+                  <span class="text-text text-sm font-medium">{row.value}</span>
+                  {row.copyable && (
+                    <button
+                      type="button"
+                      data-copy={row.value}
+                      data-label={row.label}
+                      aria-label={`Kopiuj ${row.label}`}
+                      class="copy-btn text-text-muted hover:text-primary flex h-5 w-5 shrink-0 items-center justify-center rounded transition-colors duration-150"
+                    >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5" aria-hidden="true">
+                        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                  )}
+                </dd>
               </div>
             ))}
           </dl>

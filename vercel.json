@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd web-astro-roomwork && npm install && npm run build",
+  "outputDirectory": "web-astro-roomwork/dist",
+  "installCommand": "echo skip"
+}

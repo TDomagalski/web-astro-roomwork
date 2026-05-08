@@ -27,7 +27,7 @@ const amenities = [
   },
   {
     title: 'Telewizja',
-    description: 'TV z dostępem do kanałów w każdym pokoju.',
+    description: 'TV z dostępem do kanałów na życzenie.',
     icon: '<rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline>',
   },
   {
@@ -45,43 +45,49 @@ const amenities = [
 
 <section aria-labelledby="amenities-heading" class="bg-background py-16 lg:py-24">
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-
     <div class="mb-12 lg:mb-16">
-      <span class="border-border bg-surface text-primary inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wider uppercase">
+      <span
+        class="border-border bg-surface text-primary inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wider uppercase"
+      >
         <span aria-hidden="true" class="bg-primary h-1.5 w-1.5 rounded-full"></span>
         Wyposażenie i udogodnienia
       </span>
-      <h2 id="amenities-heading" class="font-heading text-text mt-5 text-headline leading-headline font-bold">
+      <h2
+        id="amenities-heading"
+        class="font-heading text-text text-headline leading-headline mt-5 font-bold"
+      >
         Wszystko czego potrzebuje Twoja ekipa
       </h2>
-      <p class="text-text-muted mt-3 max-w-xl text-base leading-body">
-        Zadbaliśmy o każdy detal, żeby Twoi pracownicy mogli odpocząć po ciężkim dniu. Pełne wyposażenie bez ukrytych kosztów.
+      <p class="text-text-muted leading-body mt-3 max-w-xl text-base">
+        Zadbaliśmy o każdy detal, żeby Twoi pracownicy mogli odpocząć po ciężkim dniu. Pełne
+        wyposażenie bez ukrytych kosztów.
       </p>
     </div>
 
     <ul class="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4" aria-label="Lista udogodnień">
-      {amenities.map((item) => (
-        <li class="border-border bg-surface group flex flex-col gap-4 rounded-2xl border p-5 transition-[border-color,box-shadow] duration-200 hover:border-primary hover:shadow-[0_8px_24px_-8px_var(--glow-action)]">
-          <div class="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="text-primary h-5 w-5"
-              aria-hidden="true"
-              set:html={item.icon}
-            />
-          </div>
-          <div>
-            <p class="text-text text-sm font-semibold">{item.title}</p>
-            <p class="text-text-muted mt-1 text-xs leading-body">{item.description}</p>
-          </div>
-        </li>
-      ))}
+      {
+        amenities.map((item) => (
+          <li class="border-border bg-surface group hover:border-primary flex flex-col gap-4 rounded-2xl border p-5 transition-[border-color,box-shadow] duration-200 hover:shadow-[0_8px_24px_-8px_var(--glow-action)]">
+            <div class="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-primary h-5 w-5"
+                aria-hidden="true"
+                set:html={item.icon}
+              />
+            </div>
+            <div>
+              <p class="text-text text-sm font-semibold">{item.title}</p>
+              <p class="text-text-muted leading-body mt-1 text-xs">{item.description}</p>
+            </div>
+          </li>
+        ))
+      }
     </ul>
-
   </div>
 </section>
