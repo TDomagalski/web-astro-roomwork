@@ -30,11 +30,12 @@ Szukasz noclegów pracowniczych w Słomnikach, kwater dla ekipy budowlanej pod K
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2552.1690261415365!2d20.064644777119188!3d50.232747103014376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165313b56b455b%3A0xbee57c823b9b8a2d!2sRoomWork%20-%20Kwatery%20pracownicze%20do%20wynaj%C4%99cia!5e0!3m2!1spl!2spl!4v1778153567594!5m2!1spl!2spl',
   priceRange: '$$',
   openingHours: [
-    { days: ['Mo', 'Tu', 'We', 'Th', 'Fr'], opens: '08:00', closes: '18:00' },
-    { days: ['Sa'], opens: '09:00', closes: '14:00' },
+    { days: ['Mo', 'Tu', 'We', 'Th', 'Fr'], opens: '09:00', closes: '20:00' },
+    { days: ['Sa'], opens: '12:00', closes: '16:00' },
   ],
   social: {
-    google: 'https://share.google/rIU4zXULjjQxglwjQ',
+    google: 'https://share.google/e3gf9gy4mSAAewpmh',
+    googleMaps: 'https://maps.app.goo.gl/1sYhkbGWfgZHDywt7',
     facebook: '',
     instagram: '',
   },

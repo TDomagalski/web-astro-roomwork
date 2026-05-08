@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/sections/HeroSection.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
 import heroImage from '../assets/hero_section-kontakt.webp';
 ---
 
@@ -13,13 +14,13 @@ import heroImage from '../assets/hero_section-kontakt.webp';
     alt="Kwatery pracownicze RoomWork — Słomniki, ul. Krakowska 62d"
     title="Skontaktuj się z nami"
     titleHighlight="Skontaktuj się z nami"
-    subtitle="Masz pytania o kwatery lub chcesz zarezerwować miejsca dla swojej ekipy? Zadzwoń albo napisz — odpowiadamy tego samego dnia."
+    subtitle="Masz pytania o kwatery lub chcesz zarezerwować miejsca dla swojej ekipy? Zadzwoń albo napisz."
     eyebrow="Kwatery pracownicze · Słomniki"
     eyebrow2="Zadzwoń lub napisz · 690 328 659"
     features={[
       { icon: 'phone', label: 'Zadzwoń — odbieramy' },
-      { icon: 'mail', label: 'Odpiszemy tego dnia' },
-      { icon: 'clock', label: 'Pon–Nd, całą dobę' },
+      { icon: 'mail', label: 'Napisz — odpowiadamy' },
     ]}
   />
+  <ContactSection />
 </BaseLayout>
