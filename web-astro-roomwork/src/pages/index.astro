@@ -1,20 +1,34 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/sections/HeroSection.astro';
+import AmenitiesSection from '../components/sections/AmenitiesSection.astro';
+import ForWhoSection from '../components/sections/ForWhoSection.astro';
+import LocationSection from '../components/sections/LocationSection.astro';
+import FaqSection from '../components/sections/FaqSection.astro';
 import heroImage from '../assets/hero_section-roomwork.webp';
 ---
 
 <BaseLayout
-  title="RoomWork — kwatery pracownicze w Słomnikach"
-  description="Komfortowe kwatery pracownicze dla firm. Spokojna lokalizacja w Słomnikach, pełne wyposażenie, faktura VAT."
+  title="Kwatery pracownicze Słomniki k. Krakowa — RoomWork"
+  description="Kwatery pracownicze w Słomnikach k. Krakowa. 10 pokoi, 40 miejsc, prywatne łazienki, parking, WiFi, faktura VAT. Dla ekip budowlanych i firm."
 >
   <HeroSection
     image={heroImage}
-    alt="Budynek RoomWork — kwatery pracownicze w Słomnikach przy ulicy Krakowskiej"
-    eyebrow="Kwatery dla firm · Słomniki"
-    eyebrow2="Pokoje gościnne · Słomniki"
-    title="Komfortowe kwatery pracownicze w Słomnikach"
-    titleHighlight="kwatery pracownicze"
-    subtitle="Profesjonalne zakwaterowanie dla zespołów. Spokojna lokalizacja przy ulicy Krakowskiej, w pełni wyposażone pokoje, transparentne warunki i faktura VAT dla każdej firmy."
+    alt="Kwatery pracownicze RoomWork — Słomniki k. Krakowa"
+    eyebrow="Kwatery pracownicze · Słomniki k. Krakowa"
+    eyebrow2="10 pokoi · 40 miejsc · Faktura VAT"
+    title="Kwatery pracownicze dla Twojej ekipy"
+    titleHighlight="dla Twojej ekipy"
+    subtitle="Komfortowe zakwaterowanie dla ekip budowlanych, pracowników delegowanych i firm w Słomnikach k. Krakowa. Własne łazienki, parking, WiFi, faktura VAT."
+    features={[
+      { icon: 'shield', label: 'Pełne wyposażenie' },
+      { icon: 'document', label: 'Faktura VAT' },
+      { icon: 'location', label: 'Parking na miejscu' },
+    ]}
+    ctaPrimary={{ label: 'Sprawdź kwatery', href: '/kwatery' }}
   />
+  <AmenitiesSection />
+  <ForWhoSection />
+  <LocationSection />
+  <FaqSection />
 </BaseLayout>

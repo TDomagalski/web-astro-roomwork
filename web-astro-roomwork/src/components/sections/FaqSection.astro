@@ -1,0 +1,92 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+
+const phoneFormatted = '690 328 659';
+const phoneRaw = siteConfig.phone;
+
+const faqs = [
+  {
+    question: 'Ile osób można zakwaterować w RoomWork?',
+    answer:
+      'Dysponujemy 10 pokojami z łączną pojemnością 40 miejsc noclegowych. Każdy pokój posiada własną łazienkę. Możemy zakwaterować zarówno małe zespoły kilkuosobowe, jak i duże ekipy do 40 osób jednocześnie.',
+  },
+  {
+    question: 'Czy wystawiacie faktury VAT?',
+    answer:
+      'Tak, wystawiamy faktury VAT na życzenie. To standard w naszej ofercie — rozumiemy, że firmy i działy HR potrzebują prawidłowej dokumentacji kosztów zakwaterowania pracowników.',
+  },
+  {
+    question: 'Jak wygląda proces rezerwacji?',
+    answer:
+      'Rezerwacja odbywa się telefonicznie lub mailowo. Wystarczy skontaktować się z nami, podać liczbę osób, planowane daty i ewentualne wymagania. Potwierdzamy dostępność i ustalamy warunki bezpośrednio — bez pośredników.',
+  },
+  {
+    question: 'Czy możliwy jest długoterminowy pobyt?',
+    answer:
+      'Tak, długoterminowe zakwaterowanie to nasza specjalność. Obsługujemy pobyty tygodniowe, miesięczne i wielomiesięczne. Przy dłuższych pobytach możemy uzgodnić elastyczne warunki — zadzwoń, żeby omówić szczegóły.',
+  },
+  {
+    question: 'Czy jest parking dla samochodów firmowych i busów?',
+    answer:
+      'Tak, na terenie obiektu znajduje się bezpłatny parking. Mieścimy zarówno samochody osobowe, jak i busy dostawcze. Miejsca parkingowe dostępne są dla wszystkich gości.',
+  },
+  {
+    question: 'Co wchodzi w skład wyposażenia pokoju?',
+    answer:
+      'Każdy pokój wyposażony jest w łóżka (pościel w zestawie), własną łazienkę z prysznicem, telewizor oraz dostęp do szybkiego WiFi. Goście mają do dyspozycji wspólną w pełni wyposażoną kuchnię oraz pralnię.',
+  },
+  {
+    question: 'Jak dojechać do obiektu?',
+    answer:
+      'Znajdujemy się w Słomnikach przy ul. Krakowskiej 62d, przy trasie E7 łączącej Kraków z Kielcami. Dojazd z centrum Krakowa zajmuje ok. 20–25 minut. Dokładną trasę znajdziesz w Google Maps — link w stopce strony.',
+  },
+] as const;
+---
+
+<section aria-labelledby="faq-heading" class="bg-surface py-16 lg:py-24">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+
+    <div class="mb-12 text-center">
+      <span class="border-border bg-background text-primary inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wider uppercase">
+        <span aria-hidden="true" class="bg-primary h-1.5 w-1.5 rounded-full"></span>
+        FAQ
+      </span>
+      <h2 id="faq-heading" class="font-heading text-text mt-5 text-headline leading-headline font-bold">
+        Najczęstsze pytania
+      </h2>
+      <p class="text-text-muted mt-3 text-base leading-body">
+        Nie znalazłeś odpowiedzi?{' '}
+        <a href={`tel:${phoneRaw}`} class="text-primary hover:text-secondary font-medium transition-colors duration-200">
+          Zadzwoń — {phoneFormatted}
+        </a>
+        {' '}— odpowiemy od razu.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      {faqs.map((faq, i) => (
+        <details
+          class="border-border bg-background group rounded-xl border transition-[border-color] duration-200 open:border-primary"
+        >
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden">
+            <h3 class="text-text text-sm font-semibold leading-snug">{faq.question}</h3>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-text-muted h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180"
+              aria-hidden="true"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </summary>
+          <p class="text-text-muted px-5 pb-5 text-sm leading-body">{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+
+  </div>
+</section>

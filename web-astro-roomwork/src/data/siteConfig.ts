@@ -9,7 +9,7 @@ Każdy pokój ma prywatną łazienkę, co zapewnia wygodę niezależnie od wielk
 
 Przyjmujemy ekipy budowlane i remontowe, pracowników delegowanych, pracowników sezonowych, większe grupy korporacyjne, a także osoby indywidualne niezwiązane z branżą budowlaną. Długoterminowe pobyty, elastyczne warunki i bezpośredni kontakt z właścicielem to nasza codzienność.
 
-Obiekt usytuowany jest przy trasie S7 (Kraków–Kielce), co zapewnia ekspresowy dojazd do placów budowy i zakładów pracy w całej Małopolsce. Obsługujemy pracowników i ekipy realizujące zlecenia w Krakowie, Miechowie, Proszowicach oraz w pobliskich miejscowościach: Niedźwiedź, Januszowice, Zagaje Smrokowskie, Waganowice, Prandocin, Smroków, Wężerów, Obrażejowice, Czechy, Przestańsko, Iwanowice, Iwanowice Włościańskie, Iwanowice Dworskie, Grzegorzowice Wielkie, Goszcza.
+Obiekt usytuowany jest przy trasie E7 (Kraków–Kielce), co zapewnia ekspresowy dojazd do placów budowy i zakładów pracy w całej Małopolsce. Obsługujemy pracowników i ekipy realizujące zlecenia w Krakowie, Miechowie, Proszowicach oraz w pobliskich miejscowościach: Niedźwiedź, Januszowice, Zagaje Smrokowskie, Waganowice, Prandocin, Smroków, Wężerów, Obrażejowice, Czechy, Przestańsko, Iwanowice, Iwanowice Włościańskie, Iwanowice Dworskie, Grzegorzowice Wielkie, Goszcza.
 
 Szukasz noclegów pracowniczych w Słomnikach, kwater dla ekipy budowlanej pod Krakowem lub tanich noclegów dla pracowników w Małopolsce? Zadzwoń — dobierzemy pokoje do potrzeb Twojej firmy.`,
   themeColor: '#267A55',

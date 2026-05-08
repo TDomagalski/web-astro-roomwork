@@ -1,0 +1,84 @@
+---
+const groups = [
+  {
+    title: 'Ekipy budowlane i remontowe',
+    description:
+      'Przyjmujemy ekipy realizujące kontrakty na terenie Małopolski. Elastyczne terminy przyjazdu i wyjazdu, możliwość długoterminowego zakwaterowania — tygodnie lub miesiące bez problemu.',
+    icon: '<path d="M2 20h20"></path><path d="M6 20V10l6-6 6 6v10"></path><path d="M10 20v-5h4v5"></path>',
+  },
+  {
+    title: 'Pracownicy delegowani',
+    description:
+      'Firmy delegujące pracowników do projektów regionalnych mogą liczyć na nocleg z fakturą VAT. Obsługujemy zarówno single-delegacje, jak i całe zespoły projektowe.',
+    icon: '<rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>',
+  },
+  {
+    title: 'Pracownicy sezonowi',
+    description:
+      'Zakwaterowanie dla grup sezonowych — w tym samym obiekcie, bez rozpraszania zespołu po różnych miejscach. Obsługujemy pobyty krótko- i długoterminowe dla grup do 40 osób.',
+    icon: '<path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>',
+  },
+  {
+    title: 'Grupy korporacyjne',
+    description:
+      'Działy HR szukające stabilnego zakwaterowania dla zespołów na kontrakcie. Transparentne warunki, faktura VAT i bezpośredni kontakt z właścicielem — bez pośredników.',
+    icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>',
+  },
+] as const;
+---
+
+<section aria-labelledby="forwho-heading" class="bg-surface py-16 lg:py-24">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+    <div class="mb-12 lg:mb-16">
+      <span class="border-border bg-background text-primary inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wider uppercase">
+        <span aria-hidden="true" class="bg-primary h-1.5 w-1.5 rounded-full"></span>
+        Dla kogo
+      </span>
+      <h2 id="forwho-heading" class="font-heading text-text mt-5 text-headline leading-headline font-bold">
+        Obsługujemy każdą ekipę i firmę
+      </h2>
+      <p class="text-text-muted mt-3 max-w-xl text-base leading-body">
+        RoomWork powstało z myślą o pracodawcach i kierownikach, którzy szukają sprawdzonego, bezproblemowego zakwaterowania dla swoich ludzi.
+      </p>
+    </div>
+
+    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" aria-label="Grupy docelowe">
+      {groups.map((group) => (
+        <li class="border-border bg-background flex flex-col gap-5 rounded-2xl border p-6 transition-[border-color,box-shadow] duration-200 hover:border-primary hover:shadow-[0_8px_24px_-8px_var(--glow-action)]">
+          <div class="bg-primary/10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-primary h-5 w-5"
+              aria-hidden="true"
+              set:html={group.icon}
+            />
+          </div>
+          <div>
+            <p class="text-text text-title font-semibold leading-snug">{group.title}</p>
+            <p class="text-text-muted mt-2 text-sm leading-body">{group.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-10 text-center">
+      <a
+        href="/kontakt"
+        class="text-primary hover:text-secondary border-primary/30 hover:border-primary inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold transition-colors duration-200"
+      >
+        Zapytaj o dostępność dla Twojej grupy
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

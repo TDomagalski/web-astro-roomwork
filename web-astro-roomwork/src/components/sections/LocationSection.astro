@@ -1,0 +1,120 @@
+---
+import { siteConfig } from '../../data/siteConfig';
+
+const highlights = [
+  { text: 'Trasa E7 Kraków–Kielce — ekspresowy dojazd' },
+  { text: 'Ok. 20 km od centrum Krakowa' },
+  { text: 'Blisko Miechów, Proszowice, Słomniki' },
+  { text: 'Darmowy parking na terenie obiektu' },
+] as const;
+---
+
+<section aria-labelledby="location-heading" class="bg-background py-16 lg:py-24">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+
+      <!-- Tekst -->
+      <div>
+        <span class="border-border bg-surface text-primary inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wider uppercase">
+          <span aria-hidden="true" class="bg-primary h-1.5 w-1.5 rounded-full"></span>
+          Lokalizacja
+        </span>
+        <h2 id="location-heading" class="font-heading text-text mt-5 text-headline leading-headline font-bold">
+          Przy trasie E7 — szybki dojazd do całej Małopolski
+        </h2>
+        <p class="text-text-muted mt-4 text-base leading-body">
+          Znajdziesz nas w Słomnikach przy ul. Krakowskiej 62d — tuż przy trasie E7 łączącej Kraków z Kielcami. Dojazd na największe place budowy i zakłady pracy w regionie zajmuje od kilku do kilkudziesięciu minut.
+        </p>
+
+        <ul class="mt-7 flex flex-col gap-3" aria-label="Atuty lokalizacji">
+          {highlights.map((item) => (
+            <li class="flex items-start gap-3">
+              <span class="bg-primary/10 mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="text-primary h-3 w-3" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span class="text-text text-sm font-medium">{item.text}</span>
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href={siteConfig.social.googleMaps}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group bg-primary text-on-primary hover:bg-secondary focus-visible:ring-primary focus-visible:ring-offset-background mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-[background-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-px hover:shadow-[0_14px_28px_-12px_var(--glow-action)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          aria-label="Otwórz lokalizację w Google Maps"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true">
+            <path d="M20 10c0 7-8 13-8 13s-8-6-8-13a8 8 0 0 1 16 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          Otwórz w Google Maps
+        </a>
+      </div>
+
+      <!-- Mapa (facade) -->
+      <div id="location-map-shell" class="ring-border overflow-hidden rounded-2xl ring-1 shadow-[0_20px_60px_-20px_var(--glow-card)]">
+        <button
+          id="location-map-facade"
+          type="button"
+          data-src={siteConfig.mapsEmbed}
+          aria-label={`Załaduj mapę Google: ${siteConfig.address.street}, ${siteConfig.address.zip} ${siteConfig.address.city}`}
+          class="group focus-visible:ring-primary block w-full cursor-pointer text-left transition-shadow duration-200 hover:shadow-[0_20px_40px_-20px_var(--glow-action)] focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-inset"
+        >
+          <div class="relative aspect-4/3 bg-[linear-gradient(135deg,var(--glow-nav),var(--glow-primary-soft))]">
+            <div
+              aria-hidden="true"
+              class="absolute inset-0 bg-[linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] bg-size-[24px_24px]"
+            ></div>
+            <div aria-hidden="true" class="bg-primary/20 absolute top-1/2 left-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"></div>
+            <div class="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2 transition-transform duration-300 ease-out group-hover:translate-y-[-60%]">
+              <span class="bg-primary text-on-primary flex h-12 w-12 items-center justify-center rounded-full shadow-[0_10px_30px_-10px_var(--glow-pin)]">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"></path>
+                </svg>
+              </span>
+              <span
+                aria-hidden="true"
+                class="bg-elevated/80 text-on-elevated/60 rounded-full px-2.5 py-0.5 text-xs opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100"
+              >
+                kliknij, aby załadować
+              </span>
+            </div>
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  function initLocationMap(): void {
+    const shell = document.getElementById('location-map-shell');
+    const facade = document.getElementById('location-map-facade') as HTMLButtonElement | null;
+    if (!shell || !facade) return;
+
+    facade.addEventListener(
+      'click',
+      () => {
+        const src = facade.dataset.src;
+        if (!src) return;
+
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.title = 'Mapa Google Maps — RoomWork, ul. Krakowska 62d, Słomniki';
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+        iframe.style.cssText = 'border:0;display:block;width:100%;aspect-ratio:4/3;';
+
+        shell.innerHTML = '';
+        shell.appendChild(iframe);
+      },
+      { once: true }
+    );
+  }
+
+  document.addEventListener('astro:page-load', initLocationMap);
+</script>
