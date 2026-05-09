@@ -13,22 +13,37 @@
 
 ### Wykonane
 
-#### Strony prawne
+#### Strona `/regulamin`
 - [x] `regulamin.astro` — §1–§9, styl document-editorial, bez HeroSection
-  - Treść oparta na PDF klienta, rozbudowana do 9 paragrafów z prawidłowym językiem prawnym
-  - Nagłówek: `bg-elevated` + radial gradient, breadcrumb, H1, badge daty, dane spółki
-  - Treść: `max-w-3xl`, sekcje `§ N` w `font-heading text-primary`, numerowane punkty `1.`
-  - Stopka dokumentu: karta `bg-surface rounded-2xl` z danymi firmy, tel, email, link do PP
-  - Build: ✓ bez błędów, 6 stron wygenerowanych
+  - Treść oparta na PDF klienta (9 paragrafów, prawidłowy język prawny PL)
+  - Nagłówek: `bg-elevated`, H1, opis, badge "Obowiązuje od: 1 stycznia 2024"
+  - Treść: `max-w-3xl`, `§ N —` nagłówki w `font-heading text-primary text-xl`, numerowane punkty
+  - Stopka: karta z danymi firmy + kontakt (tel, email, link do PP)
+  - Polished przez `/impeccable`: fix skalowania §-nagłówków, badge, linki inline, separator kolumn
+  - `text-align: justify` przez scoped `<style>` z `display: block` na content spanach
+  - Build: ✓ 7 stron
 
-- [x] `polityka-prywatnosci.astro` — §1–§9 RODO/GDPR, identyczna struktura jak regulamin
-  - §1 Administrator, §2 Zakres danych, §3 Cele i podstawy prawne, §4 Okres przechowywania
-  - §5 Prawa osób (7 punktów), §6 Odbiorcy, §7 Bezpieczeństwo, §8 Cookies, §9 Zmiany
-  - Stopka: "Wydający dokument" + "Kontakt" + link do Regulaminu
-  - Build: ✓ bez błędów, 7 stron wygenerowanych
+#### Strona `/polityka-prywatnosci`
+- [x] `polityka-prywatnosci.astro` — minimalna, zgodna z RODO dla strony bez formularzy
+  - §1 Administrator, §2 Dane (logi SeoHost.pl, cookie motywu, kontakt mail/tel, monitoring), §3 Prawa
+  - Email administratora: `biuro@familyparty.com.pl` (nie kwatery@roomwork.pl)
+  - Hosting: SeoHost.pl
+  - Monitoring wizyjny: wzmianka w §2 pkt 4 (bez okresu przechowywania)
+  - `text-align: justify` przez scoped `<style>`
+  - Build: ✓ 7 stron
 
-### Do zrobienia
-- [ ] Sprawdzić czy Footer linkuje poprawnie do obu stron (już linkuje — `/polityka-prywatnosci` i `/regulamin`)
+#### Navbar
+- [x] Hover underline zatrzymuje się na 75% (`scale-x-75`) zamiast 100%
+  - Active (current page) nadal `scale-x-100` — widoczna różnica hover vs active
+
+### Do zrobienia (audyt)
+- [ ] `longDescription` w `siteConfig.ts` — nadal "10 pokojami" zamiast 11
+- [ ] `<meta name="robots" content="noindex">` na `/blog` i `/kwatery` (thin content)
+- [ ] `og-default.jpg` (1200×630) w `/public`
+- [ ] `apple-touch-icon.png` (180×180) w `/public`
+- [ ] `npm uninstall @astrojs/vercel` — nieużywana dependencja
+- [ ] `phoneFormatted` wyciągnąć do `siteConfig.ts`
+- [ ] `dayMap`/`formatDays` wyciągnąć do `src/utils/openingHours.ts`
 
 ---
 

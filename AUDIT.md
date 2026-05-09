@@ -28,14 +28,9 @@
 
 ### 🔴 KRYTYCZNE
 
-1. **`/polityka-prywatnosci` i `/regulamin` — strony NIE ISTNIEJĄ**, ale są linkowane w Footer.
-   - Plik: `Footer.astro:295-302`
-   - **Konsekwencje prawne:** Wymóg w Polsce przy zbieraniu jakichkolwiek danych (e-mail, telefon w formularzu kontaktowym — nawet bez formularza, sama wizytówka czasem wymaga PP).
-   - Linki zwrócą 404 → użytkownicy widzą błąd, Google obniża zaufanie domeny.
+1. ~~**`/polityka-prywatnosci` i `/regulamin` — strony NIE ISTNIEJĄ**~~ ✅ Zrobione (sesja 7)
 
-2. **`/og-default.jpg` BRAK W `/public`** — używany w BaseLayout dla Open Graph na każdej stronie.
-   - Plik: `siteConfig.ts:16` i `BaseLayout.astro:88`
-   - **Konsekwencja:** Każde udostępnienie strony na Facebook/LinkedIn/Slack/WhatsApp pokaże pusty/zepsuty preview.
+2. ~~**`/og-default.jpg` BRAK W `/public`**~~ ✅ Zrobione (sesja 7) — wygenerowany programatycznie przez sharp+SVG: forest-green dark bg, logo RoomWork, tagline, cechy oferty, adres, URL. 43KB, 1200×630px.
 
 ### 🟠 WYSOKI
 
