@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/siteConfig';
+
+const phoneFormatted = '690 328 659';
+const phoneRaw = siteConfig.phone;
+---
+
+<BaseLayout
+  title="Polityka prywatności — RoomWork Słomniki"
+  description="Polityka prywatności serwisu roomwork.pl. Informacje o przetwarzaniu danych osobowych przez Family Party Sp. z o.o. zgodnie z RODO."
+>
+  <!-- Nagłówek dokumentu -->
+  <div class="bg-elevated relative overflow-hidden">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--glow-primary-soft),transparent_60%)]"
+    >
+    </div>
+
+    <div class="relative mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+      <h1 class="font-heading text-on-elevated text-headline leading-headline font-bold">
+        Polityka prywatności
+      </h1>
+      <p class="text-on-elevated/60 mt-3 max-w-xl text-sm leading-relaxed">
+        Informacje o tym, jakie dane są przetwarzane w związku z korzystaniem z serwisu roomwork.pl
+        prowadzonego przez Family Party Sp.&nbsp;z&nbsp;o.o.
+      </p>
+
+      <div class="border-on-elevated/15 mt-8 flex flex-wrap items-center gap-3 border-t pt-6 pb-2">
+        <span
+          class="border-primary/30 text-on-elevated/80 rounded-full border px-3 py-1 text-xs font-medium"
+        >
+          Obowiązuje od: 1&nbsp;stycznia 2022
+        </span>
+        <span class="text-on-elevated/30 text-xs">·</span>
+        <span class="text-on-elevated/50 text-xs">Family Party Sp. z o.o.</span>
+        <span class="text-on-elevated/30 text-xs">·</span>
+        <span class="text-on-elevated/50 text-xs">ul. Krakowska 62d, Słomniki</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Treść dokumentu -->
+  <div class="bg-background py-16 lg:py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <!-- § 1 -->
+      <section aria-labelledby="par-1" class="border-border mb-10 border-b pt-4 pb-10">
+        <h2 id="par-1" class="font-heading text-primary leading-title text-xl font-bold">
+          § 1 — Administrator danych
+        </h2>
+        <ol class="text-text-muted leading-body mt-4 flex flex-col gap-3 text-sm">
+          <li class="flex gap-3">
+            <span class="text-text-muted shrink-0 tabular-nums">1.</span>
+            <span>
+              Administratorem danych osobowych jest
+              <strong class="text-text font-semibold">Family Party Sp. z o.o.</strong>, ul.
+              Krakowska 62d, 32-090 Słomniki, NIP: 6821777738.
+            </span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-text-muted shrink-0 tabular-nums">2.</span>
+            <span>
+              Kontakt z administratorem:
+              <a
+                href="mailto:biuro@familyparty.com.pl"
+                class="text-primary decoration-primary/40 hover:decoration-primary font-medium underline underline-offset-2 transition-colors"
+                >biuro@familyparty.com.pl</a
+              >
+              lub telefonicznie
+              <a
+                href={`tel:${phoneRaw}`}
+                class="text-primary decoration-primary/40 hover:decoration-primary font-medium underline underline-offset-2 transition-colors"
+                >{phoneFormatted}</a
+              >.
+            </span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- § 2 -->
+      <section aria-labelledby="par-2" class="border-border mb-10 border-b pb-10">
+        <h2 id="par-2" class="font-heading text-primary leading-title text-xl font-bold">
+          § 2 — Jakie dane są przetwarzane
+        </h2>
+        <ol class="text-text-muted leading-body mt-4 flex flex-col gap-3 text-sm">
+          <li class="flex gap-3">
+            <span class="text-text-muted shrink-0 tabular-nums">1.</span>
+            <span>
+              <strong class="text-text font-semibold">Logi serwera</strong> — adres IP i podstawowe informacje
+              techniczne zbierane automatycznie przez serwer hostingowy (SeoHost.pl) przy każdym wejściu
+              na stronę. Dane są przechowywane przez dostawcę hostingu do 90 dni.
+            </span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-text-muted shrink-0 tabular-nums">2.</span>
+            <span>
+              <strong class="text-text font-semibold">Cookie sesyjne</strong> — serwis zapisuje w przeglądarce
+              użytkownika jeden plik cookie przechowujący wybraną preferencję motywu (jasny/ciemny). Plik
+              nie zawiera danych osobowych i jest usuwany po zamknięciu przeglądarki lub zmianie preferencji.
+            </span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-text-muted shrink-0 tabular-nums">3.</span>
+            <span>
+              <strong class="text-text font-semibold">Kontakt mailowy i telefoniczny</strong> — jeśli
+              użytkownik sam napisze lub zadzwoni, administrator przetwarza podane dane (imię, numer telefonu,
+              adres e-mail) wyłącznie w celu udzielenia odpowiedzi i ewentualnej realizacji rezerwacji.
+            </span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-text-muted shrink-0 tabular-nums">4.</span>
+            <span>
+              <strong class="text-text font-semibold">Monitoring wizyjny</strong> — teren obiektu
+              jest objęty monitoringiem wizyjnym w celu zapewnienia bezpieczeństwa osób i mienia.
+              Nagrania są przechowywane przez administratora. Dostęp do nich mają wyłącznie
+              osoby upoważnione.
+            </span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- § 3 -->
+      <section aria-labelledby="par-3" class="mb-12">
+        <h2 id="par-3" class="font-heading text-primary leading-title text-xl font-bold">
+          § 3 — Prawa użytkowników
+        </h2>
+        <ol class="text-text-muted leading-body mt-4 flex flex-col gap-3 text-sm">
+          <li class="flex gap-3">
+            <span class="text-text-muted shrink-0 tabular-nums">1.</span>
+            <span>
+              Każda osoba, której dane są przetwarzane, ma prawo do dostępu, sprostowania, usunięcia
+              i przenoszenia swoich danych, a także prawo do ograniczenia przetwarzania i wniesienia
+              sprzeciwu.
+            </span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-text-muted shrink-0 tabular-nums">2.</span>
+            <span>
+              Wnioski w powyższych sprawach należy kierować na adres
+              <a
+                href="mailto:biuro@familyparty.com.pl"
+                class="text-primary decoration-primary/40 hover:decoration-primary font-medium underline underline-offset-2 transition-colors"
+                >biuro@familyparty.com.pl</a
+              >.
+            </span>
+          </li>
+        </ol>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  li > span:last-child {
+    display: block;
+    text-align: justify;
+  }
+</style>

@@ -3,7 +3,8 @@
     "allow": [
       "Bash(notebooklm ask *)",
       "Bash(notebooklm artifact *)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(xargs ls -1)"
     ]
   }
 }
