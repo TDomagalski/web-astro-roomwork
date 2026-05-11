@@ -85,7 +85,7 @@ const jsonLd = {
         basic: {
           title,
           type: 'website',
-          image: ogImage ?? `${siteConfig.url}${siteConfig.defaultOgImage}`,
+          image: ogImage ? `${siteConfig.url}${ogImage}` : `${siteConfig.url}${siteConfig.defaultOgImage}`,
           url: canonical ?? Astro.url.href,
         },
         optional: {

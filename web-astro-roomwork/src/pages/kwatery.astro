@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/sections/HeroSection.astro';
+import KwaterySection from '../components/islands/KwaterySection';
 import { siteConfig } from '../data/siteConfig';
 import heroImage from '../assets/hero_section-kwatery.webp';
 ---
@@ -8,6 +9,7 @@ import heroImage from '../assets/hero_section-kwatery.webp';
 <BaseLayout
   title="Kwatery pracownicze — 11 pokoi w Słomnikach | RoomWork"
   description="Kwatery pracownicze w Słomnikach k. Krakowa — 11 pokoi, do 40 osób, własne łazienki, parking, Wi-Fi, faktura VAT. Przy trasie E7. Dzwoń i rezerwuj."
+  ogImage="/og-images/og-kwatery.webp"
 >
   <HeroSection
     image={heroImage}
@@ -24,4 +26,5 @@ import heroImage from '../assets/hero_section-kwatery.webp';
       { icon: 'location', label: 'Parking na miejscu' },
     ]}
   />
+  <KwaterySection client:load />
 </BaseLayout>
