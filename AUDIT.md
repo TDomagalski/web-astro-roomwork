@@ -9,6 +9,7 @@
 ## 🔒 BEZPIECZEŃSTWO
 
 ### ✅ Co jest dobrze
+
 - **`set:html` jest bezpieczne** — używane tylko dla statycznych SVG ikon i tekstów hardcoded w komponentach (FAQ answers, group descriptions). Zero user input → brak ryzyka XSS.
 - **Wszystkie zewnętrzne linki** mają `target="_blank" rel="noopener noreferrer"` (Google Maps, Wizytówka).
 - **Iframe map facade pattern** — mapy ładują się dopiero po kliknięciu, z `referrerpolicy="no-referrer-when-downgrade"`.
@@ -17,6 +18,7 @@
 - **Innerhtml w copy-btn** — używa hardcoded SVG checkmark, bez user input.
 
 ### ⚠️ Drobne uwagi
+
 - **NISKI:** Dane firmy (NIP, REGON, KRS) są w kodzie publicznie — to OK, dane KRS są jawne, ale warto wiedzieć.
 - **NISKI (RODO):** Brak banera cookies. Aktualnie nie ma trackingów (GA, GTM, Pixel), więc nie jest potrzebny. **Stanie się problemem gdy dodasz analytics.**
 
@@ -60,6 +62,7 @@
 10. **Title `"Blog — RoomWork Słomniki"` (25 chars)** — bardzo krótki, Google ma 60 chars. Można dodać kontekst: `"Blog o kwaterach pracowniczych — RoomWork Słomniki"`.
 
 ### ✅ Co jest dobrze
+
 - **JSON-LD LocalBusiness** — kompletny: geo, address, openingHours, priceRange, telephone, email.
 - **Hierarchia nagłówków** — poprawna (H1 hero → H2 sekcje → H3 FAQ).
 - **Wszystkie obrazy mają `alt`** i są wymagane przez TypeScript Props.
@@ -132,6 +135,7 @@
     - Fail w przeglądarkach bez secure context (HTTP) lub bez uprawnień → unhandled rejection w konsoli.
 
 ### ✅ Co jest dobrze
+
 - **TypeScript strict** ✓ (`strict: true`, `verbatimModuleSyntax: true`, `strictNullChecks: true`).
 - **ESLint** z `@typescript-eslint/no-explicit-any: error` ✓.
 - **Mobile-first** w całym projekcie ✓.
@@ -154,12 +158,12 @@
 
 ## 📊 PODSUMOWANIE
 
-| Kategoria | Krytyczne | Wysokie | Średnie | Niskie | Razem |
-|---|---|---|---|---|---|
-| Bezpieczeństwo | 0 | 0 | 0 | 2 | 2 |
-| SEO | 2 | 4 | 4 | 0 | 10 |
-| Dobre praktyki | 0 | 4 | 6 | 5 | 15 |
-| **RAZEM** | **2** | **8** | **10** | **7** | **27** |
+| Kategoria      | Krytyczne | Wysokie | Średnie | Niskie | Razem  |
+| -------------- | --------- | ------- | ------- | ------ | ------ |
+| Bezpieczeństwo | 0         | 0       | 0       | 2      | 2      |
+| SEO            | 2         | 4       | 4       | 0      | 10     |
+| Dobre praktyki | 0         | 4       | 6       | 5      | 15     |
+| **RAZEM**      | **2**     | **8**   | **10**  | **7**  | **27** |
 
 ---
 
@@ -176,20 +180,23 @@
 ## 📋 PEŁNA LISTA ZADAŃ DO POPRAWY
 
 ### Krytyczne (do natychmiastowej poprawy)
-- [ ] Stworzyć stronę `/polityka-prywatnosci`
-- [ ] Stworzyć stronę `/regulamin`
-- [ ] Dodać `og-default.jpg` (1200×630px) do `/public`
+
+- [x] Stworzyć stronę `/polityka-prywatnosci`
+- [x] Stworzyć stronę `/regulamin`
+- [x] Dodać `og-default.jpg` (1200×630px) do `/public`
 
 ### Wysokie (poprawić w najbliższym czasie)
-- [ ] Zaktualizować `longDescription` w `siteConfig.ts` (10 → 11 pokoi)
+
+- [x] Zaktualizować `longDescription` w `siteConfig.ts` (10 → 11 pokoi)
 - [ ] Dodać `noindex` do pustych stron `/blog` i `/kwatery` lub uzupełnić treść
-- [ ] Dodać `apple-touch-icon.png` do `/public`
+- [x] Dodać `apple-touch-icon.png` do `/public`
 - [ ] Pozwolić każdej stronie przekazać własny `ogImage` do BaseLayout
-- [ ] Usunąć `@astrojs/vercel` z `package.json`
-- [ ] Wyciągnąć `phoneFormatted` do `siteConfig.ts`
-- [ ] Wyciągnąć `dayMap`/`formatDays` do utility (np. `src/utils/openingHours.ts`)
+- [x] Usunąć `@astrojs/vercel` z `package.json`
+- [x] Wyciągnąć `phoneFormatted` do `siteConfig.ts`
+- [x] Wyciągnąć `dayMap`/`formatDays` do utility (np. `src/utils/openingHours.ts`)
 
 ### Średnie (warto poprawić przy okazji)
+
 - [ ] Filtrować query params w canonical URL
 - [ ] Sprawdzić czy `og:type: 'business.business'` lepiej pasuje
 - [ ] Zmienić nazwę `hero_section-sample.jpg` na coś sensownego dla bloga
@@ -198,10 +205,11 @@
 - [ ] Usunąć orphan files: `hero_section-kwateryparter.webp`, `hero_section-kwaterypietro.webp`
 - [ ] Usunąć puste foldery `src/assets/kwatery-pracownicze/parter/`, `pietro/`
 - [ ] Posprzątać Content Collections — usunąć `services` i `portfolio` jeśli niepotrzebne
-- [ ] Zamienić blue-* tokeny w eyebrow2 na semantyczne tokeny design systemu
+- [ ] Zamienić blue-\* tokeny w eyebrow2 na semantyczne tokeny design systemu
 - [ ] Ujednolicić linki Google Maps w Footer i siteConfig
 
 ### Niskie (warto zrobić, ale nie pilnie)
+
 - [ ] Wyciągnąć dark `themeColor` `#0E1812` do siteConfig
 - [ ] Rozważyć zmianę `prefetchAll` na bardziej selektywny prefetch
 - [ ] Standaryzować `border-t-[1.75px]` na np. `border-t-2`
