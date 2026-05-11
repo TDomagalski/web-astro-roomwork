@@ -2,8 +2,7 @@
 import { siteConfig } from '../../data/siteConfig';
 import { navLinks } from '../../data/nav';
 
-const phoneFormatted = '690 328 659';
-const phoneRaw = siteConfig.phone;
+const { phone: phoneRaw, phoneFormatted } = siteConfig;
 const currentPath = Astro.url.pathname;
 const isActive = (href: string): boolean =>
   currentPath === href || currentPath.startsWith(href + '/');

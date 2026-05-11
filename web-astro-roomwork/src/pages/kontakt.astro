@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSection from '../components/sections/HeroSection.astro';
 import ContactSection from '../components/pages/kontakt/ContactSection.astro';
 import heroImage from '../assets/hero_section-kontakt.webp';
+import { siteConfig } from '../data/siteConfig';
 ---
 
 <BaseLayout
@@ -16,7 +17,7 @@ import heroImage from '../assets/hero_section-kontakt.webp';
     titleHighlight="Skontaktuj się z nami"
     subtitle="Masz pytania o kwatery lub chcesz zarezerwować miejsca dla swojej ekipy? Zadzwoń albo napisz."
     eyebrow="Kwatery pracownicze · Słomniki"
-    eyebrow2="Zadzwoń lub napisz · 690 328 659"
+    eyebrow2={`Zadzwoń lub napisz · ${siteConfig.phoneFormatted}`}
     features={[
       { icon: 'phone', label: 'Zadzwoń — odbieramy' },
       { icon: 'mail', label: 'Napisz — odpowiadamy' },

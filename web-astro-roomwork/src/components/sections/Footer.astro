@@ -1,26 +1,9 @@
 ---
 import { siteConfig } from '../../data/siteConfig';
 import { navLinks } from '../../data/nav';
+import { formatDays } from '../../utils/openingHours';
 
-const phoneFormatted = '690 328 659';
-const phoneRaw = siteConfig.phone;
-
-const dayMap: Record<string, string> = {
-  Mo: 'Pn',
-  Tu: 'Wt',
-  We: 'Śr',
-  Th: 'Cz',
-  Fr: 'Pt',
-  Sa: 'So',
-  Su: 'Nd',
-};
-
-const formatDays = (days: readonly string[]): string => {
-  if (days.length === 1) return dayMap[days[0]] ?? days[0];
-  const first = dayMap[days[0]] ?? days[0];
-  const last = dayMap[days[days.length - 1]] ?? days[days.length - 1];
-  return `${first}–${last}`;
-};
+const { phone: phoneRaw, phoneFormatted } = siteConfig;
 
 const fullAddress = `${siteConfig.address.street}, ${siteConfig.address.zip} ${siteConfig.address.city}`;
 
@@ -142,7 +125,7 @@ const year = new Date().getFullYear();
         <ul class="mt-4 flex flex-col gap-3 text-sm">
           <li>
             <a
-              href="https://maps.app.goo.gl/EQ7nDyvmPdTvQsxu7"
+              href={siteConfig.social.googleMaps}
               target="_blank"
               rel="noopener noreferrer"
               class="group text-on-elevated/70 hover:text-primary inline-flex items-start gap-3 transition-colors"
@@ -339,7 +322,11 @@ const year = new Date().getFullYear();
         const value = btn.dataset.copy;
         if (!value) return;
 
-        await navigator.clipboard.writeText(value);
+        try {
+          await navigator.clipboard.writeText(value);
+        } catch {
+          return;
+        }
 
         const original = btn.innerHTML;
         btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>`;

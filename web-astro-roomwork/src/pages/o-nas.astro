@@ -4,8 +4,7 @@ import HeroSection from '../components/sections/HeroSection.astro';
 import { siteConfig, yearsOfExperience } from '../data/siteConfig';
 import heroImage from '../assets/hero_section-roomwork.webp';
 
-const phoneFormatted = '690 328 659';
-const phoneRaw = siteConfig.phone;
+const { phone: phoneRaw, phoneFormatted } = siteConfig;
 
 const timeline = [
   {

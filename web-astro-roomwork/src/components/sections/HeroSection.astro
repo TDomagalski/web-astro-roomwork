@@ -57,8 +57,7 @@ const {
   ctaPrimary = DEFAULT_CTA_PRIMARY,
 } = Astro.props;
 
-const phoneFormatted = '690 328 659';
-const phoneRaw = siteConfig.phone;
+const { phone: phoneRaw, phoneFormatted } = siteConfig;
 
 const titleParts = titleHighlight ? title.split(titleHighlight) : null;
 const hasHighlight = titleParts !== null && titleParts.length === 2;
