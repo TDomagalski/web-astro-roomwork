@@ -198,7 +198,7 @@ const hasHighlight = titleParts !== null && titleParts.length === 2;
       </div>
 
       <div
-        class="ring-border relative overflow-hidden rounded-3xl shadow-[0_30px_60px_-30px_var(--glow-card)] ring-1"
+        class="ring-border relative aspect-[3/2] overflow-hidden rounded-3xl shadow-[0_30px_60px_-30px_var(--glow-card)] ring-1"
       >
         <Image
           src={image}
@@ -207,7 +207,7 @@ const hasHighlight = titleParts !== null && titleParts.length === 2;
           sizes="(min-width: 1024px) 40vw, (min-width: 640px) 80vw, 100vw"
           loading="eager"
           fetchpriority="high"
-          class="h-full w-full object-cover"
+          class="absolute inset-0 h-full w-full object-cover object-center"
         />
       </div>
     </div>
