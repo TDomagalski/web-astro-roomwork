@@ -53,7 +53,7 @@ const jsonLd = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content={siteConfig.themeColor} media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0E1812" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content={siteConfig.themeColorDark} media="(prefers-color-scheme: dark)" />
     <meta name="format-detection" content="telephone=no" />
     <script is:inline>
       (function () {
@@ -81,13 +81,13 @@ const jsonLd = {
     <SEO
       title={title}
       description={description}
-      canonical={canonical ?? Astro.url.href}
+      canonical={canonical ?? (Astro.url.origin + Astro.url.pathname)}
       openGraph={{
         basic: {
           title,
           type: 'website',
           image: ogImage ? `${siteConfig.url}${ogImage}` : `${siteConfig.url}${siteConfig.defaultOgImage}`,
-          url: canonical ?? Astro.url.href,
+          url: canonical ?? (Astro.url.origin + Astro.url.pathname),
         },
         optional: {
           description,

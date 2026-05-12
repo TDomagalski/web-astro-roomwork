@@ -5,7 +5,58 @@
 
 ---
 
-## Stan projektu: W BUDOWIE
+## Stan projektu: W BUDOWIE — gotowy do testowania
+
+---
+
+## Sesja 8 — 2026-05-12
+
+### Wykonane
+
+#### Zmiany tekstowe
+- [x] "Telewizja" → "Telewizja na życzenie" we wszystkich 3 miejscach (AmenitiesSection, [slug].astro, siteConfig.longDescription)
+- [x] H1 strony głównej: "Kwatery pracownicze dla Twojej ekipy" → "Noclegi pracownicze przy trasie E7 — blisko Krakowa"
+- [x] CTA na `/kwatery`: "Zadzwoń i zarezerwuj" (tel:) → "Zapytaj o nocleg" (/kontakt)
+- [x] Title bloga: "Blog — RoomWork Słomniki" (25 zn.) → "Blog o kwaterach pracowniczych — RoomWork Słomniki" (50 zn.)
+
+#### Filtry kwater (`KwaterySection.tsx`)
+- [x] Dodane filtry "Parter" i "Piętro" — filtrowanie po `room.floor`
+- [x] Typ `FilterValue` rozszerzony o `'Parter' | 'Piętro'`
+- [x] Przycisk "Zobacz szczegóły" wyśrodkowany (`self-center`)
+
+#### Ikony SVG — ujednolicenie stylu
+- [x] **AmenitiesSection** (główna): solid circle `bg-primary h-12 w-12 rounded-full`, biała ikona `text-on-primary h-6 w-6`
+- [x] **ForWhoSection** (główna): gradient square `h-14 w-14 rounded-2xl border bg-gradient-to-br from-primary/20 to-primary/5`, ikona `h-7 w-7`
+- [x] **ForWhoSection**: zawartość kart wyśrodkowana (`items-center text-center`); "Osoby prywatne" wyśrodkowane na mobile
+- [x] **o-nas + kontakt**: ring circle `h-12 w-12 rounded-full bg-primary/10 ring-2 ring-primary/30`, ikona `h-6 w-6`
+- [x] Ikona łazienki — podmieniona na poprawną (fill-based) wszędzie: AmenitiesSection, o-nas, [slug].astro
+- [x] Ikona łazienki na o-nas: `fill="currentColor" stroke="none"` bezpośrednio w ścieżce (nadpisuje wrapper SVG)
+- [x] eyebrow2 w HeroSection: `blue-*` → tokeny design systemu (`border-border`, `text-primary`, `bg-primary`)
+
+#### SEO & techniczne (z audytu — priorytety średnie i niskie)
+- [x] Canonical URL: `Astro.url.href` → `Astro.url.origin + Astro.url.pathname` (bez query params)
+- [x] Sharp image service włączony: `noop` → `astro/assets/services/sharp` — `srcset` działa
+- [x] OG images: dodane do `/polityka-prywatnosci` i `/regulamin` (`og-roomwork.webp`)
+- [x] Orphan files usunięte: `hero_section-kwateryparter.webp`, `hero_section-kwaterypietro.webp`
+- [x] Content Collections: usunięte `services` i `portfolio` z `content.config.ts` — koniec warningów przy buildzie
+- [x] `themeColorDark: '#0E1812'` przeniesione do `siteConfig.ts` (było hardcoded w BaseLayout)
+- [x] `border-t-[1.75px]` → `border-t-2`, `border-b-[1.75px]` → `border-b-2` (Navbar + Footer)
+
+#### Dokumentacja
+- [x] `AUDIT.md` przepisany jako czysty dokument z tabelami naprawionych rzeczy + checklistą do testowania
+- [x] `PROGRESS.md` zaktualizowany
+- [x] Pamięć projektu zaktualizowana
+
+### Stan audytu po sesji 8
+Wszystkie krytyczne i wysokie priorytety naprawione. Średnie i niskie: zrobione lub świadomie pominięte.
+Pozostają tylko 2 świadome decyzje: `prefetchAll: true` (zostawione) i `noindex` na /blog, /kwatery (pominięte — strony istnieją).
+
+### Do zrobienia (aktualnie otwarte)
+- [ ] Blog `/blog` — bez treści artykułów (klient)
+- [ ] Social media: Facebook i Instagram URL (gdy właściciel założy profile)
+- [ ] Testimonials — komponent gdy będą gotowe opinie klientów
+- [ ] Analytics — gdy dodany, wymagany baner cookies (RODO)
+- [ ] Przetestowanie strony wg checklisty w `AUDIT.md`
 
 ---
 

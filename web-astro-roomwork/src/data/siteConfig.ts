@@ -13,6 +13,7 @@ Obiekt usytuowany jest przy trasie E7 (Kraków–Kielce), co zapewnia ekspresowy
 
 Szukasz noclegów pracowniczych w Słomnikach, kwater dla ekipy budowlanej pod Krakowem lub tanich noclegów dla pracowników w Małopolsce? Zadzwoń — dobierzemy pokoje do potrzeb Twojej firmy.`,
   themeColor: '#267A55',
+  themeColorDark: '#0E1812',
   defaultOgImage: '/og-default.webp',
   phone: '690328659',
   phoneFormatted: '690 328 659',
