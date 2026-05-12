@@ -49,7 +49,7 @@ export default defineConfig({
       }),
     },
   },
-  integrations: [react(), sitemap()],
+  integrations: [react(), sitemap({ filter: (page) => !page.includes('/blog') })],
   vite: {
     plugins: [tailwindcss()],
   },

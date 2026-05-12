@@ -45,16 +45,16 @@ const groups = [
 
     <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" aria-label="Grupy docelowe">
       {groups.map((group) => (
-        <li class="border-border bg-background flex flex-col gap-5 rounded-2xl border p-6">
-          <div class="bg-primary/10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full">
+        <li class="border-border bg-background flex flex-col items-center gap-5 rounded-2xl border p-6 text-center">
+          <div class="from-primary/20 to-primary/5 border-primary/15 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border bg-gradient-to-br shadow-sm">
             <svg
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="1.8"
+              stroke-width="1.6"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="text-primary h-5 w-5"
+              class="text-primary h-7 w-7"
               aria-hidden="true"
               set:html={group.icon}
             />
@@ -68,16 +68,16 @@ const groups = [
     </ul>
 
     <!-- Osoby prywatne -->
-    <div class="border-border bg-background mt-6 flex flex-col items-start gap-4 rounded-2xl border p-6 transition-[border-color,box-shadow] duration-200 hover:border-primary hover:shadow-[0_8px_24px_-8px_var(--glow-action)] sm:flex-row sm:items-center sm:gap-6">
-      <div class="bg-primary/10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full">
+    <div class="border-border bg-background mt-6 flex flex-col items-center gap-4 rounded-2xl border p-6 text-center transition-[border-color,box-shadow] duration-200 hover:border-primary hover:shadow-[0_8px_24px_-8px_var(--glow-action)] sm:flex-row sm:items-center sm:gap-6 sm:text-left">
+      <div class="from-primary/20 to-primary/5 border-primary/15 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border bg-gradient-to-br shadow-sm">
         <svg
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="1.8"
+          stroke-width="1.6"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="text-primary h-5 w-5"
+          class="text-primary h-7 w-7"
           aria-hidden="true"
         >
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>

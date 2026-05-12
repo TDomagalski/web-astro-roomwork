@@ -16,7 +16,7 @@ function getImageMeta(path: string): ImageMetadata | undefined {
   return allImages[key]?.default;
 }
 
-type FilterValue = null | 2 | 3 | 4 | 6;
+type FilterValue = null | 2 | 3 | 4 | 6 | 'Parter' | 'Piętro';
 
 const FILTERS: { label: string; value: FilterValue }[] = [
   { label: 'Wszystkie', value: null },
@@ -24,6 +24,8 @@ const FILTERS: { label: string; value: FilterValue }[] = [
   { label: '3 osoby', value: 3 },
   { label: '4 osoby', value: 4 },
   { label: '6 osób', value: 6 },
+  { label: 'Parter', value: 'Parter' },
+  { label: 'Piętro', value: 'Piętro' },
 ];
 
 interface LightboxState {
@@ -139,7 +141,11 @@ export default function KwaterySection() {
   const touchStartX = useRef<number | null>(null);
 
   const filteredRooms =
-    displayFilter === null ? ROOMS : ROOMS.filter((room) => room.persons.includes(displayFilter));
+    displayFilter === null
+      ? ROOMS
+      : displayFilter === 'Parter' || displayFilter === 'Piętro'
+        ? ROOMS.filter((room) => room.floor === displayFilter)
+        : ROOMS.filter((room) => room.persons.includes(displayFilter));
 
   const handleFilterChange = (value: FilterValue) => {
     if (value === activeFilter) return;
@@ -441,7 +447,7 @@ export default function KwaterySection() {
 
                     <a
                       href={`/kwatery/${room.id}`}
-                      className="bg-primary text-on-primary hover:bg-secondary mt-4 inline-flex w-fit items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors duration-200"
+                      className="bg-primary text-on-primary hover:bg-secondary mt-4 inline-flex w-fit items-center gap-2 self-center rounded-full px-5 py-2.5 text-sm font-semibold transition-colors duration-200"
                     >
                       Zobacz szczegóły
                       <svg
