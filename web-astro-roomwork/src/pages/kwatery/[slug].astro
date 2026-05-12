@@ -1,0 +1,290 @@
+---
+import type { ImageMetadata } from 'astro';
+import type { Room } from '../../data/rooms';
+import { ROOMS, bedsLabel } from '../../data/rooms';
+import { siteConfig } from '../../data/siteConfig';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroSection from '../../components/sections/HeroSection.astro';
+import korytarzParter from '../../assets/kwatery-pracownicze/parter/korytarz-parter_img2.webp';
+import korytarzPietro from '../../assets/kwatery-pracownicze/pietro/korytarz-pietro_img1.webp';
+
+export function getStaticPaths() {
+  return ROOMS.map((room) => ({
+    params: { slug: room.id },
+    props: { room },
+  }));
+}
+
+interface Props {
+  room: Room;
+}
+
+const { room } = Astro.props;
+
+const allRoomImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/kwatery-pracownicze/**/*.webp',
+  { eager: true }
+);
+
+const roomImages = room.images
+  .map((path) => allRoomImages[`../../assets/${path}`]?.default)
+  .filter((img): img is ImageMetadata => img !== undefined);
+
+const heroImage = room.floor === 'Parter' ? korytarzParter : korytarzPietro;
+
+function personsLabel(persons: number[]): string {
+  if (persons.length === 1) {
+    const n = persons[0]!;
+    if (n <= 4) return `${n} ${n === 1 ? 'osoba' : 'osoby'}`;
+    return `${n} osób`;
+  }
+  const min = Math.min(...persons);
+  const max = Math.max(...persons);
+  return `${min}–${max} ${max <= 4 ? 'osoby' : 'osób'}`;
+}
+
+const eyebrow = `${personsLabel(room.persons)} · ${bedsLabel(room.beds)}`;
+const maxPersons = Math.max(...room.persons);
+
+const ogImage =
+  room.floor === 'Parter' ? '/og-images/og-kwatery_parter.webp' : '/og-images/og-kwatery_pietro.webp';
+
+const AMENITIES = [
+  'Prywatna łazienka',
+  'Bezpłatny parking',
+  'Wi-Fi',
+  'Kuchnia wspólna',
+  'Pościel i ręczniki',
+  'Faktura VAT',
+  'Telewizja',
+];
+
+const SPECS = [
+  {
+    label: 'Pojemność',
+    value: `do ${maxPersons} osób`,
+    icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    fill: false,
+  },
+  {
+    label: 'Łóżka',
+    value: bedsLabel(room.beds),
+    icon: '<path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>',
+    fill: false,
+  },
+  {
+    label: 'Łazienka',
+    value: 'Prywatna',
+    icon: '<path fill-rule="evenodd" clip-rule="evenodd" d="M3 5.00611L3.00018 4.99962C3.01218 4.63969 3.10892 4.26822 3.26943 3.94721C3.39761 3.69084 3.57419 3.46489 3.82033 3.3008C4.06021 3.14088 4.42499 3 5 3C5.57502 3 5.9398 3.14088 6.17967 3.3008C6.48866 3.50679 6.69219 3.8208 6.81777 4.14477C6.22162 4.30128 5.72626 4.57709 5.32555 4.93481C4.70429 5.48942 4.3823 6.17607 4.21313 6.72163C4.02059 7.34253 4.19257 7.9476 4.56764 8.37037C4.92761 8.77611 5.45463 9 6 9H10C10.5454 9 11.0724 8.77611 11.4324 8.37037C11.8074 7.9476 11.9794 7.34253 11.7869 6.72163C11.6177 6.17607 11.2957 5.48942 10.6745 4.93481C10.2084 4.51876 9.61431 4.2135 8.88252 4.07789C8.81351 3.77563 8.70182 3.41757 8.51943 3.05279C8.27261 2.55916 7.88669 2.03511 7.28908 1.6367C6.68521 1.23412 5.92499 1 5 1C4.07502 1 3.3148 1.23412 2.71092 1.6367C2.11331 2.03511 1.72739 2.55916 1.48057 3.05279C1.23572 3.5425 1.11827 4.02011 1.06048 4.36685C1.02595 4.57403 1.00127 4.78516 1.00001 4.99552L1 13C1.00011 13.0906 1.00205 13.1801 1.00864 13.3416C1.01708 13.5482 1.0338 13.8399 1.067 14.1886C1.13297 14.8812 1.26604 15.8212 1.53848 16.7747C1.80759 17.7166 2.23337 18.7464 2.92824 19.557C3.64853 20.3974 4.66199 21 6 21L6 22C6 22.5523 6.44772 23 7 23C7.55229 23 8 22.5523 8 22V21H16V22C16 22.5523 16.4477 23 17 23C17.5523 23 18 22.5523 18 22L18 21C20.0879 21 21.3006 19.566 21.9601 18.1431C22.6171 16.7257 22.8534 15.0872 22.9426 14.0842C23.048 12.8984 22.0873 12 21 12H3V5.00611ZM3.0581 14C3.11716 14.6197 3.23408 15.4292 3.46152 16.2253C3.69241 17.0334 4.01663 17.7536 4.44676 18.2555C4.85147 18.7276 5.33801 19 6 19H18C18.9628 19 19.6375 18.3981 20.1456 17.302C20.6394 16.2366 20.8536 14.926 20.9419 14H3.0581ZM9.34254 6.42679C9.52126 6.58633 9.65602 6.78564 9.75612 7H6.24388C6.34398 6.78564 6.47874 6.58633 6.65746 6.42679C6.90165 6.2088 7.29876 6 8 6C8.70124 6 9.09836 6.2088 9.34254 6.42679Z"/>',
+    fill: true,
+  },
+  {
+    label: 'Piętro',
+    value: room.floor,
+    icon: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+    fill: false,
+  },
+];
+---
+
+<BaseLayout
+  title={`${room.name} — ${room.floor} · Kwatery pracownicze Słomniki | RoomWork`}
+  description={room.description}
+  ogImage={ogImage}
+>
+  <HeroSection
+    image={heroImage}
+    alt={`Kwatery pracownicze RoomWork — ${room.floor}, Słomniki`}
+    eyebrow={eyebrow}
+    title={`${room.name} — ${room.floor}`}
+    subtitle={room.description}
+    features={[
+      { icon: 'shield', label: 'Pełne wyposażenie' },
+      { icon: 'document', label: 'Faktura VAT' },
+      { icon: 'location', label: 'Parking na miejscu' },
+    ]}
+    ctaPrimary={{
+      label: `Zadzwoń: ${siteConfig.phoneFormatted}`,
+      href: `tel:${siteConfig.phone}`,
+    }}
+    showCallButton={false}
+  />
+
+  <!-- Galeria -->
+  <section class="bg-background py-16 lg:py-20" aria-label="Galeria zdjęć kwatery">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
+      <nav aria-label="Nawigacja pomocnicza" class="mb-6">
+        <a
+          href="/kwatery"
+          class="text-text-muted hover:text-primary inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-200"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-4 w-4"
+            aria-hidden="true"
+          >
+            <path d="m15 18-6-6 6-6"></path>
+          </svg>
+          Wszystkie kwatery
+        </a>
+      </nav>
+
+      <h2 class="font-heading text-text mb-8 text-2xl font-bold lg:text-3xl">
+        Zdjęcia
+      </h2>
+
+      {roomImages.length > 0 && (
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          {roomImages.map((img, i) => (
+            <div
+              class:list={[
+                'overflow-hidden rounded-2xl',
+                i === 0 ? 'col-span-2 aspect-video' : 'aspect-4/3',
+              ]}
+            >
+              <img
+                src={img.src}
+                alt={`${room.name}, ${room.floor}, zdjęcie ${i + 1}`}
+                width={img.width}
+                height={img.height}
+                class="h-full w-full object-cover object-center"
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Szczegóły i wyposażenie -->
+  <section class="bg-surface py-16 lg:py-20" aria-label="Szczegóły kwatery">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
+      <div class="mb-10 lg:mb-12">
+        <span
+          class="border-border bg-background text-primary inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wider uppercase"
+        >
+          <span class="bg-primary h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
+          Kwatera w detalach
+        </span>
+        <h2 class="font-heading text-text mt-4 text-2xl font-bold lg:text-3xl">
+          Parametry i wyposażenie
+        </h2>
+      </div>
+
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+
+        <!-- Lewa: parametry -->
+        <div>
+          <h3 class="font-heading text-text mb-1 text-lg font-bold">Parametry kwatery</h3>
+          <p class="text-text-muted mb-5 text-sm">Dane techniczne pokoju.</p>
+
+          <ul class="divide-border divide-y" aria-label="Parametry kwatery">
+            {SPECS.map((spec) => (
+              <li class="flex items-center justify-between py-3.5 first:pt-0 last:pb-0">
+                <span class="text-text-muted flex items-center gap-2.5 text-sm">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill={spec.fill ? 'currentColor' : 'none'}
+                    stroke={spec.fill ? 'none' : 'currentColor'}
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-primary h-4 w-4 shrink-0"
+                    aria-hidden="true"
+                    set:html={spec.icon}
+                  />
+                  {spec.label}
+                </span>
+                <span class="text-text text-sm font-semibold">{spec.value}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Prawa: co wchodzi w cenę -->
+        <div>
+          <h3 class="font-heading text-text mb-1 text-lg font-bold">Co wchodzi w cenę</h3>
+          <p class="text-text-muted mb-5 text-sm">Pełne wyposażenie. Bez ukrytych opłat.</p>
+
+          <ul class="flex flex-col gap-4" aria-label="Lista udogodnień">
+            {AMENITIES.map((item) => (
+              <li class="text-text flex items-center gap-3 text-base font-medium">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-primary h-5 w-5 shrink-0"
+                  aria-hidden="true"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-elevated py-14 lg:py-20" aria-label="Kontakt">
+    <div class="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+      <span
+        class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium tracking-wider text-white/60 uppercase"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-white/40" aria-hidden="true"></span>
+        Zapytaj o dostępność
+      </span>
+
+      <h2 class="font-heading text-on-elevated mt-5 text-2xl font-bold lg:text-3xl">
+        Zainteresowany tą kwaterą?
+      </h2>
+      <p class="mt-3 max-w-md mx-auto text-base leading-relaxed text-white/70">
+        Zadzwoń lub napisz. Odpowiadamy tego samego dnia.
+      </p>
+
+      <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <a
+          href={`tel:${siteConfig.phone}`}
+          class="group bg-primary text-on-primary hover:bg-secondary focus-visible:ring-primary focus-visible:ring-offset-background inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-[background-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-px hover:shadow-[0_14px_28px_-12px_var(--glow-action)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          aria-label={`Zadzwoń pod numer ${siteConfig.phoneFormatted}`}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-4 w-4"
+            aria-hidden="true"
+          >
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          Zadzwoń: {siteConfig.phoneFormatted}
+        </a>
+
+        <a
+          href="/kwatery"
+          class="focus-visible:ring-primary focus-visible:ring-offset-background inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-200 ease-out hover:border-white/40 hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+        >
+          Wszystkie kwatery
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
