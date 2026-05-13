@@ -22,7 +22,7 @@ export const staticReviews: PlaceReviewsResult = {
     {
       authorName: 'Andrij Habruk',
       rating: 5,
-      text: '', // opinia po angielsku — dodaj tłumaczenie
+      text: 'very good',
       publishDate: '2025-11-01',
     },
     {
@@ -46,7 +46,7 @@ export const staticReviews: PlaceReviewsResult = {
     {
       authorName: 'Simon Qurtiashvili',
       rating: 5,
-      text: '', // opinia po gruzińsku — dodaj tłumaczenie
+      text: '(Przetłumaczone przez Google) To dobry hostel, wszystko w normie. To dość ciche i przytulne miejsce. Właściciel jest miłym, gościnnym i troskliwym człowiekiem.',
       publishDate: '2025-05-01',
     },
     {
@@ -88,7 +88,7 @@ export const staticReviews: PlaceReviewsResult = {
     {
       authorName: 'Rati Gurgenidze',
       rating: 5,
-      text: '', // opinia po angielsku — dodaj tłumaczenie
+      text: 'Good place 👌 excellent owners 🤙',
       publishDate: '2023-05-01',
     },
     {

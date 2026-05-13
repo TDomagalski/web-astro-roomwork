@@ -13,31 +13,26 @@
 
 ### Wykonane
 
-#### Opinie Google (Google Places API — build-time)
-- [x] `src/utils/googleReviews.ts` — utility do fetchowania opinii z Google Places API (New)
-  - Typy: `GoogleReview`, `PlaceReviewsResult` (brak `any`)
-  - Helper: `formatRatingCount()` — polska odmiana (1 opinia / 2-4 opinie / 5+ opinii)
-  - Graceful fallback: zwraca `null` jeśli brak klucza API lub błąd sieciowy
-- [x] `src/components/sections/TestimonialsSection.astro` — komponent sekcji opinii
-  - Eyebrow tag z kolorowym Google G icon (inline SVG)
-  - Duży rating z gwiazdkami (22px) + liczba opinii
-  - Grid `1→2→3 col`, karty z awatarami (inicjał imienia), `line-clamp-5`
-  - CTA "Dodaj swoją opinię na Google" → `siteConfig.social.google`
-  - Renderuje się TYLKO gdy API zwróci dane — brak fallbacku statycznego
-- [x] `astro.config.mjs` — dodane env vars: `GOOGLE_PLACES_API_KEY` (secret), `GOOGLE_PLACE_ID` (public)
-- [x] `.env.example` — zaktualizowany o nowe zmienne
-- [x] `BaseLayout.astro` — `fetchGoogleReviews()` wywołany raz (build-time), `<TestimonialsSection>` dodany przed `<Footer>` na każdej stronie
+#### Opinie Google — implementacja statyczna
+- [x] `src/utils/googleReviews.ts` — typy + helpery:
+  - `formatRatingCount()` — polska odmiana (1 opinia / 2-4 opinie / 5+ opinii)
+  - `relativeTime(isoDate)` — oblicza czas przy każdym buildzie, poprawne formy PL
+- [x] `src/data/reviews.ts` — 19 statycznych opinii z Google Wizytówki
+  - `rating: 4.8`, `userRatingCount: 19`
+  - 3 opinie z pustym `text: ''` do ręcznego uzupełnienia (Andrij Habruk EN, Simon Qurtiashvili GEO, Rati Gurgenidze EN)
+- [x] `src/components/sections/TestimonialsSection.astro` — sekcja z opiniami
+  - Karty jako `<a>` — klik otwiera Google Wizytówkę w nowej karcie
+  - Eyebrow z kolorowym Google G icon, rating 4,8 + gwiazdki + liczba opinii
+  - Grid 1→2→3 col, awatar z inicjałem, `line-clamp-5`
+  - CTA "Dodaj swoją opinię na Google"
+- [x] `BaseLayout.astro` — `<TestimonialsSection>` przed `<Footer>` na każdej stronie
+- [x] `BaseLayout.astro` — ESLint fixes: `var` → `const`, `catch (e)` → `catch`
 - [x] Build: ✓ 18 stron
 
-#### Do skonfigurowania przez klienta/developera
-- [ ] Uzyskać `GOOGLE_PLACES_API_KEY` z Google Cloud Console (Places API New)
-- [ ] Znaleźć `GOOGLE_PLACE_ID` firmy (instrukcje poniżej)
-- [ ] Dodać oba klucze do `.env` (lokalnie) i zmiennych środowiskowych Vercel
-
 ### Do zrobienia (aktualnie otwarte)
+- [ ] Uzupełnić 3 tłumaczenia w `src/data/reviews.ts` (Andrij Habruk, Simon Qurtiashvili, Rati Gurgenidze)
 - [ ] Blog `/blog` — bez treści artykułów (klient)
 - [ ] Social media: Facebook i Instagram URL (gdy właściciel założy profile)
-- [ ] Testimonials — komponent zbudowany ✓ (czeka na API key)
 - [ ] Analytics — gdy dodany, wymagany baner cookies (RODO)
 - [ ] Przetestowanie strony wg checklisty w `AUDIT.md`
 

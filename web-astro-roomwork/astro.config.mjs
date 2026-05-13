@@ -25,6 +25,9 @@ export default defineConfig({
     },
   ],
   output: 'static',
+  build: {
+    inlineStylesheets: 'always',
+  },
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport',
