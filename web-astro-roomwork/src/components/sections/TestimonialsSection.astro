@@ -1,0 +1,137 @@
+---
+import { formatRatingCount, relativeTime } from '../../utils/googleReviews';
+import type { PlaceReviewsResult } from '../../utils/googleReviews';
+
+interface Props {
+  data: PlaceReviewsResult | null;
+  googleUrl: string;
+}
+
+const { data, googleUrl } = Astro.props;
+
+const show = data !== null && data.reviews.length > 0;
+const rating = data?.rating ?? 0;
+const userRatingCount = data?.userRatingCount ?? 0;
+const reviews = data?.reviews ?? [];
+const ratingFormatted = rating.toFixed(1).replace('.', ',');
+const roundedRating = Math.round(rating);
+---
+
+{
+  show && (
+    <section class="bg-background py-16 md:py-24" aria-label="Opinie gości">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Header -->
+        <div class="mb-12 flex flex-col items-center gap-5 text-center">
+
+          <span class="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm font-medium text-primary">
+            <svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+            Opinie gości
+          </span>
+
+          <h2 class="font-heading text-headline text-text">Co mówią nasi goście</h2>
+
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <span class="font-heading text-4xl font-bold text-primary">{ratingFormatted}</span>
+            <div class="flex gap-0.5" role="img" aria-label={`Ocena ${ratingFormatted} na 5`}>
+              {Array.from({ length: 5 }, (_, i) => (
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class={i < roundedRating ? 'text-primary' : 'text-border'}
+                  aria-hidden="true"
+                >
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              ))}
+            </div>
+            <span class="text-text-muted text-sm">({formatRatingCount(userRatingCount)})</span>
+          </div>
+
+        </div>
+
+        <!-- Reviews grid -->
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {reviews.map((review) => (
+            <a
+              href={googleUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Opinia ${review.authorName} — otwórz na Google`}
+              class="flex flex-col rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-primary/30 hover:shadow-md"
+            >
+
+              <div class="mb-4 flex items-center gap-3">
+                <div
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 font-heading text-sm font-bold uppercase text-primary"
+                  aria-hidden="true"
+                >
+                  {review.authorName.charAt(0)}
+                </div>
+
+                <div class="min-w-0 flex-1">
+                  <p class="text-text truncate text-sm font-semibold">{review.authorName}</p>
+                  <p class="text-text-muted text-xs">{relativeTime(review.publishDate)}</p>
+                </div>
+
+                <div class="flex shrink-0 gap-0.5" role="img" aria-label={`Ocena ${review.rating} na 5`}>
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class={i < review.rating ? 'text-primary' : 'text-border'}
+                      aria-hidden="true"
+                    >
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+
+              <p class="text-text-muted text-sm leading-relaxed line-clamp-5">{review.text}</p>
+
+            </a>
+          ))}
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-10 flex justify-center">
+          <a
+            href={googleUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-6 py-2.5 text-sm font-medium text-text-muted transition-colors hover:border-primary/30 hover:text-primary"
+          >
+            Dodaj swoją opinię na Google
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  )
+}

@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import type { ImageMetadata } from 'astro';
-import type { Room } from '../../data/rooms';
 import { ROOMS, bedsLabel } from '../../data/rooms';
 
 interface ImageModule {
@@ -181,7 +180,7 @@ export default function KwaterySection() {
       setLbPrevSrc(currentSrc);
       setLbLoaded(false);
       setLbKey((k) => k + 1);
-      setLightbox((prev) => prev ? { ...prev, index: nextIdx } : null);
+      setLightbox((prev) => (prev ? { ...prev, index: nextIdx } : null));
     },
     [lightbox, lightboxRoom]
   );
@@ -556,7 +555,7 @@ export default function KwaterySection() {
                       e.stopPropagation();
                       navigateLightbox(-1);
                     }}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition-colors hover:bg-white/25"
+                    className="absolute top-1/2 left-4 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition-colors hover:bg-white/25"
                     aria-label="Poprzednie zdjęcie"
                   >
                     <svg
@@ -576,7 +575,7 @@ export default function KwaterySection() {
                       e.stopPropagation();
                       navigateLightbox(1);
                     }}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition-colors hover:bg-white/25"
+                    className="absolute top-1/2 right-4 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition-colors hover:bg-white/25"
                     aria-label="Następne zdjęcie"
                   >
                     <svg

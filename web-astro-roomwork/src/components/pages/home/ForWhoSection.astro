@@ -29,47 +29,58 @@ const groups = [
 
 <section aria-labelledby="forwho-heading" class="bg-surface py-16 lg:py-24">
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-
     <div class="mb-12 lg:mb-16">
-      <span class="border-border bg-background text-primary inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wider uppercase">
+      <span
+        class="border-border bg-background text-primary inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wider uppercase"
+      >
         <span aria-hidden="true" class="bg-primary h-1.5 w-1.5 rounded-full"></span>
         Dla kogo
       </span>
-      <h2 id="forwho-heading" class="font-heading text-text mt-5 text-headline leading-headline font-bold">
+      <h2
+        id="forwho-heading"
+        class="font-heading text-text text-headline leading-headline mt-5 font-bold"
+      >
         Obsługujemy każdą ekipę i firmę
       </h2>
-      <p class="text-text-muted mt-3 max-w-xl text-base leading-body">
-        RoomWork powstało z myślą o pracodawcach i kierownikach, którzy szukają sprawdzonego, bezproblemowego zakwaterowania dla swoich ludzi.
+      <p class="text-text-muted leading-body mt-3 max-w-xl text-base">
+        RoomWork powstało z myślą o pracodawcach i kierownikach, którzy szukają sprawdzonego,
+        bezproblemowego zakwaterowania dla swoich ludzi.
       </p>
     </div>
 
     <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" aria-label="Grupy docelowe">
-      {groups.map((group) => (
-        <li class="border-border bg-background flex flex-col items-center gap-5 rounded-2xl border p-6 text-center">
-          <div class="from-primary/20 to-primary/5 border-primary/15 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border bg-gradient-to-br shadow-sm">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="text-primary h-7 w-7"
-              aria-hidden="true"
-              set:html={group.icon}
-            />
-          </div>
-          <div>
-            <p class="text-text text-title font-semibold leading-snug">{group.title}</p>
-            <p class="text-text-muted mt-2 text-sm leading-body">{group.description}</p>
-          </div>
-        </li>
-      ))}
+      {
+        groups.map((group) => (
+          <li class="border-border bg-background flex flex-col items-center gap-5 rounded-2xl border p-6 text-center">
+            <div class="from-primary/20 to-primary/5 border-primary/15 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border bg-linear-to-br shadow-sm">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-primary h-7 w-7"
+                aria-hidden="true"
+                set:html={group.icon}
+              />
+            </div>
+            <div>
+              <p class="text-text text-title leading-snug font-semibold">{group.title}</p>
+              <p class="text-text-muted leading-body mt-2 text-sm">{group.description}</p>
+            </div>
+          </li>
+        ))
+      }
     </ul>
 
     <!-- Osoby prywatne -->
-    <div class="border-border bg-background mt-6 flex flex-col items-center gap-4 rounded-2xl border p-6 text-center transition-[border-color,box-shadow] duration-200 hover:border-primary hover:shadow-[0_8px_24px_-8px_var(--glow-action)] sm:flex-row sm:items-center sm:gap-6 sm:text-left">
-      <div class="from-primary/20 to-primary/5 border-primary/15 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border bg-gradient-to-br shadow-sm">
+    <div
+      class="border-border bg-background hover:border-primary mt-6 flex flex-col items-center gap-4 rounded-2xl border p-6 text-center transition-[border-color,box-shadow] duration-200 hover:shadow-[0_8px_24px_-8px_var(--glow-action)] sm:flex-row sm:items-center sm:gap-6 sm:text-left"
+    >
+      <div
+        class="from-primary/20 to-primary/5 border-primary/15 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border bg-linear-to-br shadow-sm"
+      >
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -86,16 +97,27 @@ const groups = [
       </div>
       <div class="flex-1">
         <p class="text-text font-semibold">Osoby prywatne</p>
-        <p class="text-text-muted mt-1 text-sm leading-body">
-          Przyjmujemy też gości indywidualnych — turystów, osoby w podróży służbowej czy każdego, kto potrzebuje spokojnego noclegu w okolicach Krakowa. Zapraszamy niezależnie od celu pobytu.
+        <p class="text-text-muted leading-body mt-1 text-sm">
+          Przyjmujemy też gości indywidualnych — turystów, osoby w podróży służbowej czy każdego,
+          kto potrzebuje spokojnego noclegu w okolicach Krakowa. Zapraszamy niezależnie od celu
+          pobytu.
         </p>
       </div>
       <a
         href="/kontakt"
-        class="text-primary hover:text-secondary border-primary/30 hover:border-primary shrink-0 inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold transition-colors duration-200"
+        class="text-primary hover:text-secondary border-primary/30 hover:border-primary inline-flex shrink-0 items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold transition-colors duration-200"
       >
         Zapytaj o nocleg
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-4 w-4"
+          aria-hidden="true"
+        >
           <path d="M5 12h14"></path>
           <path d="m12 5 7 7-7 7"></path>
         </svg>
@@ -108,12 +130,20 @@ const groups = [
         class="text-primary hover:text-secondary border-primary/30 hover:border-primary inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold transition-colors duration-200"
       >
         Zapytaj o dostępność dla Twojej grupy
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-4 w-4"
+          aria-hidden="true"
+        >
           <path d="M5 12h14"></path>
           <path d="m12 5 7 7-7 7"></path>
         </svg>
       </a>
     </div>
-
   </div>
 </section>
