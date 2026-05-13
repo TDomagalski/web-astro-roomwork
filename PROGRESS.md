@@ -29,6 +29,23 @@
 - [x] `BaseLayout.astro` — ESLint fixes: `var` → `const`, `catch (e)` → `catch`
 - [x] Build: ✓ 18 stron
 
+### Sesja 9 cd. — PageSpeed + Navbar
+
+#### PageSpeed Insights — naprawione (2 z 4 czerwonych błędów)
+- [x] `HeroSection.astro` — `quality={70}` na LCP `<Image />` (było domyślne 80) → ~21% mniej KB
+- [x] `astro.config.mjs` — `build.inlineStylesheets: 'always'` → CSS wbudowany w HTML, zero `<link rel="stylesheet">`, usunięty z łańcucha krytycznych requestów
+- [x] Problem 4 (łańcuch zależności) — naprawiony automatycznie przez inline CSS
+- [⚠] Problem 3 (forced reflows 79ms) — pochodzi z Astro ClientRouter (View Transitions), nienaprawialny bez usunięcia View Transitions
+
+#### Navbar — hamburger icon
+- [x] Kontener `h-3` → `h-3.5` (12px → 14px) — odstępy między liniami wyrównane do 4px/4px (było 4px/2px)
+- [x] Linie `bg-text group-hover:bg-primary` — zmiana koloru na zielony przy hover, spójnie z ramką przycisku
+- [x] `transition-opacity` → `transition-all` na środkowej linii (unifikacja transition)
+
+#### ESLint fixes (BaseLayout.astro)
+- [x] `var` → `const` w inline theme script
+- [x] `catch (e)` → `catch` (optional catch binding ES2019)
+
 ### Do zrobienia (aktualnie otwarte)
 - [ ] Uzupełnić 3 tłumaczenia w `src/data/reviews.ts` (Andrij Habruk, Simon Qurtiashvili, Rati Gurgenidze)
 - [ ] Blog `/blog` — bez treści artykułów (klient)
