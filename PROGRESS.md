@@ -9,6 +9,40 @@
 
 ---
 
+## Sesja 10 — 2026-05-14
+
+### Wykonane
+
+#### PageSpeed Insights — optymalizacja obrazu hero
+
+- [x] `HeroSection.astro` — `widths` zmieniony z `[480, 768, 1024, 1280]` → `[480, 640, 768, 1024]`
+  - Dodano 640w (nowy breakpoint), usunięto 1280w (obraz nigdy nie wyświetla się w tej szerokości)
+- [x] `HeroSection.astro` — `sizes` — usunięto błędny breakpoint `(min-width: 1280px) 480px`; zostało `(min-width: 1024px) 40vw`
+  - Desktop (1280px, 1× DPR): 40vw = 512px → przeglądarka wybiera **640w = 35.7 KB** zamiast starego 49.2 KB (−27%)
+  - Brak upscalingu przez `object-cover` (640×360px > wymogi kontenera 480×320px ✓)
+- [x] `quality={70}` — pozostawione (użytkownik cofnął zmianę na 60, 70 daje lepszy kompromis jakość/waga)
+
+#### PageSpeed — decyzja o Critical Request Chain
+- [⚠] Łańcuch `ClientRouter.js → index.js → page.js` — świadoma decyzja: zostawić View Transitions
+  - Łańcuch to known limitation Astro ClientRouter
+  - Skrypty `type="module"` (deferred) — nie blokują renderowania LCP
+  - Status "Bez oceny" — nie liczy się do wyniku PageSpeed
+  - Usunięcie = utrata animacji przejść między stronami
+
+#### Ważna uwaga techniczna (bug)
+- [!] `sizes="(min-width: 1280px) 480px"` powoduje rozmycie przy `object-cover` z `aspect-3/2`
+  - Obraz 480w ma 480×270px (proporcje ~16:9), kontener 480×320px (3:2) → `object-cover` musiał skalować w górę o 18% → blur
+  - Minimum bezpieczna szerokość dla tego kontenera: 640w (640×360px ≥ 320px wys. kontenera)
+
+### Do zrobienia (aktualnie otwarte)
+- [ ] Uzupełnić 3 tłumaczenia w `src/data/reviews.ts` (Andrij Habruk, Simon Qurtiashvili, Rati Gurgenidze)
+- [ ] Blog `/blog` — bez treści artykułów (klient)
+- [ ] Social media: Facebook i Instagram URL (gdy właściciel założy profile)
+- [ ] Analytics — gdy dodany, wymagany baner cookies (RODO)
+- [ ] Przetestowanie strony wg checklisty w `AUDIT.md`
+
+---
+
 ## Sesja 9 — 2026-05-13
 
 ### Wykonane
