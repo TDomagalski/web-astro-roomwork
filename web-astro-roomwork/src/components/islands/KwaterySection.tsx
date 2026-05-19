@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useCallback } from 'react';
 import type { ImageMetadata } from 'astro';
 import { ROOMS, bedsLabel } from '../../data/rooms';
 
@@ -99,6 +99,7 @@ function ChevronLeft() {
       strokeLinecap="round"
       strokeLinejoin="round"
       className="h-4 w-4"
+      aria-hidden="true"
     >
       <path d="m15 18-6-6 6-6" />
     </svg>
@@ -115,6 +116,7 @@ function ChevronRight() {
       strokeLinecap="round"
       strokeLinejoin="round"
       className="h-4 w-4"
+      aria-hidden="true"
     >
       <path d="m9 18 6-6-6-6" />
     </svg>
@@ -137,7 +139,7 @@ export default function KwaterySection() {
   const [lbPrevSrc, setLbPrevSrc] = useState<string | null>(null);
   const [lbLoaded, setLbLoaded] = useState(true);
   const [lbKey, setLbKey] = useState(0);
-  const touchStartX = useRef<number | null>(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const filteredRooms =
     displayFilter === null
@@ -185,17 +187,6 @@ export default function KwaterySection() {
     [lightbox, lightboxRoom]
   );
 
-  useEffect(() => {
-    if (!lightbox) return;
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') navigateLightbox(-1);
-      if (e.key === 'ArrowRight') navigateLightbox(1);
-    };
-    window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
-  }, [lightbox, closeLightbox, navigateLightbox]);
-
   const getCardState = (roomId: string): CardState =>
     cardStates[roomId] ?? { idx: 0, prevIdx: null, animKey: 0, dir: 1 };
 
@@ -223,14 +214,14 @@ export default function KwaterySection() {
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0]?.clientX ?? null;
+    setTouchStartX(e.touches[0]?.clientX ?? null);
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const diff = touchStartX.current - (e.changedTouches[0]?.clientX ?? 0);
+    if (touchStartX === null) return;
+    const diff = touchStartX - (e.changedTouches[0]?.clientX ?? 0);
     if (Math.abs(diff) > 50) navigateLightbox(diff > 0 ? 1 : -1);
-    touchStartX.current = null;
+    setTouchStartX(null);
   };
 
   return (
@@ -310,55 +301,55 @@ export default function KwaterySection() {
                   key={room.id}
                   className="bg-surface border-border group flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-shadow duration-300 hover:shadow-lg"
                 >
-                  {/* Image carousel */}
-                  <div
-                    className="relative aspect-4/3 cursor-zoom-in overflow-hidden"
-                    onClick={() => openLightbox(room.id, idx)}
-                    role="button"
-                    tabIndex={0}
-                    aria-label={`Otwórz galerię — ${room.name} ${room.floor}`}
-                    onKeyDown={(e) => e.key === 'Enter' && openLightbox(room.id, idx)}
-                  >
-                    {/* Wyjeżdżające zdjęcie */}
-                    {prevImageMeta && (
+                  {/* Image area */}
+                  <div className="relative aspect-4/3 overflow-hidden">
+
+                    {/* Lightbox trigger — pełna powierzchnia zdjęcia */}
+                    <button
+                      className="absolute inset-0 w-full cursor-zoom-in"
+                      onClick={() => openLightbox(room.id, idx)}
+                      aria-label={`Otwórz galerię — ${room.name} ${room.floor}`}
+                    >
+                      {prevImageMeta && (
+                        <img
+                          key={`out-${room.id}-${animKey}`}
+                          src={prevImageMeta.src}
+                          alt=""
+                          aria-hidden="true"
+                          width={prevImageMeta.width}
+                          height={prevImageMeta.height}
+                          className="absolute inset-0 h-full w-full object-cover object-center"
+                          style={{
+                            animation: `slideOut${dir > 0 ? 'Left' : 'Right'} 320ms ease-in-out forwards`,
+                          }}
+                        />
+                      )}
                       <img
-                        key={`out-${room.id}-${animKey}`}
-                        src={prevImageMeta.src}
+                        key={`in-${room.id}-${animKey}`}
+                        src={imageMeta?.src}
                         alt=""
                         aria-hidden="true"
-                        width={prevImageMeta.width}
-                        height={prevImageMeta.height}
-                        className="absolute inset-0 h-full w-full object-cover object-center"
-                        style={{
-                          animation: `slideOut${dir > 0 ? 'Left' : 'Right'} 320ms ease-in-out forwards`,
-                        }}
+                        width={imageMeta?.width}
+                        height={imageMeta?.height}
+                        className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                        style={
+                          animKey > 0
+                            ? { animation: `slideIn${dir > 0 ? 'Right' : 'Left'} 320ms ease-in-out` }
+                            : undefined
+                        }
+                        loading="lazy"
+                        decoding="async"
                       />
-                    )}
-                    {/* Wjeżdżające zdjęcie */}
-                    <img
-                      key={`in-${room.id}-${animKey}`}
-                      src={imageMeta?.src}
-                      alt={`${room.name} — ${room.floor}`}
-                      width={imageMeta?.width}
-                      height={imageMeta?.height}
-                      className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                      style={
-                        animKey > 0
-                          ? { animation: `slideIn${dir > 0 ? 'Right' : 'Left'} 320ms ease-in-out` }
-                          : undefined
-                      }
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    </button>
 
                     {/* Floor badge */}
-                    <span className="bg-surface/85 text-text absolute top-3 left-3 rounded-full px-2.5 py-1 text-xs font-semibold backdrop-blur-sm">
+                    <span className="bg-surface/85 text-text pointer-events-none absolute top-3 left-3 rounded-full px-2.5 py-1 text-xs font-semibold backdrop-blur-sm">
                       {room.floor}
                     </span>
 
                     {/* Expand icon */}
                     <span
-                      className="absolute top-3 right-3 rounded-full bg-black/40 p-1.5 text-white opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100"
+                      className="pointer-events-none absolute top-3 right-3 rounded-full bg-black/40 p-1.5 text-white opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100"
                       aria-hidden="true"
                     >
                       <svg
@@ -372,19 +363,19 @@ export default function KwaterySection() {
                       </svg>
                     </span>
 
-                    {/* Prev / Next */}
+                    {/* Prev / Next — rodzeństwo, nie dzieci przycisku lightboxa */}
                     {room.images.length > 1 && (
                       <>
                         <button
                           onClick={(e) => navigateCard(e, room.id, -1, room.images.length)}
-                          className="absolute top-1/2 left-2 -translate-y-1/2 rounded-full bg-black/45 p-1.5 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 hover:bg-black/65"
+                          className="absolute top-1/2 left-2 z-10 -translate-y-1/2 rounded-full bg-black/45 p-1.5 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 hover:bg-black/65"
                           aria-label="Poprzednie zdjęcie"
                         >
                           <ChevronLeft />
                         </button>
                         <button
                           onClick={(e) => navigateCard(e, room.id, 1, room.images.length)}
-                          className="absolute top-1/2 right-2 -translate-y-1/2 rounded-full bg-black/45 p-1.5 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 hover:bg-black/65"
+                          className="absolute top-1/2 right-2 z-10 -translate-y-1/2 rounded-full bg-black/45 p-1.5 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 hover:bg-black/65"
                           aria-label="Następne zdjęcie"
                         >
                           <ChevronRight />
@@ -392,10 +383,10 @@ export default function KwaterySection() {
                       </>
                     )}
 
-                    {/* Dot indicators */}
+                    {/* Dot indicators — rodzeństwo, nie dzieci przycisku lightboxa */}
                     {room.images.length > 1 && (
                       <div
-                        className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5"
+                        className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-1.5"
                         role="group"
                         aria-label="Nawigacja zdjęć"
                       >
@@ -413,6 +404,7 @@ export default function KwaterySection() {
                                 : 'h-1.5 w-1.5 bg-white/50 hover:bg-white/80',
                             ].join(' ')}
                             aria-label={`Zdjęcie ${i + 1}`}
+                            aria-pressed={i === idx}
                           />
                         ))}
                       </div>
@@ -511,13 +503,18 @@ export default function KwaterySection() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className="h-6 w-6"
+                aria-hidden="true"
               >
                 <path d="M18 6 6 18M6 6l12 12" />
               </svg>
             </button>
 
             {/* Counter */}
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-4 py-1.5 text-sm text-white/80 backdrop-blur-sm">
+            <div
+              className="absolute top-4 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-4 py-1.5 text-sm text-white/80 backdrop-blur-sm"
+              aria-live="polite"
+              aria-atomic="true"
+            >
               {lightbox.index + 1} / {lightboxRoom.images.length}
             </div>
 
@@ -527,7 +524,6 @@ export default function KwaterySection() {
               style={{ width: 'min(90vw, 1024px)', height: 'min(85vh, 720px)' }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Poprzednie zdjęcie — widoczne podczas ładowania nowego */}
               {lbPrevSrc && (
                 <img
                   src={lbPrevSrc}
@@ -536,7 +532,6 @@ export default function KwaterySection() {
                   className={`absolute inset-0 m-auto max-h-full max-w-full rounded-xl object-contain transition-opacity duration-300 ${lbLoaded ? 'opacity-0' : 'opacity-100'}`}
                 />
               )}
-              {/* Nowe zdjęcie — wypływa gdy załadowane */}
               <img
                 key={lbKey}
                 src={getImageMeta(lightboxRoom.images[lightbox.index] ?? '')?.src}
@@ -567,6 +562,7 @@ export default function KwaterySection() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       className="h-6 w-6"
+                      aria-hidden="true"
                     >
                       <path d="m15 18-6-6 6-6" />
                     </svg>
@@ -587,6 +583,7 @@ export default function KwaterySection() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       className="h-6 w-6"
+                      aria-hidden="true"
                     >
                       <path d="m9 18 6-6-6-6" />
                     </svg>
