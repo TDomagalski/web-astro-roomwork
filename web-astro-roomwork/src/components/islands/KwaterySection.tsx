@@ -349,7 +349,7 @@ export default function KwaterySection() {
 
                     {/* Expand icon */}
                     <span
-                      className="pointer-events-none absolute top-3 right-3 rounded-full bg-black/40 p-1.5 text-white opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100"
+                      className="pointer-events-none absolute top-3 right-3 rounded-full bg-black/40 p-1.5 text-white opacity-100 backdrop-blur-sm transition-opacity duration-200 lg:opacity-0 lg:group-hover:opacity-100"
                       aria-hidden="true"
                     >
                       <svg
@@ -368,14 +368,14 @@ export default function KwaterySection() {
                       <>
                         <button
                           onClick={(e) => navigateCard(e, room.id, -1, room.images.length)}
-                          className="absolute top-1/2 left-2 z-10 -translate-y-1/2 rounded-full bg-black/45 p-1.5 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 hover:bg-black/65"
+                          className="absolute top-1/2 left-2 z-10 -translate-y-1/2 rounded-full bg-black/45 p-1.5 text-white opacity-100 transition-opacity duration-200 lg:opacity-0 lg:group-hover:opacity-100 hover:bg-black/65"
                           aria-label="Poprzednie zdjęcie"
                         >
                           <ChevronLeft />
                         </button>
                         <button
                           onClick={(e) => navigateCard(e, room.id, 1, room.images.length)}
-                          className="absolute top-1/2 right-2 z-10 -translate-y-1/2 rounded-full bg-black/45 p-1.5 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 hover:bg-black/65"
+                          className="absolute top-1/2 right-2 z-10 -translate-y-1/2 rounded-full bg-black/45 p-1.5 text-white opacity-100 transition-opacity duration-200 lg:opacity-0 lg:group-hover:opacity-100 hover:bg-black/65"
                           aria-label="Następne zdjęcie"
                         >
                           <ChevronRight />
