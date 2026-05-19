@@ -396,7 +396,8 @@ export default function KwaterySection() {
                     {room.images.length > 1 && (
                       <div
                         className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5"
-                        aria-hidden="true"
+                        role="group"
+                        aria-label="Nawigacja zdjęć"
                       >
                         {room.images.map((_, i) => (
                           <button
