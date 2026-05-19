@@ -5,8 +5,8 @@ import { ROOMS, bedsLabel } from '../../data/rooms';
 import { siteConfig } from '../../data/siteConfig';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HeroSection from '../../components/sections/HeroSection.astro';
-import korytarzParter from '../../assets/kwatery-pracownicze/parter/korytarz-parter_img2.webp';
-import korytarzPietro from '../../assets/kwatery-pracownicze/pietro/korytarz-pietro_img1.webp';
+import korytarzParter from '../../assets/kwatery-pracownicze/parter/korytarz-parter_img2.jpg';
+import korytarzPietro from '../../assets/kwatery-pracownicze/pietro/korytarz-pietro_img1.jpg';
 
 export function getStaticPaths() {
   return ROOMS.map((room) => ({
@@ -22,7 +22,7 @@ interface Props {
 const { room } = Astro.props;
 
 const allRoomImages = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/kwatery-pracownicze/**/*.webp',
+  '../../assets/kwatery-pracownicze/**/*.jpg',
   { eager: true }
 );
 

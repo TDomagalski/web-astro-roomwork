@@ -22,9 +22,9 @@ export const ROOMS: Room[] = [
     persons: [3, 4],
     beds: 4,
     images: [
-      'kwatery-pracownicze/parter/kwatera1/kwatera-parter1_img1.webp',
-      'kwatery-pracownicze/parter/kwatera1/kwatera-parter1_img2.webp',
-      'kwatery-pracownicze/parter/kwatera1/kwatera-parter1_img3.webp',
+      'kwatery-pracownicze/parter/kwatera1/kwatera-parter1_img1.jpg',
+      'kwatery-pracownicze/parter/kwatera1/kwatera-parter1_img2.jpg',
+      'kwatery-pracownicze/parter/kwatera1/kwatera-parter1_img3.jpg',
     ],
     description:
       'Komfortowy pokój z czterema łóżkami, prywatną łazienką i dostępem do wspólnej kuchni. Idealny dla ekipy 3–4 osobowej.',
@@ -36,9 +36,9 @@ export const ROOMS: Room[] = [
     persons: [3, 4],
     beds: 4,
     images: [
-      'kwatery-pracownicze/parter/kwatera2/kwatera-parter2_img1.webp',
-      'kwatery-pracownicze/parter/kwatera2/kwatera-parter2_img2.webp',
-      'kwatery-pracownicze/parter/kwatera2/kwatera-parter2_img3.webp',
+      'kwatery-pracownicze/parter/kwatera2/kwatera-parter2_img1.jpg',
+      'kwatery-pracownicze/parter/kwatera2/kwatera-parter2_img2.jpg',
+      'kwatery-pracownicze/parter/kwatera2/kwatera-parter2_img3.jpg',
     ],
     description:
       'Przestronny pokój na parterze z czterema łóżkami i prywatną łazienką. Pełne wyposażenie, parking bezpłatny.',
@@ -50,9 +50,9 @@ export const ROOMS: Room[] = [
     persons: [3, 4],
     beds: 4,
     images: [
-      'kwatery-pracownicze/parter/kwatera3/kwatera-parter3_img1.webp',
-      'kwatery-pracownicze/parter/kwatera3/kwatera-parter3_img2.webp',
-      'kwatery-pracownicze/parter/kwatera3/kwatera-parter3_img3.webp',
+      'kwatery-pracownicze/parter/kwatera3/kwatera-parter3_img1.jpg',
+      'kwatery-pracownicze/parter/kwatera3/kwatera-parter3_img2.jpg',
+      'kwatery-pracownicze/parter/kwatera3/kwatera-parter3_img3.jpg',
     ],
     description:
       'Dobrze wyposażony pokój z czterema łóżkami i prywatnym węzłem sanitarnym. Dostęp do kuchni i szybkiego Wi-Fi.',
@@ -64,9 +64,9 @@ export const ROOMS: Room[] = [
     persons: [3, 4],
     beds: 4,
     images: [
-      'kwatery-pracownicze/parter/kwatera4/kwatera-parter4_img1.webp',
-      'kwatery-pracownicze/parter/kwatera4/kwatera-parter4_img2.webp',
-      'kwatery-pracownicze/parter/kwatera4/kwatera-parter4_img3.webp',
+      'kwatery-pracownicze/parter/kwatera4/kwatera-parter4_img1.jpg',
+      'kwatery-pracownicze/parter/kwatera4/kwatera-parter4_img2.jpg',
+      'kwatery-pracownicze/parter/kwatera4/kwatera-parter4_img3.jpg',
     ],
     description:
       'Pokój z czterema łóżkami, prywatną łazienką i miejscem na bagaż. Spokojna lokalizacja, idealna po długim dniu pracy.',
@@ -78,9 +78,9 @@ export const ROOMS: Room[] = [
     persons: [3, 4],
     beds: 4,
     images: [
-      'kwatery-pracownicze/parter/kwatera5/kwatera-parter5_img1.webp',
-      'kwatery-pracownicze/parter/kwatera5/kwatera-parter5_img2.webp',
-      'kwatery-pracownicze/parter/kwatera5/kwatera-parter5_img3.webp',
+      'kwatery-pracownicze/parter/kwatera5/kwatera-parter5_img1.jpg',
+      'kwatery-pracownicze/parter/kwatera5/kwatera-parter5_img2.jpg',
+      'kwatery-pracownicze/parter/kwatera5/kwatera-parter5_img3.jpg',
     ],
     description:
       'Funkcjonalny pokój z pełnym wyposażeniem dla 3–4 osób. Prywatna łazienka, szafy i szybkie łącze Wi-Fi.',
@@ -92,11 +92,11 @@ export const ROOMS: Room[] = [
     persons: [6],
     beds: 6,
     images: [
-      'kwatery-pracownicze/parter/kwatera6/kwatera_parter6_img1.webp',
-      'kwatery-pracownicze/parter/kwatera6/kwatera_parter6_img2.webp',
-      'kwatery-pracownicze/parter/kwatera6/kwatera_parter6_img3.webp',
-      'kwatery-pracownicze/parter/kwatera6/kwatera_parter6_img4.webp',
-      'kwatery-pracownicze/parter/kwatera6/kwatera_parter6_img5.webp',
+      'kwatery-pracownicze/parter/kwatera6/kwatera-parter6_img1.jpg',
+      'kwatery-pracownicze/parter/kwatera6/kwatera-parter6_img2.jpg',
+      'kwatery-pracownicze/parter/kwatera6/kwatera-parter6_img3.jpg',
+      'kwatery-pracownicze/parter/kwatera6/kwatera-parter6_img4.jpg',
+      'kwatery-pracownicze/parter/kwatera6/kwatera-parter6_img5.jpg',
     ],
     description:
       'Największa kwatera w obiekcie: sześć łóżek i prywatna łazienka. Idealna dla 6-osobowych ekip pracowniczych.',
@@ -108,10 +108,10 @@ export const ROOMS: Room[] = [
     persons: [3, 4],
     beds: 4,
     images: [
-      'kwatery-pracownicze/pietro/kwatera1/kwatera-pietro1_img1.webp',
-      'kwatery-pracownicze/pietro/kwatera1/kwatera-pietro1_img2.webp',
-      'kwatery-pracownicze/pietro/kwatera1/kwatera-pietro1_img3.webp',
-      'kwatery-pracownicze/pietro/kwatera1/kwatera-pietro1_img4.webp',
+      'kwatery-pracownicze/pietro/kwatera1/kwatera-pietro1_img1.jpg',
+      'kwatery-pracownicze/pietro/kwatera1/kwatera-pietro1_img2.jpg',
+      'kwatery-pracownicze/pietro/kwatera1/kwatera-pietro1_img3.jpg',
+      'kwatery-pracownicze/pietro/kwatera1/kwatera-pietro1_img4.jpg',
     ],
     description:
       'Jasny pokój na piętrze z czterema łóżkami i prywatną łazienką. Pełne wyposażenie i dostęp do wspólnej kuchni. Dobry wybór dla ekipy 3–4 osobowej.',
@@ -123,9 +123,9 @@ export const ROOMS: Room[] = [
     persons: [2, 3],
     beds: 3,
     images: [
-      'kwatery-pracownicze/pietro/kwatera2/kwatera-pietro2_img1.webp',
-      'kwatery-pracownicze/pietro/kwatera2/kwatera-pietro2_img2.webp',
-      'kwatery-pracownicze/pietro/kwatera2/kwatera-pietro2_img3.webp',
+      'kwatery-pracownicze/pietro/kwatera2/kwatera-pietro2_img1.jpg',
+      'kwatery-pracownicze/pietro/kwatera2/kwatera-pietro2_img2.jpg',
+      'kwatery-pracownicze/pietro/kwatera2/kwatera-pietro2_img3.jpg',
     ],
     description:
       'Kameralny pokój na piętrze z trzema łóżkami i prywatną łazienką. Dla 2–3 osobowych ekip szukających spokojnego miejsca po pracy.',
@@ -137,10 +137,10 @@ export const ROOMS: Room[] = [
     persons: [2, 3],
     beds: 3,
     images: [
-      'kwatery-pracownicze/pietro/kwatera3/kwatera-pietro3_img1.webp',
-      'kwatery-pracownicze/pietro/kwatera3/kwatera-pietro3_img2.webp',
-      'kwatery-pracownicze/pietro/kwatera3/kwatera-pietro3_img3.webp',
-      'kwatery-pracownicze/pietro/kwatera3/kwatera-pietro3_img4.webp',
+      'kwatery-pracownicze/pietro/kwatera3/kwatera-pietro3_img1.jpg',
+      'kwatery-pracownicze/pietro/kwatera3/kwatera-pietro3_img2.jpg',
+      'kwatery-pracownicze/pietro/kwatera3/kwatera-pietro3_img3.jpg',
+      'kwatery-pracownicze/pietro/kwatera3/kwatera-pietro3_img4.jpg',
     ],
     description:
       'Wygodny pokój na piętrze z trzema łóżkami i prywatną łazienką. Praktyczne zakwaterowanie dla 2–3 osobowych zespołów pracowniczych.',
@@ -152,10 +152,10 @@ export const ROOMS: Room[] = [
     persons: [2],
     beds: 2,
     images: [
-      'kwatery-pracownicze/pietro/kwatera4/kwatera-pietro4_img1.webp',
-      'kwatery-pracownicze/pietro/kwatera4/kwatera-pietro4_img2.webp',
-      'kwatery-pracownicze/pietro/kwatera4/kwatera-pietro4_img3.webp',
-      'kwatery-pracownicze/pietro/kwatera4/kwatera-pietro4_img4.webp',
+      'kwatery-pracownicze/pietro/kwatera4/kwatera-pietro4_img1.jpg',
+      'kwatery-pracownicze/pietro/kwatera4/kwatera-pietro4_img2.jpg',
+      'kwatery-pracownicze/pietro/kwatera4/kwatera-pietro4_img3.jpg',
+      'kwatery-pracownicze/pietro/kwatera4/kwatera-pietro4_img4.jpg',
     ],
     description:
       'Dwuosobowy pokój na piętrze z dwoma łóżkami i prywatną łazienką. Komfortowe zakwaterowanie dla pary pracowników.',
@@ -167,9 +167,9 @@ export const ROOMS: Room[] = [
     persons: [2],
     beds: 2,
     images: [
-      'kwatery-pracownicze/pietro/kwatera5/kwatera-pietro5_img1.webp',
-      'kwatery-pracownicze/pietro/kwatera5/kwatera_pietro5_img2.webp',
-      'kwatery-pracownicze/pietro/kwatera5/kwatera_pietro5_img3.webp',
+      'kwatery-pracownicze/pietro/kwatera5/kwatera-pietro5_img1.jpg',
+      'kwatery-pracownicze/pietro/kwatera5/kwatera-pietro5_img2.jpg',
+      'kwatery-pracownicze/pietro/kwatera5/kwatera-pietro5_img3.jpg',
     ],
     description:
       'Przytulny pokój dwuosobowy na piętrze z prywatną łazienką. Spokój i komfort dla 2-osobowej ekipy po długim dniu pracy.',

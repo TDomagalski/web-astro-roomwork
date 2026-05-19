@@ -6,7 +6,7 @@ interface ImageModule {
   default: ImageMetadata;
 }
 
-const allImages = import.meta.glob<ImageModule>('../../assets/kwatery-pracownicze/**/*.webp', {
+const allImages = import.meta.glob<ImageModule>('../../assets/kwatery-pracownicze/**/*.jpg', {
   eager: true,
 });
 

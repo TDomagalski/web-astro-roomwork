@@ -1,0 +1,15 @@
+Options -Indexes
+RewriteEngine On
+
+# 301 redirects — stare slugi kwater → nowe
+RewriteRule ^kwatery/kwatera-1-parter/?$ /kwatery/parter-1/ [R=301,L]
+RewriteRule ^kwatery/kwatera-2-parter/?$ /kwatery/parter-2/ [R=301,L]
+RewriteRule ^kwatery/kwatera-3-parter/?$ /kwatery/parter-3/ [R=301,L]
+RewriteRule ^kwatery/kwatera-4-parter/?$ /kwatery/parter-4/ [R=301,L]
+RewriteRule ^kwatery/kwatera-5-parter/?$ /kwatery/parter-5/ [R=301,L]
+RewriteRule ^kwatery/kwatera-6-parter/?$ /kwatery/parter-6/ [R=301,L]
+RewriteRule ^kwatery/kwatera-1-pietro/?$ /kwatery/pietro-1/ [R=301,L]
+RewriteRule ^kwatery/kwatera-2-pietro/?$ /kwatery/pietro-2/ [R=301,L]
+RewriteRule ^kwatery/kwatera-3-pietro/?$ /kwatery/pietro-3/ [R=301,L]
+RewriteRule ^kwatery/kwatera-4-pietro/?$ /kwatery/pietro-4/ [R=301,L]
+RewriteRule ^kwatery/kwatera-5-pietro/?$ /kwatery/pietro-5/ [R=301,L]
