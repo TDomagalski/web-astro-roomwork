@@ -1,5 +1,6 @@
 ---
 import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import type { Room } from '../../data/rooms';
 import { ROOMS, bedsLabel } from '../../data/rooms';
 import { siteConfig } from '../../data/siteConfig';
@@ -148,15 +149,28 @@ const SPECS = [
                 i === 0 ? 'col-span-2 aspect-video' : 'aspect-4/3',
               ]}
             >
-              <img
-                src={img.src}
-                alt={`${room.name}, ${room.floor}, zdjęcie ${i + 1}`}
-                width={img.width}
-                height={img.height}
-                class="h-full w-full object-cover object-center"
-                loading={i === 0 ? 'eager' : 'lazy'}
-                decoding="async"
-              />
+              {i === 0 ? (
+                <Image
+                  src={img}
+                  alt={`${room.name}, ${room.floor}, zdjęcie 1`}
+                  widths={[640, 960, 1280]}
+                  sizes="(min-width: 1024px) 960px, 100vw"
+                  quality={82}
+                  loading="eager"
+                  fetchpriority="high"
+                  class="h-full w-full object-cover object-center"
+                />
+              ) : (
+                <Image
+                  src={img}
+                  alt={`${room.name}, ${room.floor}, zdjęcie ${i + 1}`}
+                  widths={[360, 540, 720]}
+                  sizes="(min-width: 1024px) 480px, 50vw"
+                  quality={82}
+                  loading="lazy"
+                  class="h-full w-full object-cover object-center"
+                />
+              )}
             </div>
           ))}
         </div>
