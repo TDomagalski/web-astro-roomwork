@@ -271,9 +271,20 @@ const year = new Date().getFullYear();
     </div>
 
     <div
-      class="border-on-elevated/10 text-on-elevated/60 mt-12 flex flex-col gap-4 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between"
+      class="border-on-elevated/10 text-on-elevated/60 mt-12 flex flex-col gap-4 border-t pt-6 text-sm sm:flex-row sm:items-center sm:justify-between"
     >
       <p>© {year} {siteConfig.name}. Wszystkie prawa zastrzeżone.</p>
+      <p>
+        Projekt i realizacja:{' '}
+        <a
+          href="https://domadev.pl/"
+          target="_blank"
+          rel="noopener"
+          class="text-on-elevated/80 hover:text-primary font-medium transition-colors"
+        >
+          DomaDev<span class="sr-only"> (otwiera się w nowej karcie)</span>
+        </a>
+      </p>
       <ul class="flex flex-wrap items-center gap-x-5 gap-y-2">
         <li>
           <a href="/polityka-prywatnosci" class="hover:text-primary transition-colors">
