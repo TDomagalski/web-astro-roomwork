@@ -20,7 +20,7 @@ Nigdy nie polegaj wyłącznie na danych treningowych przy generowaniu kodu dla t
 
 | Obszar    | Technologia                                               |
 | --------- | --------------------------------------------------------- |
-| Framework | Astro 6.x (tryb static, hybrid gdy SSR wymagany)          |
+| Framework | Astro 7.x (tryb static, hybrid gdy SSR wymagany)          |
 | Styling   | Tailwind CSS v4                                           |
 | UI        | React (wyłącznie jako Client/Server Islands)              |
 | Język     | TypeScript — `strict` lub `strictest`                     |
